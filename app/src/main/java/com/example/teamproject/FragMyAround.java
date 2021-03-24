@@ -14,7 +14,7 @@ public class FragMyAround extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        ViewGroup view = (ViewGroup) inflater.inflate(R.layout.frag_home, container, false);
+        ViewGroup view = (ViewGroup) inflater.inflate(R.layout.frag_my_around, container, false);
 
         return view;
     }

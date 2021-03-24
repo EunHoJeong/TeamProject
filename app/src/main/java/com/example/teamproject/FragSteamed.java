@@ -14,7 +14,7 @@ public class FragSteamed extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        ViewGroup view = (ViewGroup) inflater.inflate(R.layout.frag_home, container, false);
+        ViewGroup view = (ViewGroup) inflater.inflate(R.layout.frag_steamed, container, false);
 
         return view;
     }

@@ -42,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void eventHandler() {
+
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
@@ -52,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.id.action_steamed: setFrag(STEAMED);
                         break;
-                    case R.id.action_my_menu: setFrag(STEAMED);
+                    case R.id.action_my_menu: setFrag(MY_MENU);
                         break;
                     default:
                         break;
@@ -60,12 +61,12 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
-    }
+    }//eventHandler end
 
     private void findViewByIdFunc() {
         bottomNavigationView = findViewById(R.id.bottomNavi);
 
-    }
+    }// findViewById end
 
     public void setFrag(int select) {
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
@@ -80,15 +81,15 @@ public class MainActivity extends AppCompatActivity {
                 ft.commit();
                 break;
             case STEAMED:
-                ft.replace(R.id.frameMain, f_MyMenu);
+                ft.replace(R.id.frameMain, f_Steamed);
                 ft.commit();
                 break;
             case MY_MENU:
-                ft.replace(R.id.frameMain, f_Steamed);
+                ft.replace(R.id.frameMain, f_MyMenu);
                 ft.commit();
                 break;
             default:
                 break;
         }
-    }
+    }// setFrag end
 }

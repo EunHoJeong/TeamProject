@@ -18,7 +18,10 @@
        android:layout_alignParentBottom="true"
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
-       tools:layout_editor_absoluteX="17dp"
+       android:background="@color/white"
+       app:itemIconTint="#000000"
+       app:itemTextColor="#000000"
+       tools:layout_editor_absoluteX="16dp"
       app:menu="@menu/main_menu"/>
 
 
