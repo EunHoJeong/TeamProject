@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.id.action_steamed: setFrag(STEAMED);
                         break;
-                    case R.id.action_my_menu: setFrag(MY_MENU);
+                    case R.id.action_my_menu: setFrag(STEAMED);
                         break;
                     default:
                         break;
