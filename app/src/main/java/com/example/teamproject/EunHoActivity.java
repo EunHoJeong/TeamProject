@@ -10,5 +10,11 @@ public class EunHoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_eun_ho);
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
     }
 }
