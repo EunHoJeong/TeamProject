@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+    android:layout_width="200dp"
     android:layout_height="wrap_content">
 
     <ImageView
         android:id="@+id/imgRank"
-        android:layout_width="200dp"
+        android:layout_width="match_parent"
         android:layout_height="200dp"/>
 
     <TextView
@@ -15,9 +15,18 @@
         android:layout_height="wrap_content"
         android:text="호텔이름"
         android:textSize="20sp"/>
+
+    <ImageView
+        android:id="@+id/imgStar"
+        android:layout_below="@id/tvRankName"
+        android:layout_width="17dp"
+        android:layout_height="17dp"
+        android:src="@drawable/star"/>
+
     <TextView
         android:id="@+id/tvGrade"
-        android:layout_below="@id/tvRankName"
+        android:layout_toRightOf="@id/imgStar"
+        android:layout_alignBottom="@+id/imgStar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="5.0"
@@ -35,8 +44,27 @@
         android:id="@+id/tvReview"
         android:layout_alignBottom="@id/tvMaxGrade"
         android:layout_toRightOf="@id/tvMaxGrade"
+        android:layout_marginLeft="5dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="후기 N개"/>
+
+    <TextView
+        android:id="@+id/tvPernight"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/tvReview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1박 기준"/>
+
+    <TextView
+        android:id="@+id/tvRankPrice"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/tvPernight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="50,000원"
+        android:textSize="25sp"
+        android:textStyle="bold"/>
 
 </RelativeLayout>

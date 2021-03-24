@@ -4,7 +4,7 @@
     <item
         android:id="@+id/action_home"
         android:enabled="true"
-        android:icon="@drawable/test"
+        android:icon="@drawable/un_home"
         android:title="Home"/>
 
     <item

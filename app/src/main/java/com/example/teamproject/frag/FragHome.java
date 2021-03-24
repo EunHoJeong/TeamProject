@@ -1,4 +1,4 @@
-package com.example.teamproject;
+package com.example.teamproject.frag;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,6 +13,9 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.teamproject.ImageAdapter;
+import com.example.teamproject.R;
 
 import java.util.ArrayList;
 
