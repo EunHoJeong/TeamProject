@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:background="@null"
+            android:src="@drawable/test"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:text="호텔 위치"
+            android:paddingLeft="6dp"
+            android:paddingRight="6dp"
+            android:textSize="15sp"
+            android:gravity="left"
+            android:background="#70000000"
+            android:textColor="#ffffff"
+            android:textStyle="bold"
+            android:ellipsize="end"
+            android:layout_alignParentBottom="true"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:paddingLeft="6dp"
+            android:paddingRight="6dp"
+            android:text="호텔 이름"
+            android:textSize="20sp" />
+
+        <RatingBar
+            android:id="@+id/ratingBar5"
+            style="@style/Widget.AppCompat.RatingBar.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="50dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="대실 : 4시간 30000원"
+            android:textSize="15dp"
+            android:gravity="right"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="숙박 : 18:00부터 45000원"
+            android:textSize="15dp"
+            android:gravity="center|right"/>
+
+    </RelativeLayout>
+
+
+
+
+</LinearLayout>
