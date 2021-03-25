@@ -2,6 +2,7 @@ package com.example.teamproject.frag;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.teamproject.R;
 import com.example.teamproject.activity.LoginActivity;
+import com.example.teamproject.activity.ReservationActivity;
 import com.example.teamproject.activity.SignUpActivity;
 
 public class FragMyMenu extends Fragment {
@@ -44,6 +46,8 @@ public class FragMyMenu extends Fragment {
 
         llReservationHotel.setOnClickListener(view -> {
 
+            Intent intent = new Intent(getActivity(), ReservationActivity.class);
+            startActivity(intent);
         });
     }
 
