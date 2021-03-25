@@ -74,9 +74,10 @@
             android:layout_weight="1">
 
             <ImageButton
+                android:id="@+id/imgBtnF"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/test"/>
+                android:background="@drawable/test" />
 
             <TextView
                 android:layout_width="wrap_content"

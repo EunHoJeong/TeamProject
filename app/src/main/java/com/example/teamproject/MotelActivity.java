@@ -11,7 +11,7 @@ import androidx.viewpager.widget.ViewPager;
 import com.example.teamproject.CustomAdapter;
 import com.example.teamproject.R;
 
-public class LocationActivity extends AppCompatActivity {
+public class MotelActivity extends AppCompatActivity {
     private Spinner spinnerLocation;
     ViewPager pager;
 

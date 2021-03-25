@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
 import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
@@ -15,7 +14,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.teamproject.ImageAdapter;
+import com.example.teamproject.MotelActivity;
 import com.example.teamproject.R;
+import com.example.teamproject.SearchMapActivity;
 import com.example.teamproject.activity.MapActivity;
 
 import java.util.ArrayList;
@@ -25,6 +26,7 @@ public class FragHome extends Fragment {
 
     private ImageButton imgbtnHotel;
     private ImageButton imgbtnMotel;
+    private ImageButton imgBtnF;
     private RecyclerView recyclerImage;
     private ImageAdapter adapter;
 
@@ -43,6 +45,7 @@ public class FragHome extends Fragment {
 
         imgbtnHotel = view.findViewById(R.id.imgbtnHotel);
         imgbtnMotel = view.findViewById(R.id.imgbtnMotel);
+        imgBtnF = view.findViewById(R.id.imgBtnF);
         recyclerImage = view.findViewById(R.id.recyclerImage);
 
         adapter = new ImageAdapter(getActivity(), imageList);
@@ -50,11 +53,17 @@ public class FragHome extends Fragment {
         recyclerImage.setAdapter(adapter);
 
         imgbtnHotel.setOnClickListener(v -> {
-            Intent intent;
+            Intent intent=new Intent(getActivity(), MotelActivity.class);
+            startActivity(intent);
         });
 
         imgbtnMotel.setOnClickListener(view1 -> {
             Intent intent = new Intent(getActivity(), MapActivity.class);
+            startActivity(intent);
+        });
+
+        imgBtnF.setOnClickListener(v->{
+            Intent intent=new Intent(getActivity(), SearchMapActivity.class);
             startActivity(intent);
         });
 
