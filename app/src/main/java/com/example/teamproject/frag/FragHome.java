@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.teamproject.ImageAdapter;
 import com.example.teamproject.R;
+import com.example.teamproject.activity.MapActivity;
 
 import java.util.ArrayList;
 
@@ -23,6 +24,7 @@ public class FragHome extends Fragment {
     public static final ArrayList<Integer> imageList = new ArrayList<>();
 
     private ImageButton imgbtnHotel;
+    private ImageButton imgbtnMotel;
     private RecyclerView recyclerImage;
     private ImageAdapter adapter;
 
@@ -40,6 +42,7 @@ public class FragHome extends Fragment {
         }
 
         imgbtnHotel = view.findViewById(R.id.imgbtnHotel);
+        imgbtnMotel = view.findViewById(R.id.imgbtnMotel);
         recyclerImage = view.findViewById(R.id.recyclerImage);
 
         adapter = new ImageAdapter(getActivity(), imageList);
@@ -48,6 +51,11 @@ public class FragHome extends Fragment {
 
         imgbtnHotel.setOnClickListener(v -> {
             Intent intent;
+        });
+
+        imgbtnMotel.setOnClickListener(view1 -> {
+            Intent intent = new Intent(getActivity(), MapActivity.class);
+            startActivity(intent);
         });
 
         return view;
