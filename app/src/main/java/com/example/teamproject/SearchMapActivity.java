@@ -9,13 +9,17 @@ import com.naver.maps.geometry.LatLng;
 import com.naver.maps.map.LocationTrackingMode;
 import com.naver.maps.map.MapView;
 import com.naver.maps.map.NaverMap;
+import com.naver.maps.map.NaverMapOptions;
 import com.naver.maps.map.OnMapReadyCallback;
 import com.naver.maps.map.UiSettings;
+import com.naver.maps.map.overlay.LocationOverlay;
 import com.naver.maps.map.overlay.Marker;
 import com.naver.maps.map.util.FusedLocationSource;
 
 public class SearchMapActivity extends AppCompatActivity implements OnMapReadyCallback {
     private MapView mapView;
+    private static final LatLng COORD_1 = new LatLng(35.1798159, 129.0750222);
+    private static final LatLng COORD_2 = new LatLng(37.5666102, 126.9783881);
 
     private static final int LOCATION_PERMISSION_REQUEST_CODE=1000;
     private FusedLocationSource locationSource;
@@ -58,8 +62,12 @@ public class SearchMapActivity extends AppCompatActivity implements OnMapReadyCa
         uiSettings.setZoomControlEnabled(true);//줌
         uiSettings.setLocationButtonEnabled(true);//내가 있는곳
 
-        Marker marker=new Marker();
-        marker.setPosition(new LatLng(37.5670135,126.9783740));
-        marker.setMap(naverMap);
+        Marker marker1=new Marker();
+        marker1.setPosition(COORD_1);
+        marker1.setMap(naverMap);
+
+        Marker marker2=new Marker();
+        marker2.setPosition(COORD_2);
+        marker2.setMap(naverMap);
     }
 }
