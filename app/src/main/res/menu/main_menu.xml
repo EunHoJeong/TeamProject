@@ -22,7 +22,7 @@
     <item
         android:id="@+id/action_my_menu"
         android:enabled="true"
-        android:icon="@drawable/test"
+        android:icon="@drawable/my"
         android:title="MY" />
 
 </menu>
