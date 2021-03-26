@@ -1,6 +1,7 @@
 package com.example.teamproject.activity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Spinner;
@@ -20,7 +21,7 @@ public class MotelActivity extends AppCompatActivity {
         setContentView(R.layout.activity_location);
 
         findViewByIdFunc();
-
+        Log.d("a","a");
 
 
         CustomAdapter customAdapter = new CustomAdapter(getLayoutInflater());

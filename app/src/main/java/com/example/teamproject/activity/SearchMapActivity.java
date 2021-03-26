@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import com.example.teamproject.R;
 import com.naver.maps.geometry.LatLng;
@@ -34,7 +35,7 @@ public class SearchMapActivity extends AppCompatActivity implements OnMapReadyCa
         mapView.onCreate(savedInstanceState);
         mapView.getMapAsync(this);
 
-
+        Log.d("a","a");
 
         locationSource=new FusedLocationSource(this,LOCATION_PERMISSION_REQUEST_CODE);
 
