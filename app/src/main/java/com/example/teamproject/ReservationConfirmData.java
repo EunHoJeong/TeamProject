@@ -1,4 +1,4 @@
-package com.example.teamproject.data;
+package com.example.teamproject;
 
 public class ReservationConfirmData {
     private String state;

@@ -1,4 +1,4 @@
-package com.example.teamproject.activity;
+package com.example.teamproject;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -7,11 +7,6 @@ import androidx.fragment.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.MenuItem;
 
-import com.example.teamproject.R;
-import com.example.teamproject.frag.FragHome;
-import com.example.teamproject.frag.FragMyAround;
-import com.example.teamproject.frag.FragMyMenu;
-import com.example.teamproject.frag.FragSteamed;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {

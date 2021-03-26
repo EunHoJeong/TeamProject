@@ -1,4 +1,4 @@
-package com.example.teamproject.activity;
+package com.example.teamproject;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,10 +7,6 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import com.example.teamproject.R;
-import com.example.teamproject.frag.FragMyMenu;
 
 public class LoginActivity extends AppCompatActivity {
     private Button btnLogin;

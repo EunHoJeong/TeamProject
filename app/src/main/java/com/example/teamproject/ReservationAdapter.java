@@ -1,4 +1,4 @@
-package com.example.teamproject.adapter;
+package com.example.teamproject;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,9 +8,6 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.example.teamproject.R;
-import com.example.teamproject.data.ReservationConfirmData;
 
 import java.util.ArrayList;
 

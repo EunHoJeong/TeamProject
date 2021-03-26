@@ -1,4 +1,4 @@
-package com.example.teamproject.frag;
+package com.example.teamproject;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,12 +11,12 @@ import androidx.fragment.app.Fragment;
 
 import com.example.teamproject.R;
 
-public class FragSteamed extends Fragment {
+public class FragMyAround extends Fragment {
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        ViewGroup view = (ViewGroup) inflater.inflate(R.layout.frag_steamed, container, false);
+        ViewGroup view = (ViewGroup) inflater.inflate(R.layout.frag_my_around, container, false);
 
         return view;
     }

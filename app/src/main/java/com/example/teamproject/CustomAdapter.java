@@ -1,4 +1,4 @@
-package com.example.teamproject.adapter;
+package com.example.teamproject;
 
 import android.view.LayoutInflater;
 import android.view.View;

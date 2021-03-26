@@ -1,15 +1,10 @@
-package com.example.teamproject.activity;
+package com.example.teamproject;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.util.Log;
-
-import com.example.teamproject.R;
-import com.example.teamproject.adapter.ReservationAdapter;
-import com.example.teamproject.data.ReservationConfirmData;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package com.example.teamproject.activity;
+package com.example.teamproject;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;

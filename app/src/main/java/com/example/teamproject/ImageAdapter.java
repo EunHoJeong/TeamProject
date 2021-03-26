@@ -1,4 +1,4 @@
-package com.example.teamproject.adapter;
+package com.example.teamproject;
 
 import android.content.Context;
 import android.view.LayoutInflater;
