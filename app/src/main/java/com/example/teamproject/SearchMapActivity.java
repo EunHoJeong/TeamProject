@@ -63,12 +63,13 @@ public class SearchMapActivity extends AppCompatActivity implements OnMapReadyCa
         uiSettings.setZoomControlEnabled(true);//줌
         uiSettings.setLocationButtonEnabled(true);//내가 있는곳
 
-        Marker marker1=new Marker();
-        marker1.setPosition(COORD_1);
-        marker1.setMap(naverMap);
-
-        Marker marker2=new Marker();
-        marker2.setPosition(COORD_2);
-        marker2.setMap(naverMap);
+//        마커 찍는 기능
+//        Marker marker1=new Marker();
+//        marker1.setPosition(COORD_1);
+//        marker1.setMap(naverMap);
+//
+//        Marker marker2=new Marker();
+//        marker2.setPosition(COORD_2);
+//        marker2.setMap(naverMap);
     }
 }
