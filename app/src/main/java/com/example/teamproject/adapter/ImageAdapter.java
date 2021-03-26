@@ -1,4 +1,4 @@
-package com.example.teamproject;
+package com.example.teamproject.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,6 +10,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.PagerAdapter;
+
+import com.example.teamproject.R;
 
 import java.util.ArrayList;
 

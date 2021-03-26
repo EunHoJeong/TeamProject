@@ -1,4 +1,4 @@
-package com.example.teamproject;
+package com.example.teamproject.adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -6,6 +6,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import androidx.viewpager.widget.PagerAdapter;
+
+import com.example.teamproject.R;
 
 public class CustomAdapter extends PagerAdapter {
     LayoutInflater inflater;
