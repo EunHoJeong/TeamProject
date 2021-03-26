@@ -27,7 +27,8 @@ public class FragHome extends Fragment {
 
     private ImageButton imgbtnHotel;
     private ImageButton imgbtnMotel;
-    private ImageButton imgBtnF;
+    private ImageButton imgbtnPension;
+    private ImageButton imgbtnTheme;
     private RecyclerView recyclerImage;
     private ImageAdapter adapter;
 
@@ -46,7 +47,8 @@ public class FragHome extends Fragment {
 
         imgbtnHotel = view.findViewById(R.id.imgbtnHotel);
         imgbtnMotel = view.findViewById(R.id.imgbtnMotel);
-        imgBtnF = view.findViewById(R.id.imgBtnF);
+        imgbtnPension = view.findViewById(R.id.imgbtnPension);
+        imgbtnTheme = view.findViewById(R.id.imgbtnTheme);
         recyclerImage = view.findViewById(R.id.recyclerImage);
 
         adapter = new ImageAdapter(getActivity(), imageList);
@@ -59,12 +61,17 @@ public class FragHome extends Fragment {
         });
 
         imgbtnMotel.setOnClickListener(view1 -> {
-            Intent intent = new Intent(getActivity(), MapActivity.class);
+            Intent intent=new Intent(getActivity(), MotelActivity.class);
             startActivity(intent);
         });
 
-        imgBtnF.setOnClickListener(v->{
-            Intent intent=new Intent(getActivity(), SearchMapActivity.class);
+        imgbtnPension.setOnClickListener(v->{
+            Intent intent=new Intent(getActivity(), MotelActivity.class);
+            startActivity(intent);
+        });
+
+        imgbtnTheme.setOnClickListener(v->{
+            Intent intent=new Intent(getActivity(), MotelActivity.class);
             startActivity(intent);
         });
 
