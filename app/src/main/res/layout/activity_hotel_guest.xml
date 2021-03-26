@@ -35,7 +35,7 @@
             android:background="@color/white"
             android:backgroundTint="@color/white"
             android:padding="5dp"
-            android:text="모텔"
+            android:text="호텔"
             android:textColor="@color/black"
             android:textSize="20dp" />
 

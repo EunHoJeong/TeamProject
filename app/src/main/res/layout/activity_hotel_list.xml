@@ -40,6 +40,7 @@
             android:textSize="20dp" />
 
         <ImageButton
+            android:id="@+id/pscHome"
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:layout_margin="40dp"
@@ -49,6 +50,7 @@
             android:src="@drawable/home" />
 
         <ImageButton
+            android:id="@+id/pscSearch"
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:layout_marginRight="15dp"
@@ -65,6 +67,7 @@
         android:orientation="horizontal">
 
         <Button
+            android:id="@+id/pscLocation"
             android:text="천안 동남구"
             android:textColor="#000000"
             android:layout_width="200dp"
@@ -73,6 +76,7 @@
             app:backgroundTint="#5D9797" />
 
         <Button
+            android:id="@+id/pscDate"
             android:text="03.30 ~ 03.31"
             android:textColor="#000000"
             android:layout_width="200dp"

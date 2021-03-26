@@ -1,5 +1,6 @@
 package com.example.teamproject;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
@@ -25,7 +26,8 @@ public class MotelActivity extends AppCompatActivity {
         pager.setAdapter(customAdapter);
 
         tvLocation1.setOnClickListener(v->{
-            Toast.makeText(this, "asd", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(getApplicationContext(), HotelListActivity.class);
+            startActivity(intent);
         });
 
     }

@@ -17,6 +17,7 @@
         <activity android:name=".SearchMapActivity"></activity>
         <activity android:name=".ReservationActivity"></activity>
         <activity android:name=".SignUpActivity" />
+        <activity android:name=".HotelListActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".MotelActivity" />
         <activity android:name=".MapActivity" />
