@@ -1,4 +1,4 @@
-package com.example.teamproject;
+package com.example.teamproject.activity;
 
 import android.os.Bundle;
 import android.view.View;
