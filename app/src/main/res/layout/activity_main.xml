@@ -17,11 +17,11 @@
        android:id="@+id/bottomNavi"
        android:layout_alignParentBottom="true"
        android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:background="@color/white"
-       app:itemIconTint="#000000"
-       app:itemTextColor="#000000"
-       tools:layout_editor_absoluteX="16dp"
+       android:layout_height="80dp"
+       app:labelVisibilityMode="labeled"
+       app:itemIconTint="@drawable/item_icon_color"
+       app:itemTextColor="@drawable/item_text_color"
+       android:background="?android:attr/windowBackground"
       app:menu="@menu/main_menu"/>
 
 

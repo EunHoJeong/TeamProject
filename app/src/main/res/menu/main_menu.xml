@@ -1,27 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
         android:id="@+id/action_home"
-        android:enabled="true"
+        android:title="Home"
         android:icon="@drawable/un_home"
-        android:title="Home"/>
+        app:showAsAction="always"
+        android:checked="true"
+        android:enabled="true"/>
 
     <item
-        android:id="@+id/action_my_around"
         android:enabled="true"
-        android:icon="@drawable/test"
+        android:id="@+id/action_my_around"
+        android:icon="@drawable/my_around"
         android:title="내 주변"/>
 
     <item
         android:id="@+id/action_steamed"
-        android:enabled="true"
-        android:icon="@drawable/test"
+        android:icon="@drawable/steamed"
         android:title="찜"/>
 
     <item
         android:id="@+id/action_my_menu"
-        android:enabled="true"
         android:icon="@drawable/my"
         android:title="MY" />
 
