@@ -35,7 +35,6 @@ public class SearchMapActivity extends AppCompatActivity implements OnMapReadyCa
         mapView.onCreate(savedInstanceState);
         mapView.getMapAsync(this);
 
-        Log.d("a","a");
 
         locationSource=new FusedLocationSource(this,LOCATION_PERMISSION_REQUEST_CODE);
 

@@ -9,8 +9,8 @@ import android.widget.Spinner;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
-import com.example.teamproject.CustomAdapter;
 import com.example.teamproject.R;
+import com.example.teamproject.adapter.CustomAdapter;
 
 public class MotelActivity extends AppCompatActivity {
     ViewPager pager;

@@ -13,11 +13,11 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.teamproject.ImageAdapter;
 import com.example.teamproject.activity.MotelActivity;
 import com.example.teamproject.R;
 import com.example.teamproject.activity.SearchMapActivity;
 import com.example.teamproject.activity.MapActivity;
+import com.example.teamproject.adapter.ImageAdapter;
 
 import java.util.ArrayList;
 
