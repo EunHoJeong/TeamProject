@@ -12,7 +12,6 @@ import com.example.teamproject.CustomAdapter;
 import com.example.teamproject.R;
 
 public class MotelActivity extends AppCompatActivity {
-    private Spinner spinnerLocation;
     ViewPager pager;
 
     @Override
@@ -22,17 +21,7 @@ public class MotelActivity extends AppCompatActivity {
 
         findViewByIdFunc();
 
-        spinnerLocation.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
 
         CustomAdapter customAdapter = new CustomAdapter(getLayoutInflater());
         pager.setAdapter(customAdapter);
@@ -40,7 +29,6 @@ public class MotelActivity extends AppCompatActivity {
     }
 
     public void findViewByIdFunc() {
-        spinnerLocation = findViewById(R.id.spinnerLocation);
         pager = findViewById(R.id.pager);
 
     }

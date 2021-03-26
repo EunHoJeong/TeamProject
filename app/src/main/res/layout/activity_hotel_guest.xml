@@ -69,12 +69,7 @@
             android:layout_height="match_parent"
             android:background="#EFDEDE"/>
 
-        <me.relex.circleindicator.CircleIndicator3
-            android:id="@+id/indicator"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_gravity="bottom"
-            app:ci_drawable="@drawable/white_radius"/>
+
     </FrameLayout>
 
     <TextView
