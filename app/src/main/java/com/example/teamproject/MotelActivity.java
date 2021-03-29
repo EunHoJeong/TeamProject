@@ -30,6 +30,105 @@ public class MotelActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+        tvLocation2.setOnClickListener(v->{
+            Intent intent = new Intent(getApplicationContext(), HotelListActivity.class);
+            startActivity(intent);
+        });
+
+        tvLocation3.setOnClickListener(v->{
+            Intent intent = new Intent(getApplicationContext(), HotelListActivity.class);
+            startActivity(intent);
+        });
+
+        tvLocation4.setOnClickListener(v->{
+            Intent intent = new Intent(getApplicationContext(), HotelListActivity.class);
+            startActivity(intent);
+        });
+
+        tvLocation5.setOnClickListener(v->{
+            Intent intent = new Intent(getApplicationContext(), HotelListActivity.class);
+            startActivity(intent);
+        });
+
+        tvLocation6.setOnClickListener(v->{
+            Intent intent = new Intent(getApplicationContext(), HotelListActivity.class);
+            startActivity(intent);
+        });
+
+        tvLocation7.setOnClickListener(v->{
+            Intent intent = new Intent(getApplicationContext(), HotelListActivity.class);
+            startActivity(intent);
+        });
+
+        tvLocation8.setOnClickListener(v->{
+            Intent intent = new Intent(getApplicationContext(), HotelListActivity.class);
+            startActivity(intent);
+        });
+
+        tvLocation9.setOnClickListener(v->{
+            Intent intent = new Intent(getApplicationContext(), HotelListActivity.class);
+            startActivity(intent);
+        });
+
+        tvLocation10.setOnClickListener(v->{
+            Intent intent = new Intent(getApplicationContext(), HotelListActivity.class);
+            startActivity(intent);
+        });
+
+        tvLocation11.setOnClickListener(v->{
+            Intent intent = new Intent(getApplicationContext(), HotelListActivity.class);
+            startActivity(intent);
+        });
+
+        tvLocation12.setOnClickListener(v->{
+            Intent intent = new Intent(getApplicationContext(), HotelListActivity.class);
+            startActivity(intent);
+        });
+
+        tvLocation13.setOnClickListener(v->{
+            Intent intent = new Intent(getApplicationContext(), HotelListActivity.class);
+            startActivity(intent);
+        });
+
+        tvLocation14.setOnClickListener(v->{
+            Intent intent = new Intent(getApplicationContext(), HotelListActivity.class);
+            startActivity(intent);
+        });
+
+        tvLocation15.setOnClickListener(v->{
+            Intent intent = new Intent(getApplicationContext(), HotelListActivity.class);
+            startActivity(intent);
+        });
+
+        tvLocation16.setOnClickListener(v->{
+            Intent intent = new Intent(getApplicationContext(), HotelListActivity.class);
+            startActivity(intent);
+        });
+
+        tvLocation17.setOnClickListener(v->{
+            Intent intent = new Intent(getApplicationContext(), HotelListActivity.class);
+            startActivity(intent);
+        });
+
+        tvLocation18.setOnClickListener(v->{
+            Intent intent = new Intent(getApplicationContext(), HotelListActivity.class);
+            startActivity(intent);
+        });
+
+        tvLocation19.setOnClickListener(v->{
+            Intent intent = new Intent(getApplicationContext(), HotelListActivity.class);
+            startActivity(intent);
+        });
+
+        tvLocation20.setOnClickListener(v->{
+            Intent intent = new Intent(getApplicationContext(), HotelListActivity.class);
+            startActivity(intent);
+        });
+
+        tvLocation21.setOnClickListener(v->{
+            Intent intent = new Intent(getApplicationContext(), HotelListActivity.class);
+            startActivity(intent);
+        });
     }
 
     public void findViewByIdFunc() {
