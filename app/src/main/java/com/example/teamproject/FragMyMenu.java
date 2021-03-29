@@ -17,7 +17,7 @@ import com.example.teamproject.LoginActivity;
 import com.example.teamproject.ReservationActivity;
 
 public class FragMyMenu extends Fragment {
-    private Button btnLoginSignUp;
+    private Button btnLoginSignUp,btnRegister;
     private LinearLayout llReservationPension, llReservationHotel, llReservationMotel;
 
     private static boolean flag = false;
@@ -40,6 +40,10 @@ public class FragMyMenu extends Fragment {
             Intent intent = new Intent(getActivity(), LoginActivity.class);
             startActivity(intent);
         });
+        btnRegister.setOnClickListener(v->{
+            Intent intent=new Intent(getActivity(),RegisterActivity.class);
+            startActivity(intent);
+        });
 
         llReservationHotel.setOnClickListener(view -> {
 
@@ -54,6 +58,7 @@ public class FragMyMenu extends Fragment {
         llReservationHotel = v.findViewById(R.id.llReservationHotel);
 
         btnLoginSignUp = v.findViewById(R.id.btnLoginSignUp);
+        btnRegister = v.findViewById(R.id.btnRegister);
     }
 
     @Override

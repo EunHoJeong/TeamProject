@@ -11,6 +11,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="로그인 및 회원가입 하기" />
+    <Button
+        android:id="@+id/btnRegister"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="사장님 숙소 등록하기"/>
 
     <LinearLayout
         android:layout_width="match_parent"
