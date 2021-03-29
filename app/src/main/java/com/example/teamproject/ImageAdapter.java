@@ -5,23 +5,25 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.PagerAdapter;
 
+import com.bumptech.glide.Glide;
 import com.example.teamproject.R;
 
 import java.util.ArrayList;
 
 public class ImageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private Context context;
-    private ArrayList<Integer> imageList;
+    private ArrayList<StoreInfo> infoList;
 
-    public ImageAdapter(Context context, ArrayList<Integer> imageList) {
+    public ImageAdapter(Context context, ArrayList<StoreInfo> infoList) {
         this.context = context;
-        this.imageList = imageList;
+        this.infoList = infoList;
     }
 
     @NonNull
@@ -35,8 +37,14 @@ public class ImageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         if(holder instanceof  MainImage){
-            MainImage mainImg = (MainImage) holder;
-            mainImg.vpImg.setImageResource(imageList.get(position));
+            MainImage m = (MainImage) holder;
+            Glide.with(m.itemView).load(infoList.get(position).getMainImage())
+                    .into(m.imgRank);
+            m.tvRankName.setText(infoList.get(position).getStoreName());
+            m.tvGrade.setText(infoList.get(position).getGrade());
+            m.tvReview.setText("후기 " +infoList.get(position).getReview() +"개");
+
+
         }
 
         holder.itemView.setOnClickListener(view -> {
@@ -46,16 +54,17 @@ public class ImageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
     @Override
     public int getItemCount() {
-        return imageList.size();
+        return infoList.size();
     }
 
 
     public class MainImage extends RecyclerView.ViewHolder{
-        private ImageView vpImg;
+        private ImageView imgRank;
+        private TextView tvRankName, tvGrade, tvReview, tvRankPrice;
 
         public MainImage(@NonNull View itemView) {
             super(itemView);
-            vpImg = itemView.findViewById(R.id.imgRank);
+            imgRank = itemView.findViewById(R.id.imgRank);
         }
     }
 }
