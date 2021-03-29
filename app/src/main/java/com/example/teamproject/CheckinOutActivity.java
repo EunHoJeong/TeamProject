@@ -65,8 +65,6 @@ public class CheckinOutActivity extends AppCompatActivity {
             Intent intent = new Intent(this, HotelListActivity.class);
             startActivity(intent);
         });
-
-
     }
 
     private DatePickerDialog.OnDateSetListener listener = new DatePickerDialog.OnDateSetListener() {
