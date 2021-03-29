@@ -38,11 +38,15 @@ public class ImageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         if(holder instanceof  MainImage){
             MainImage m = (MainImage) holder;
-            Glide.with(m.itemView).load(infoList.get(position).getMainImage())
+            Glide.with(m.itemView)
+                    .load(infoList.get(position).getMainImage())
                     .into(m.imgRank);
+
+
             m.tvRankName.setText(infoList.get(position).getStoreName());
-            m.tvGrade.setText(infoList.get(position).getGrade());
+            m.tvGrade.setText(String.valueOf(infoList.get(position).getGrade()));
             m.tvReview.setText("후기 " +infoList.get(position).getReview() +"개");
+            m.tvRankPrice.setText(infoList.get(position).getSt_Lodgment());
 
 
         }
@@ -54,7 +58,7 @@ public class ImageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
     @Override
     public int getItemCount() {
-        return infoList.size();
+        return infoList != null ? infoList.size() : 0;
     }
 
 
@@ -65,6 +69,10 @@ public class ImageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         public MainImage(@NonNull View itemView) {
             super(itemView);
             imgRank = itemView.findViewById(R.id.imgRank);
+            tvRankName = itemView.findViewById(R.id.tvRankName);
+            tvGrade = itemView.findViewById(R.id.tvGrade);
+            tvReview = itemView.findViewById(R.id.tvReview);
+            tvRankPrice = itemView.findViewById(R.id.tvRankPrice);
         }
     }
 }

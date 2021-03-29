@@ -40,7 +40,7 @@ public class ReservationAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
     @Override
     public int getItemCount() {
-        return list.size();
+        return list != null ?list.size() : 0;
     }
 
     public class BreakdownHolder extends RecyclerView.ViewHolder{

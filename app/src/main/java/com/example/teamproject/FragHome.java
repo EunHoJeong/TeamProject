@@ -2,6 +2,7 @@ package com.example.teamproject;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,6 +32,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class FragHome extends Fragment {
     public static final ArrayList<Integer> imageList = new ArrayList<>();
@@ -50,8 +52,33 @@ public class FragHome extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         ViewGroup view = (ViewGroup) inflater.inflate(R.layout.frag_home, container, false);
+
+        if(info.size()==0){
+            getMotelData();
+        }
+
+
+        findViewByIdFunc(view);
+
+        adapter = new ImageAdapter(getActivity(), info);
+        recyclerImage.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
+        recyclerImage.setAdapter(adapter);
+
+        eventHandlerFunc();
+
+
+
+
+
+
+
+        return view;
+    }
+
+    private void getMotelData() {
         db = FirebaseDatabase.getInstance();
         dbRf = db.getReference("storeInfo");
+
         dbRf.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -67,15 +94,10 @@ public class FragHome extends Fragment {
             }
         });
 
-        imgbtnHotel = view.findViewById(R.id.imgbtnHotel);
-        imgbtnMotel = view.findViewById(R.id.imgbtnMotel);
-        imgbtnPension = view.findViewById(R.id.imgbtnPension);
-        imgbtnTheme = view.findViewById(R.id.imgbtnTheme);
-        recyclerImage = view.findViewById(R.id.recyclerImage);
+        SystemClock.sleep(1000);
+    }
 
-        adapter = new ImageAdapter(getActivity(), info);
-        recyclerImage.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
-        recyclerImage.setAdapter(adapter);
+    private void eventHandlerFunc() {
 
         imgbtnHotel.setOnClickListener(v -> {
             Intent intent=new Intent(getActivity(), MotelActivity.class);
@@ -96,7 +118,13 @@ public class FragHome extends Fragment {
             Intent intent=new Intent(getActivity(), MotelActivity.class);
             startActivity(intent);
         });
+    }
 
-        return view;
+    private void findViewByIdFunc(ViewGroup view) {
+        imgbtnHotel = view.findViewById(R.id.imgbtnHotel);
+        imgbtnMotel = view.findViewById(R.id.imgbtnMotel);
+        imgbtnPension = view.findViewById(R.id.imgbtnPension);
+        imgbtnTheme = view.findViewById(R.id.imgbtnTheme);
+        recyclerImage = view.findViewById(R.id.recyclerImage);
     }
 }

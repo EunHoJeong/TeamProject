@@ -12,68 +12,47 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 
 public class HotelAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
     private Context context;
-    private ArrayList<Integer> imageList;
-    private int item;
+    private ArrayList<StoreInfo> infoList;
 
-    public HotelAdapter(Context context, ArrayList<Integer> imageList, int item) {
+    public HotelAdapter(Context context, ArrayList<StoreInfo> infoList) {
         this.context = context;
-        this.imageList = imageList;
-        this.item = item;
+        this.infoList = infoList;
     }
 
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int item) {
-        View view;
-        RecyclerView.ViewHolder viewHolder = null;
-        switch (item){
-            case 1 :
-                view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_hotel_image, parent, false);
-                viewHolder = new RecyclerImage(view);
-                break;
-            case 2 :
-                view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_hotel_image, parent, false);
-                viewHolder = new RecyclerImage(view);
-                break;
-            case 3 :
-                view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_hotel_image, parent, false);
-                viewHolder = new RecyclerImage(view);
-                break;
-            case 4 :
-                view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_hotel_image, parent, false);
-                viewHolder = new RecyclerImage(view);
-                break;
-        }
+
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_hotel_image, parent, false);
+        RecyclerView.ViewHolder viewHolder = new RecyclerImage(view);
 
         return viewHolder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        switch (item) {
-            case 1 :
-            if (holder instanceof RecyclerImage) {
-                RecyclerImage recyclerImage = (RecyclerImage) holder;
-                recyclerImage.pscRank.setImageResource(imageList.get(position));
-            }
-            break;
-
+        if (holder instanceof RecyclerImage){
+            RecyclerImage ri = (RecyclerImage) holder;
+            ri.setInformation(position);
         }
 
     }
 
     @Override
     public int getItemCount() {
-        return imageList.size();
+        return infoList != null ? infoList.size() : 0;
     }
 
     public class RecyclerImage extends RecyclerView.ViewHolder{
         private ImageView pscRank;
         private TextView pscRocation, pscName, pscPernight, pscRankPrice;
+        private RatingBar pscRatingBar;
 
         public RecyclerImage(@NonNull View itemView) {
             super(itemView);
@@ -82,6 +61,19 @@ public class HotelAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
             pscName      = itemView.findViewById(R.id.pscName);
             pscPernight  = itemView.findViewById(R.id.pscPernight);
             pscRankPrice = itemView.findViewById(R.id.pscRankPrice);
+            pscRatingBar = itemView.findViewById(R.id.pscRatingBar);
+        }
+
+        public void setInformation(int position){
+            Glide.with(itemView)
+                    .load(infoList.get(position).getMainImage())
+                    .into(pscRank);
+
+            pscRocation.setText(infoList.get(position).getLocation());
+            pscName.setText(infoList.get(position).getStoreName());
+            pscRatingBar.setNumStars(infoList.get(position).getGrade());
+            pscPernight.setText("대실 "+infoList.get(position).getSt_Time1()+"시간 " + infoList.get(position).getSt_Large());
+            pscRankPrice.setText("숙박 "+infoList.get(position).getSt_Time2()+"부터 " + infoList.get(position).getSt_Lodgment());
         }
     }
 }
