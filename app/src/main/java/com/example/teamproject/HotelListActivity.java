@@ -38,6 +38,11 @@ public class HotelListActivity extends AppCompatActivity {
             Intent intent = new Intent(this, MotelActivity.class);
             startActivity(intent);
         });
+
+        pscDate.setOnClickListener(view -> {
+            Intent intent = new Intent(this, CheckinOutActivity.class);
+            startActivity(intent);
+        });
     }
 
     private void findViewByIdFunc() {
