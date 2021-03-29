@@ -10,9 +10,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class HotelListActivity extends AppCompatActivity {
-    private ImageButton pscHome, pscSearch;
+    private ImageButton pscHome, pscBack, pscSearch;
     private Button pscLocation, pscDate;
-
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -26,7 +25,18 @@ public class HotelListActivity extends AppCompatActivity {
 
     private void eventHandlerFunc() {
         pscHome.setOnClickListener(view -> {
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        });
+
+        pscLocation.setOnClickListener(view -> {
+            Intent intent = new Intent(this, SearchMapActivity.class);
+            startActivity(intent);
+        });
+
+        pscBack.setOnClickListener(view -> {
             Intent intent = new Intent(this, MotelActivity.class);
+            startActivity(intent);
         });
     }
 
@@ -35,5 +45,6 @@ public class HotelListActivity extends AppCompatActivity {
         pscSearch   = findViewById(R.id.pscSearch);
         pscLocation = findViewById(R.id.pscLocation);
         pscDate     = findViewById(R.id.pscDate);
+        pscBack     = findViewById(R.id.pscBack);
     }
 }

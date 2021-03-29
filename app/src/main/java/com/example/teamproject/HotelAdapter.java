@@ -49,8 +49,6 @@ public class HotelAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
                 break;
         }
 
-
-
         return viewHolder;
     }
 

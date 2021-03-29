@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.teamproject">
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,12 +12,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TeamProject">
+        <activity android:name=".RegisterActivity"></activity>
 
         <meta-data
             android:name="com.naver.maps.map.CLIENT_ID"
             android:value="x68d9afedw" />
-        <activity android:name=".SearchMapActivity"></activity>
-        <activity android:name=".ReservationActivity"></activity>
+
+        <activity android:name=".SearchMapActivity" />
+        <activity android:name=".ReservationActivity" />
         <activity android:name=".SignUpActivity" />
         <activity android:name=".HotelListActivity" />
         <activity android:name=".LoginActivity" />
