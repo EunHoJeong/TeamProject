@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,8 +20,17 @@ import com.example.teamproject.MotelActivity;
 import com.example.teamproject.R;
 import com.example.teamproject.SearchMapActivity;
 import com.example.teamproject.MapActivity;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.GenericTypeIndicator;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.List;
 
 public class FragHome extends Fragment {
     public static final ArrayList<Integer> imageList = new ArrayList<>();
@@ -30,26 +40,38 @@ public class FragHome extends Fragment {
     private ImageButton imgBtnF;
     private RecyclerView recyclerImage;
     private ImageAdapter adapter;
+    private ArrayList<StoreInfo> info = new ArrayList<>();
+
+    private FirebaseDatabase db;
+    private DatabaseReference dbRf;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         ViewGroup view = (ViewGroup) inflater.inflate(R.layout.frag_home, container, false);
+        db = FirebaseDatabase.getInstance();
+        dbRf = db.getReference("storeInfo");
+        dbRf.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot s : snapshot.getChildren()){
+                    StoreInfo storeInfo = s.getValue(StoreInfo.class);
+                    info.add(storeInfo);
+                }
+            }
 
-        int[] posterID = new int[]{R.drawable.mov01, R.drawable.mov02,
-                R.drawable.mov03, R.drawable.mov04, R.drawable.mov05, R.drawable.mov06,
-                R.drawable.mov07, R.drawable.mov08, R.drawable.mov09, R.drawable.mov10};
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
 
-        for(int i = 0; i < posterID.length; i++){
-            imageList.add(posterID[i]);
-        }
+            }
+        });
 
         imgbtnHotel = view.findViewById(R.id.imgbtnHotel);
         imgbtnMotel = view.findViewById(R.id.imgbtnMotel);
         imgBtnF = view.findViewById(R.id.imgBtnF);
         recyclerImage = view.findViewById(R.id.recyclerImage);
 
-        adapter = new ImageAdapter(getActivity(), imageList);
+        adapter = new ImageAdapter(getActivity(), info);
         recyclerImage.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
         recyclerImage.setAdapter(adapter);
 
