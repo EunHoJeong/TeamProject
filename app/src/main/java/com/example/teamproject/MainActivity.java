@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
-        //insertDB();
+        insertDB();
 
         findViewByIdFunc();
 
@@ -120,36 +120,38 @@ public class MainActivity extends AppCompatActivity {
         childUpdates = new HashMap<>();
 
         //storeInfo 삽입
-        String storeName = "길동 샘";
-        String location = "강동구 천중로 197";
-        String phone = "050-35050-9699";
-        String location_tag = "길동";
-        String mainImage = "https://firebasestorage.googleapis.com/v0/b/teamproject-39add.appspot.com/o/%EA%B8%B8%EB%8F%99%20%EC%83%98%2Fst1.jpg?alt=media&token=eef9c9a3-d104-4347-b5f8-6c4cedf7ccc1";
-        String st_Large = "20,000원";
-        String st_Lodgment = "35,000원";
+        String storeName = "외대 Life hotel Raha";
+        String location = "동대문구 이문로 174-1";
+        String phone = "0503-5051-7307";
+        String location_tag = "회기";
+        String mainImage = "https://firebasestorage.googleapis.com/v0/b/teamproject-39add.appspot.com/o/%EC%99%B8%EB%8C%80%20Life%20hotel%20Raha%2F1.jpg?alt=media&token=1e685689-c2af-47cd-8f9c-df45b5b11c64";
+        String st_Large = "25,000원";
+        String st_Lodgment = "50,000원";
         String st_Time1 = "4";
         String st_Time2 = "18:00";
 
         info = new StoreInfo(storeName, location, phone, 0, 0, 0, location_tag, mainImage, st_Large, st_Lodgment, st_Time1, st_Time2);
 
         //storeImage 삽입
-        String st1 = "https://firebasestorage.googleapis.com/v0/b/teamproject-39add.appspot.com/o/%EA%B8%B8%EB%8F%99%20%EC%83%98%2Fst1.jpg?alt=media&token=eef9c9a3-d104-4347-b5f8-6c4cedf7ccc1";
-        String st2 = "https://firebasestorage.googleapis.com/v0/b/teamproject-39add.appspot.com/o/%EA%B8%B8%EB%8F%99%20%EC%83%98%2Fst2.jpg?alt=media&token=651722ac-1fb6-42bd-9495-d8d4639c75d6";
-        String st3 = "https://firebasestorage.googleapis.com/v0/b/teamproject-39add.appspot.com/o/%EA%B8%B8%EB%8F%99%20%EC%83%98%2Fst3.jpg?alt=media&token=3ba3f245-88eb-4721-b362-0aa15c017eda";
-        String sp1 = "https://firebasestorage.googleapis.com/v0/b/teamproject-39add.appspot.com/o/%EA%B8%B8%EB%8F%99%20%EC%83%98%2Fsp1.jpg?alt=media&token=a234fb6b-8c27-4c69-b1d4-9b4b12e6a871";
-        String sp2 = "https://firebasestorage.googleapis.com/v0/b/teamproject-39add.appspot.com/o/%EA%B8%B8%EB%8F%99%20%EC%83%98%2Fsp2.jpg?alt=media&token=33db71bc-4ca6-4017-8a69-59c5c826da93";
-        String sp3 = "https://firebasestorage.googleapis.com/v0/b/teamproject-39add.appspot.com/o/%EA%B8%B8%EB%8F%99%20%EC%83%98%2Fsp3.jpg?alt=media&token=b40b34f3-220d-4b74-a6d1-368756615734";
-        String sw1 = "https://firebasestorage.googleapis.com/v0/b/teamproject-39add.appspot.com/o/%EA%B8%B8%EB%8F%99%20%EC%83%98%2Fsw1.jpg?alt=media&token=9bb93273-1c6c-4fa1-a979-d03db32285b1";
-        String sw2 = "https://firebasestorage.googleapis.com/v0/b/teamproject-39add.appspot.com/o/%EA%B8%B8%EB%8F%99%20%EC%83%98%2Fsw2.jpg?alt=media&token=5b0e1837-4779-4cca-93d9-4f0b1b246111";
-        String sw3 = "https://firebasestorage.googleapis.com/v0/b/teamproject-39add.appspot.com/o/%EA%B8%B8%EB%8F%99%20%EC%83%98%2Fsw3.jpg?alt=media&token=71c2963f-bfff-484a-a761-88e9af25884a";
+        String st1 = "https://firebasestorage.googleapis.com/v0/b/teamproject-39add.appspot.com/o/%EC%99%B8%EB%8C%80%20Life%20hotel%20Raha%2F1.jpg?alt=media&token=1e685689-c2af-47cd-8f9c-df45b5b11c64";
+        String st2 = "https://firebasestorage.googleapis.com/v0/b/teamproject-39add.appspot.com/o/%EC%99%B8%EB%8C%80%20Life%20hotel%20Raha%2F2.jpg?alt=media&token=1c7ea6de-1f4e-495b-8865-3df18b0010f3";
+        String st3 = "https://firebasestorage.googleapis.com/v0/b/teamproject-39add.appspot.com/o/%EC%99%B8%EB%8C%80%20Life%20hotel%20Raha%2F3.jpg?alt=media&token=2d131e68-fdff-4f40-9187-1b7e7006f2bc";
+        String sp1 = "https://firebasestorage.googleapis.com/v0/b/teamproject-39add.appspot.com/o/%EC%99%B8%EB%8C%80%20Life%20hotel%20Raha%2F11.jpg?alt=media&token=3409b2cc-6545-425f-92bf-ac2420a1be2c";
+        String sp2 = "https://firebasestorage.googleapis.com/v0/b/teamproject-39add.appspot.com/o/%EC%99%B8%EB%8C%80%20Life%20hotel%20Raha%2F12.jpg?alt=media&token=04306942-3b4e-4387-9ba6-6b1608d2546b";
+        String sp3 = "https://firebasestorage.googleapis.com/v0/b/teamproject-39add.appspot.com/o/%EC%99%B8%EB%8C%80%20Life%20hotel%20Raha%2F13.jpg?alt=media&token=2f96dfc0-b6d1-481a-826a-a4e06cdc6f01";
+        String sw1 = "https://firebasestorage.googleapis.com/v0/b/teamproject-39add.appspot.com/o/%EC%99%B8%EB%8C%80%20Life%20hotel%20Raha%2F21.jpg?alt=media&token=6f06d660-58da-413d-9c4c-8d3607a87a32";
+        String sw2 = "https://firebasestorage.googleapis.com/v0/b/teamproject-39add.appspot.com/o/%EC%99%B8%EB%8C%80%20Life%20hotel%20Raha%2F22.jpg?alt=media&token=d41e7c57-6cf6-4dbc-8930-ebad10f9fc09";
+        String sw3 = "https://firebasestorage.googleapis.com/v0/b/teamproject-39add.appspot.com/o/%EC%99%B8%EB%8C%80%20Life%20hotel%20Raha%2F23.jpg?alt=media&token=b875b73f-53f7-49ac-869d-8a3abb5831c2";
+
+
 
         image = new StoreImage(storeName, st1, st2, st3, sp1, sp2, sp3, sw1, sw2, sw3);
 
         //storePrice 삽입
-        String sp_Large = "20,000원";
-        String sp_Lodgment = "40,000원";
-        String sw_Large = "25,000원";
-        String sw_Lodgment = "50,000원";
+        String sp_Large = "35,000원";
+        String sp_Lodgment = "60,000원";
+        String sw_Large = "45,000원";
+        String sw_Lodgment = "85,000원";
 
         price = new StorePrice(storeName, sp_Large, sp_Lodgment, sw_Large, sw_Lodgment);
 

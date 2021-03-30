@@ -94,7 +94,7 @@ public class FragHome extends Fragment {
             }
         });
 
-        SystemClock.sleep(1000);
+        SystemClock.sleep(2000);
     }
 
     private void eventHandlerFunc() {
