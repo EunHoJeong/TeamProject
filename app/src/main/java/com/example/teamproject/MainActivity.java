@@ -144,7 +144,6 @@ public class MainActivity extends AppCompatActivity {
         String sw3 = "https://firebasestorage.googleapis.com/v0/b/teamproject-39add.appspot.com/o/%EB%AA%A8%ED%85%94%EB%B4%84%20%EB%82%A8%EA%B5%AC%EB%A1%9C%EC%A0%90%20%EB%AA%A8%ED%85%94%2F%EC%8A%A4%EC%9C%84%ED%8A%B83.jpg?alt=media&token=47401a35-f7e4-494f-ac07-5e5f819faaa7";
 
 
-
         image = new StoreImage(storeName, st1, st2, st3, sp1, sp2, sp3, sw1, sw2, sw3);
 
         //storePrice 삽입
