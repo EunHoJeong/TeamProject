@@ -30,6 +30,46 @@ public class StoreImage {
         this.sw3 = sw3;
     }
 
+    public String getStoreName() {
+        return storeName;
+    }
+
+    public String getSt1() {
+        return st1;
+    }
+
+    public String getSt2() {
+        return st2;
+    }
+
+    public String getSt3() {
+        return st3;
+    }
+
+    public String getSp1() {
+        return sp1;
+    }
+
+    public String getSp2() {
+        return sp2;
+    }
+
+    public String getSp3() {
+        return sp3;
+    }
+
+    public String getSw1() {
+        return sw1;
+    }
+
+    public String getSw2() {
+        return sw2;
+    }
+
+    public String getSw3() {
+        return sw3;
+    }
+
     public Map<String, Object> toMap() {
         HashMap<String, Object> result = new HashMap<>();
 

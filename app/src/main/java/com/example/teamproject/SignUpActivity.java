@@ -1,12 +1,15 @@
 package com.example.teamproject;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -14,14 +17,28 @@ import android.widget.Toast;
 
 import com.android.volley.Response;
 import com.example.teamproject.R;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class SignUpActivity extends AppCompatActivity {
     private EditText edtSUID, edtSUPassword, edtSUPWCheck, edtSUEmailID, edtSUEmail, edtSUPhone;
     private Button btnOverlapCheckID, btnJoin;
     private TextView tvCheckID, tvCheckPassword, tvCheckPasswordCheck;
+
+    private boolean idCheck = false;
+    private boolean pwCheck = false;
+    private boolean pwCheck2 = false;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,28 +62,35 @@ public class SignUpActivity extends AppCompatActivity {
 
             if (flag){
                 Toast.makeText(this, "아이디를 조건에맞게 입력해주세요.", Toast.LENGTH_SHORT).show();
+                idCheck = false;
             }else{
 
-                Response.Listener<String> responseListener = new Response.Listener<String>() {
+
+
+                DatabaseReference dbRf = FirebaseDatabase.getInstance().getReference("User");
+                dbRf.child(id).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
-                    public void onResponse(String response) {
-                        try {
-                            JSONObject jsonObject = new JSONObject((response));
-                            boolean success = jsonObject.getBoolean("success");
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        User user = snapshot.getValue(User.class);
 
-                            if(!success){
-                                tvCheckID.setText("사용 가능한 아이디입니다.");
-                                tvCheckID.setTextColor(0xFF87CEEB);
+                        if(user == null){
+                            tvCheckID.setText("사용 가능한 아이디입니다.");
+                            tvCheckID.setTextColor(0xFF87CEEB);
+                            idCheck = true;
 
-                            }else{
-                                tvCheckID.setText("이미 존재하는 아이디입니다.");
-                                tvCheckID.setTextColor(Color.RED);
-                            }
-                        } catch (JSONException e) {
-                            e.printStackTrace();
+                        }else{
+                            tvCheckID.setText("이미 존재하는 아이디입니다.");
+                            tvCheckID.setTextColor(Color.RED);
+                            idCheck = false;
+
                         }
                     }
-                };//end of Response
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
 
 
 
@@ -110,10 +134,11 @@ public class SignUpActivity extends AppCompatActivity {
                 if(flag){
                     tvCheckPassword.setText("사용 가능한 비밀번호입니다.");
                     tvCheckPassword.setTextColor(0xFF87CEEB);
+                    pwCheck = true;
                 }else{
                     tvCheckPassword.setText("영문 소문자와 특수문자 1가지 이상을 조합하여 6~20자로 입력해주세요. (공백제외)");
                     tvCheckPassword.setTextColor(Color.RED);
-
+                    pwCheck = false;
                 }
             }
 
@@ -134,9 +159,11 @@ public class SignUpActivity extends AppCompatActivity {
                 if(edtSUPassword.getText().toString().equals(edtSUPWCheck.getText().toString())){
                     tvCheckPasswordCheck.setText("비밀번호가 일치합니다.");
                     tvCheckPasswordCheck.setTextColor(0xFF87CEEB);
+                    pwCheck2 = true;
                 }else{
                     tvCheckPasswordCheck.setText("비밀번호가 일치하지않습니다.");
                     tvCheckPasswordCheck.setTextColor(Color.RED);
+                    pwCheck2 = false;
                 }
             }
 
@@ -149,28 +176,28 @@ public class SignUpActivity extends AppCompatActivity {
 
         btnJoin.setOnClickListener(v -> {
 
-            String id = edtSUID.getText().toString();
-            String password = edtSUPassword.getText().toString();
-            String email = edtSUEmailID.getText().toString() + "@" + edtSUEmail.getText().toString();
-            String phone = edtSUPhone.getText().toString();
+            if(idCheck && pwCheck && pwCheck2){
+                String id = edtSUID.getText().toString();
+                String password = edtSUPassword.getText().toString();
+                String email = edtSUEmailID.getText().toString() + "@" + edtSUEmail.getText().toString();
+                String phone = edtSUPhone.getText().toString();
 
-            Response.Listener<String> responseListener = new Response.Listener<String>() {
-                @Override
-                public void onResponse(String response) {
-                    try {
-                        JSONObject jsonObject = new JSONObject((response));
-                        boolean success = jsonObject.getBoolean("success");
+                DatabaseReference dbRf = FirebaseDatabase.getInstance().getReference();
 
-                        if(success){
-                            Toast.makeText(getApplicationContext(),"회원등록성공",Toast.LENGTH_SHORT).show();
-                        }
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                }
-            };//end of Response
+                HashMap<String, Object> childUpdates = new HashMap<>();
+                Map<String, Object> userMap = null;
 
+                User user = new User(id, password, email, phone);
+                userMap = user.toMap();
+                childUpdates.put("User/"+id, userMap);
 
+                dbRf.updateChildren(childUpdates);
+
+                Toast.makeText(this, "회원가입 성공", Toast.LENGTH_SHORT).show();
+                finish();
+            }else{
+                Toast.makeText(this, "입력을 정확히 해주세요", Toast.LENGTH_SHORT).show();
+            }
 
 
         });//end of btnJoin
