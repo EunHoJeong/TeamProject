@@ -40,6 +40,7 @@
             android:textSize="20dp" />
 
         <ImageButton
+            android:id="@+id/pscLike"
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:layout_margin="40dp"
@@ -64,14 +65,14 @@
         android:layout_marginTop="5dp">
 
         <androidx.viewpager2.widget.ViewPager2
-            android:id="@+id/viewPager2"
+            android:id="@+id/pscViewPager"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#EFDEDE"/>
     </FrameLayout>
 
     <TextView
-        android:id="@+id/tvRankName"
+        android:id="@+id/pscRankName"
         android:layout_below="@id/imgRank"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -122,7 +123,8 @@
         android:layout_height="30dp">
 
         <Button
-            android:text="울산 KTX역까지 도보 3분"
+            android:id="@+id/pscLocation"
+            android:text="인근 위치"
             android:textColor="#000000"
             android:layout_width="200dp"
             android:layout_height="40dp"
@@ -130,10 +132,10 @@
             app:backgroundTint="#FFFFFF" />
 
         <Button
-
+            android:id="@+id/pscCall"
             android:text="전화하기"
             android:textColor="#000000"
-            android:layout_width="100dp"
+            android:layout_width="200dp"
             android:layout_height="40dp"
             android:layout_margin="3dp"
             app:backgroundTint="#FFFFFF" />
@@ -145,6 +147,7 @@
         android:layout_height="wrap_content">
 
         <Button
+            android:id="@+id/pscIn"
             android:text="3월 26일(금)"
             android:textColor="#000000"
             android:layout_width="200dp"
@@ -153,7 +156,7 @@
             app:backgroundTint="#FF5252" />
 
         <Button
-
+            android:id="@+id/pscOut"
             android:text="3월 27일(토)"
             android:textColor="#000000"
             android:layout_width="200dp"
@@ -171,6 +174,7 @@
         android:padding="5dp">
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerLocation"
             android:scrollbars="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
@@ -181,6 +185,7 @@
         android:layout_height="wrap_content">
 
         <Button
+            android:id="@+id/pscAgain"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:text="객실 선택하기"

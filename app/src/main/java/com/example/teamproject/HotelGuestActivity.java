@@ -1,10 +1,9 @@
 package com.example.teamproject;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.os.SystemClock;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
@@ -22,44 +21,39 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.Serializable;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-public class HotelListActivity extends AppCompatActivity implements HotelAdapter.OnItemClickListener {
+public class HotelGuestActivity extends AppCompatActivity {
     private RecyclerView recyclerLocation;
     private HotelAdapter hotelAdapter;
-    private ImageButton pscHome, pscBack, pscSearch;
-    private Button pscLocation, pscDate;
+    private ImageButton pscLike;
+    private Button pscLocation, pscCall, pscIn, pscOut, pscAgain;
     private DatabaseReference dbRf;
     private ArrayList<StoreInfo> info = new ArrayList<>();
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_hotel_list);
+        setContentView(R.layout.activity_hotel_guest);
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
 
-        if(info.size()==0){
+        Intent intent = getIntent();
+
+        StoreInfo storeInfo = (StoreInfo)intent.getSerializableExtra("storeInfo");
+
+        Toast.makeText(this, storeInfo.getMainImage(), Toast.LENGTH_SHORT).show();
+
+        if (info.size() == 0){
             getMotelData();
         }
-
+        
         findViewByIdFunc();
 
-        hotelAdapter = new HotelAdapter(getApplicationContext(), info);
-        recyclerLocation.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
-        recyclerLocation.setAdapter(hotelAdapter);
-
         eventHandlerFunc();
-
-        hotelAdapter.setOnItemClickListener(new HotelAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(View view, int position) {
-                Intent intent = new Intent(getApplicationContext(), HotelGuestActivity.class);
-                String name = info.get(position).getStoreName();
-                intent.putExtra("name", name);
-                startActivity(intent);
-            }
-        });
+        
     }
 
     private void getMotelData() {
@@ -84,37 +78,27 @@ public class HotelListActivity extends AppCompatActivity implements HotelAdapter
     }
 
     private void eventHandlerFunc() {
-        pscHome.setOnClickListener(view -> {
-            Intent intent = new Intent(this, MainActivity.class);
+        pscLike.setOnClickListener(view -> {
+            Intent intent = new Intent(this, BestActivity.class);
             startActivity(intent);
         });
 
         pscLocation.setOnClickListener(view -> {
-            Intent intent = new Intent(this, SearchMapActivity.class);
+            Intent intent = new Intent(this, MapActivity.class);
             startActivity(intent);
         });
 
-        pscBack.setOnClickListener(view -> {
-            finish();
-        });
-
-        pscDate.setOnClickListener(view -> {
-            Intent intent = new Intent(this, CheckinOutActivity.class);
+        pscCall.setOnClickListener(view -> {
+            Uri uri = Uri.parse("");
+            Intent intent = new Intent(Intent.ACTION_DIAL, uri);
             startActivity(intent);
         });
+
     }
 
     private void findViewByIdFunc() {
-        pscHome     = findViewById(R.id.pscHome);
-        pscSearch   = findViewById(R.id.pscSearch);
+        pscLike = findViewById(R.id.pscLike);
         pscLocation = findViewById(R.id.pscLocation);
-        pscDate     = findViewById(R.id.pscDate);
-        pscBack     = findViewById(R.id.pscBack);
-        recyclerLocation     = findViewById(R.id.recyclerLocation);
-    }
-
-    @Override
-    public void onItemClick(View view, int position) {
-
+        pscCall = findViewById(R.id.pscCall);
     }
 }

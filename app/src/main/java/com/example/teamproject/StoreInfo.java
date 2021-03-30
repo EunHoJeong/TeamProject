@@ -1,9 +1,10 @@
 package com.example.teamproject;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-public class StoreInfo {
+public class StoreInfo implements Serializable {
     private String storeName;
     private String location;
     private String phone;

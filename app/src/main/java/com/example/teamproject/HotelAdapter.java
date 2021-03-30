@@ -1,9 +1,11 @@
 package com.example.teamproject;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -20,6 +22,8 @@ public class HotelAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
     private Context context;
     private ArrayList<StoreInfo> infoList;
 
+    private OnItemClickListener mListener = null;
+
     public HotelAdapter(Context context, ArrayList<StoreInfo> infoList) {
         this.context = context;
         this.infoList = infoList;
@@ -27,7 +31,7 @@ public class HotelAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
     @NonNull
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int item) {
+    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int position) {
 
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_hotel_image, parent, false);
         RecyclerView.ViewHolder viewHolder = new RecyclerImage(view);
@@ -41,7 +45,6 @@ public class HotelAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
             RecyclerImage ri = (RecyclerImage) holder;
             ri.setInformation(position);
         }
-
     }
 
     @Override
@@ -62,6 +65,22 @@ public class HotelAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
             pscPernight  = itemView.findViewById(R.id.pscPernight);
             pscRankPrice = itemView.findViewById(R.id.pscRankPrice);
             pscRatingBar = itemView.findViewById(R.id.pscRatingBar);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    int posiotion = getAdapterPosition();
+                    if(posiotion != RecyclerView.NO_POSITION){
+                        mListener.onItemClick(view, posiotion);
+                    }
+
+                    Intent intent = new Intent(context, HotelGuestActivity.class);
+                    StoreInfo storeInfo = infoList.get(posiotion);
+                    intent.putExtra("storeInfo", storeInfo);
+                    context.startActivity(intent);
+                }
+            });
         }
 
         public void setInformation(int position){
@@ -75,5 +94,14 @@ public class HotelAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
             pscPernight.setText("대실 "+infoList.get(position).getSt_Time1()+"시간 " + infoList.get(position).getSt_Large());
             pscRankPrice.setText("숙박 "+infoList.get(position).getSt_Time2()+"부터 " + infoList.get(position).getSt_Lodgment());
         }
+    }
+
+    public interface  OnItemClickListener{
+
+        void onItemClick(View view, int position);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener){
+        this.mListener = listener;
     }
 }
