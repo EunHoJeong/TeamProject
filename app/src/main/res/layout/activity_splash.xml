@@ -6,11 +6,11 @@
     android:layout_height="match_parent"
     android:paddingLeft="18dp"
     android:paddingRight="18dp"
-    tools:context=".LodingActivity">
+    tools:context=".SplashActivity">
 
     <TextView
         android:textSize="50sp"
-        android:text="Hello"
+        android:text="Hello!"
         android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>

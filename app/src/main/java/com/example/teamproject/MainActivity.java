@@ -5,7 +5,9 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -31,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
         //insertDB();
@@ -38,9 +41,6 @@ public class MainActivity extends AppCompatActivity {
         findViewByIdFunc();
 
         eventHandler();
-
-
-
 
         f_Home = new FragHome();
         f_MyAround = new FragMyAround();
