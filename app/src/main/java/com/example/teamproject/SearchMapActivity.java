@@ -26,6 +26,7 @@ public class SearchMapActivity extends AppCompatActivity implements OnMapReadyCa
     private static final int LOCATION_PERMISSION_REQUEST_CODE=1000;
     private FusedLocationSource locationSource;
     private  NaverMap naverMap;
+    private Marker[] marker=new Marker[]{};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -44,31 +44,61 @@ public class MotelActivity extends AppCompatActivity {
 
         tvLocation2.setOnClickListener(v->{
             Intent intent = new Intent(getApplicationContext(), HotelListActivity.class);
+
+            String[] tag = new String[]{"서초","신사","방배"};
+            list = FragHome.getList(tag);
+            intent.putExtra("list", list);
+
             startActivity(intent);
         });
 
         tvLocation3.setOnClickListener(v->{
             Intent intent = new Intent(getApplicationContext(), HotelListActivity.class);
+
+            String[] tag = new String[]{"잠실","신천(잠실새내)"};
+            list = FragHome.getList(tag);
+            intent.putExtra("list", list);
+
             startActivity(intent);
         });
 
         tvLocation4.setOnClickListener(v->{
             Intent intent = new Intent(getApplicationContext(), HotelListActivity.class);
+
+            String[] tag = new String[]{"영등포","여의도"};
+            list = FragHome.getList(tag);
+            intent.putExtra("list", list);
+
             startActivity(intent);
         });
 
         tvLocation5.setOnClickListener(v->{
             Intent intent = new Intent(getApplicationContext(), HotelListActivity.class);
+
+            String[] tag = new String[]{"신림","서울대","사당","동작"};
+            list = FragHome.getList(tag);
+            intent.putExtra("list", list);
+
             startActivity(intent);
         });
 
         tvLocation6.setOnClickListener(v->{
             Intent intent = new Intent(getApplicationContext(), HotelListActivity.class);
+
+            String[] tag = new String[]{"천호","길동","둔촌"};
+            list = FragHome.getList(tag);
+            intent.putExtra("list", list);
+
             startActivity(intent);
         });
 
         tvLocation7.setOnClickListener(v->{
             Intent intent = new Intent(getApplicationContext(), HotelListActivity.class);
+
+            String[] tag = new String[]{"화곡","까치산","양천","목동"};
+            list = FragHome.getList(tag);
+            intent.putExtra("list", list);
+
             startActivity(intent);
         });
 
@@ -83,66 +113,131 @@ public class MotelActivity extends AppCompatActivity {
 
         tvLocation9.setOnClickListener(v->{
             Intent intent = new Intent(getApplicationContext(), HotelListActivity.class);
+
+            String[] tag = new String[]{"신촌","홍대","합정"};
+            list = FragHome.getList(tag);
+            intent.putExtra("list", list);
+
             startActivity(intent);
         });
 
         tvLocation10.setOnClickListener(v->{
             Intent intent = new Intent(getApplicationContext(), HotelListActivity.class);
+
+            String[] tag = new String[]{"연신내","불광","응암"};
+            list = FragHome.getList(tag);
+            intent.putExtra("list", list);
+
             startActivity(intent);
         });
 
         tvLocation11.setOnClickListener(v->{
             Intent intent = new Intent(getApplicationContext(), HotelListActivity.class);
+
+            String[] tag = new String[]{"종로","대학로","동묘앞역"};
+            list = FragHome.getList(tag);
+            intent.putExtra("list", list);
+
             startActivity(intent);
         });
 
         tvLocation12.setOnClickListener(v->{
             Intent intent = new Intent(getApplicationContext(), HotelListActivity.class);
+
+            String[] tag = new String[]{"성신여대","성북","월곡"};
+            list = FragHome.getList(tag);
+            intent.putExtra("list", list);
+
             startActivity(intent);
         });
 
         tvLocation13.setOnClickListener(v->{
             Intent intent = new Intent(getApplicationContext(), HotelListActivity.class);
+
+            String[] tag = new String[]{"이태원","용산","서울역","명동","회현"};
+            list = FragHome.getList(tag);
+            intent.putExtra("list", list);
+
             startActivity(intent);
         });
 
         tvLocation14.setOnClickListener(v->{
             Intent intent = new Intent(getApplicationContext(), HotelListActivity.class);
+
+            String[] tag = new String[]{"동대문","을지로","충무로","신당","약수"};
+            list = FragHome.getList(tag);
+            intent.putExtra("list", list);
+
             startActivity(intent);
         });
 
         tvLocation15.setOnClickListener(v->{
             Intent intent = new Intent(getApplicationContext(), HotelListActivity.class);
+
+            String[] tag = new String[]{"회기","고려대","청량리","신설동"};
+            list = FragHome.getList(tag);
+            intent.putExtra("list", list);
+
             startActivity(intent);
         });
 
         tvLocation16.setOnClickListener(v->{
             Intent intent = new Intent(getApplicationContext(), HotelListActivity.class);
+
+            String[] tag = new String[]{"장안동","답십리"};
+            list = FragHome.getList(tag);
+            intent.putExtra("list", list);
+
             startActivity(intent);
         });
 
         tvLocation17.setOnClickListener(v->{
             Intent intent = new Intent(getApplicationContext(), HotelListActivity.class);
+
+            String[] tag = new String[]{"건대","군자","구의"};
+            list = FragHome.getList(tag);
+            intent.putExtra("list", list);
+
             startActivity(intent);
         });
 
         tvLocation18.setOnClickListener(v->{
             Intent intent = new Intent(getApplicationContext(), HotelListActivity.class);
+
+            String[] tag = new String[]{"왕십리","성수","금호"};
+            list = FragHome.getList(tag);
+            intent.putExtra("list", list);
+
             startActivity(intent);
         });
 
         tvLocation19.setOnClickListener(v->{
             Intent intent = new Intent(getApplicationContext(), HotelListActivity.class);
+
+            String[] tag = new String[]{"수유","미아"};
+            list = FragHome.getList(tag);
+            intent.putExtra("list", list);
+
             startActivity(intent);
         });
 
         tvLocation20.setOnClickListener(v->{
             Intent intent = new Intent(getApplicationContext(), HotelListActivity.class);
+
+            String[] tag = new String[]{"상봉","중랑","면목"};
+            list = FragHome.getList(tag);
+            intent.putExtra("list", list);
+
             startActivity(intent);
         });
 
         tvLocation21.setOnClickListener(v->{
             Intent intent = new Intent(getApplicationContext(), HotelListActivity.class);
+
+            String[] tag = new String[]{"태릉","노원","도봉","창동"};
+            list = FragHome.getList(tag);
+            intent.putExtra("list", list);
+
             startActivity(intent);
         });
     }
