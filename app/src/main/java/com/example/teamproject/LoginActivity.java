@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -38,6 +39,8 @@ public class LoginActivity extends AppCompatActivity {
 
     private void eventHandlerFunc() {
 
+
+
         btnLogin.setOnClickListener(view -> {
             String id =edtID.getText().toString();
             String pw = edtPassword.getText().toString();
@@ -54,6 +57,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 }
             });
+
 
             try{
                 Log.d("Test", id+"="+user.getId()+", "+pw+"="+user.getPassword());

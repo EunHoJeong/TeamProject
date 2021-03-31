@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.os.SystemClock;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -39,7 +40,8 @@ public class HotelListActivity extends AppCompatActivity implements HotelAdapter
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
 
-        info = getIntent().getParcelableArrayListExtra("list");
+        info = (ArrayList<StoreInfo>) getIntent().getSerializableExtra("list");
+
 
         findViewByIdFunc();
 

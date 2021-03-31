@@ -10,11 +10,15 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
+import java.util.ArrayList;
+
 public class MotelActivity extends AppCompatActivity {
     ViewPager pager;
     //텍스트뷰 순서대로 아이디값
     private TextView tvLocation1,tvLocation2,tvLocation3,tvLocation4,tvLocation5,tvLocation6,tvLocation7,tvLocation8,tvLocation9,tvLocation10,tvLocation11,
             tvLocation12,tvLocation13,tvLocation14,tvLocation15,tvLocation16,tvLocation17,tvLocation18,tvLocation19,tvLocation20,tvLocation21;
+
+    private static ArrayList<StoreInfo> list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,8 +34,11 @@ public class MotelActivity extends AppCompatActivity {
 
         tvLocation1.setOnClickListener(v->{
             Intent intent = new Intent(getApplicationContext(), HotelListActivity.class);
+
             String[] tag = new String[]{"강남","역삼","삼성","논현"};
-            intent.putParcelableArrayListExtra("list", FragHome.getList(tag));
+            list = FragHome.getList(tag);
+            intent.putExtra("list", list);
+
             startActivity(intent);
         });
 
@@ -68,7 +75,9 @@ public class MotelActivity extends AppCompatActivity {
         tvLocation8.setOnClickListener(v->{
             Intent intent = new Intent(getApplicationContext(), HotelListActivity.class);
             String[] tag = new String[]{"구로","금천","오류","신도림"};
-            intent.putParcelableArrayListExtra("list", FragHome.getList(tag));
+            list = FragHome.getList(tag);
+            intent.putExtra("list", list);
+
             startActivity(intent);
         });
 

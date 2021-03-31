@@ -1,13 +1,10 @@
 package com.example.teamproject;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-public class StoreInfo implements Parcelable {
+public class StoreInfo implements Serializable {
     private String storeName;
     private String location;
     private String phone;
@@ -102,15 +99,5 @@ public class StoreInfo implements Parcelable {
         result.put("st_Time2", st_Time2);
 
         return result;
-    }
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel parcel, int i) {
-
     }
 }

@@ -3,6 +3,7 @@ package com.example.teamproject;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.SystemClock;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -132,11 +133,25 @@ public class FragHome extends Fragment {
         ArrayList<StoreInfo> list = new ArrayList<>();
         for (StoreInfo s : info){
             for(int i = 0; i < tag.length; i++){
-                if(tag.equals(s.getLocation_tag())){
+                if(tag[i].equals(s.getLocation_tag())){
                     list.add(s);
                 }
             }
         }
+
+        return list;
+    }
+
+    public static ArrayList<StoreInfo> getSteamedList(String[] tag){
+        ArrayList<StoreInfo> list = new ArrayList<>();
+        for (StoreInfo s : info){
+            for(int i = 0; i < tag.length; i++){
+                if(tag[i].equals(s.getStoreName())){
+                    list.add(s);
+                }
+            }
+        }
+
         return list;
     }
 }

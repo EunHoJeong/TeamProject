@@ -29,7 +29,7 @@ public class FragSteamed extends Fragment {
     private Button btnSteamedLogin;
     private RecyclerView recyclerSteamed;
     private HotelAdapter adapter;
-    private ArrayList<StoreInfo> info = new ArrayList<>();
+    private static ArrayList<StoreInfo> info = new ArrayList<>();
     private ArrayList<String> nameList = new ArrayList<>();
 
     private FirebaseDatabase db;
@@ -85,28 +85,15 @@ public class FragSteamed extends Fragment {
             }
         });
 
+        SystemClock.sleep(1000);
 
-
-
-        db = FirebaseDatabase.getInstance();
-        dbRf = db.getReference();
-        for(String s : nameList) {
-            Log.d("Test", s);
-            dbRf.child("storeInfo").child(s.toString()).addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-                        StoreInfo storeInfo = snapshot.getValue(StoreInfo.class);
-                        info.add(storeInfo);
-
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
-
-                }
-            });
+        int size = nameList.size();
+        String[] tag = new String[size];
+        for(int i = 0; i < size; i++){
+            tag[i] = nameList.get(i);
         }
+
+        info = FragHome.getSteamedList(tag);
 
 
 
