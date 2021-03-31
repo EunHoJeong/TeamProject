@@ -18,6 +18,7 @@
         android:text="사장님 숙소 등록하기"/>
 
     <LinearLayout
+        android:id="@+id/llMyReview"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:background="@drawable/layout_stroke"

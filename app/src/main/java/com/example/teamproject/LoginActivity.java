@@ -59,7 +59,9 @@ public class LoginActivity extends AppCompatActivity {
                 Log.d("Test", id+"="+user.getId()+", "+pw+"="+user.getPassword());
                 if(id.equals(user.getId()) && pw.equals(user.getPassword())){
                     FragMyMenu.setFlag(true);
-
+                    FragMyMenu.setId(id);
+                    FragSteamed.setFlag(true);
+                    FragSteamed.setId(id);
                     finish();
                 }else{
                     Toast.makeText(LoginActivity.this, "아이디와 비밀번호를 확인해주세요", Toast.LENGTH_SHORT).show();

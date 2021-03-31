@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,9 +19,11 @@ import com.example.teamproject.ReservationActivity;
 
 public class FragMyMenu extends Fragment {
     private Button btnLoginSignUp,btnRegister;
-    private LinearLayout llReservationPension, llReservationHotel, llReservationMotel;
+
+    private LinearLayout llReservationPension, llReservationHotel, llReservationMotel, llMyReview;
 
     private static boolean flag = false;
+    private static String id;
 
     @Nullable
     @Override
@@ -45,10 +48,22 @@ public class FragMyMenu extends Fragment {
             startActivity(intent);
         });
 
-        llReservationHotel.setOnClickListener(view -> {
+        llMyReview.setOnClickListener(view -> {
+            if(flag){
+                Intent intent = new Intent(getActivity(), ReviewActivity.class);
+                intent.putExtra("id",id);
+                startActivity(intent);
+            }
+        });
 
-            Intent intent = new Intent(getActivity(), ReservationActivity.class);
-            startActivity(intent);
+        llReservationHotel.setOnClickListener(view -> {
+            if(flag) {
+                Intent intent = new Intent(getActivity(), ReservationActivity.class);
+                intent.putExtra("id", id);
+                startActivity(intent);
+            }else{
+
+            }
         });
     }
 
@@ -59,13 +74,16 @@ public class FragMyMenu extends Fragment {
 
         btnLoginSignUp = v.findViewById(R.id.btnLoginSignUp);
         btnRegister = v.findViewById(R.id.btnRegister);
+
+        llMyReview = v.findViewById(R.id.llMyReview);
     }
 
     @Override
     public void onStart() {
         super.onStart();
         if (flag){
-            btnLoginSignUp.setText("로그인 성공");
+            btnLoginSignUp.setText("환영합니다");
+            btnLoginSignUp.setClickable(false);
         }else{
             btnLoginSignUp.setText("로그인 및 회원가입 하기");
         }
@@ -76,5 +94,8 @@ public class FragMyMenu extends Fragment {
         flag = relay;
     }
 
+    public static void setId(String i){
+        id = i;
+    }
 
 }

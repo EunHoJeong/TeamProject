@@ -49,14 +49,13 @@ public class ReservationAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
         public BreakdownHolder(@NonNull View itemView) {
             super(itemView);
-            tvState = itemView.findViewById(R.id.tvState);
             tvStoreName = itemView.findViewById(R.id.tvStoreName);
             tvRoomInfo = itemView.findViewById(R.id.tvRoomInfo);
             tvReservationDate = itemView.findViewById(R.id.tvReservationDate);
         }
 
         public void setText(int position){
-            tvState.setText(list.get(position).getState());
+
             tvStoreName.setText(list.get(position).getStoreName());
             tvRoomInfo.setText(list.get(position).getRoomInfo());
             tvReservationDate.setText(list.get(position).getDate());
