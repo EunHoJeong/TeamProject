@@ -27,10 +27,8 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class HotelGuestActivity extends AppCompatActivity {
-    private RecyclerView recyclerLocation;
-    private HotelAdapter hotelAdapter;
-    private ImageButton pscLike;
-    private Button pscLocation, pscCall, pscIn, pscOut, pscAgain;
+    private ImageButton pscBack;
+    private Button pscLocation, pscCall, pscReservation, pscAgain;
     private DatabaseReference dbRf;
     private ArrayList<StoreInfo> info = new ArrayList<>();
 
@@ -105,11 +103,21 @@ public class HotelGuestActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        pscReservation.setOnClickListener(view -> {
+            Intent intent = new Intent(this, CheckinOutActivity.class);
+            startActivity(intent);
+        });
+
+        pscBack.setOnClickListener(view -> {
+            Intent intent = new Intent(this, HotelListActivity.class);
+        });
     }
 
     private void findViewByIdFunc() {
         pscLocation = findViewById(R.id.pscLocation);
         pscCall = findViewById(R.id.pscCall);
-        recyclerLocation = findViewById(R.id.recyclerLocation);
+        pscBack = findViewById(R.id.pscBack);
+        pscReservation = findViewById(R.id.pscReservation);
     }
 }
