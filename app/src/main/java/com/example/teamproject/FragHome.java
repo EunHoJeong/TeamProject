@@ -43,7 +43,7 @@ public class FragHome extends Fragment {
     private ImageButton imgbtnTheme;
     private RecyclerView recyclerImage;
     private ImageAdapter adapter;
-    private ArrayList<StoreInfo> info = new ArrayList<>();
+    private static ArrayList<StoreInfo> info = new ArrayList<>();
 
     private FirebaseDatabase db;
     private DatabaseReference dbRf;
@@ -126,5 +126,17 @@ public class FragHome extends Fragment {
         imgbtnPension = view.findViewById(R.id.imgbtnPension);
         imgbtnTheme = view.findViewById(R.id.imgbtnTheme);
         recyclerImage = view.findViewById(R.id.recyclerImage);
+    }
+
+    public static ArrayList<StoreInfo> getList(String[] tag){
+        ArrayList<StoreInfo> list = new ArrayList<>();
+        for (StoreInfo s : info){
+            for(int i = 0; i < tag.length; i++){
+                if(tag.equals(s.getLocation_tag())){
+                    list.add(s);
+                }
+            }
+        }
+        return list;
     }
 }

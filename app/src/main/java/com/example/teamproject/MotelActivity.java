@@ -30,6 +30,8 @@ public class MotelActivity extends AppCompatActivity {
 
         tvLocation1.setOnClickListener(v->{
             Intent intent = new Intent(getApplicationContext(), HotelListActivity.class);
+            String[] tag = new String[]{"강남","역삼","삼성","논현"};
+            intent.putParcelableArrayListExtra("list", FragHome.getList(tag));
             startActivity(intent);
         });
 
@@ -65,6 +67,8 @@ public class MotelActivity extends AppCompatActivity {
 
         tvLocation8.setOnClickListener(v->{
             Intent intent = new Intent(getApplicationContext(), HotelListActivity.class);
+            String[] tag = new String[]{"구로","금천","오류","신도림"};
+            intent.putParcelableArrayListExtra("list", FragHome.getList(tag));
             startActivity(intent);
         });
 

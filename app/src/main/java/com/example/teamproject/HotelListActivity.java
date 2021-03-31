@@ -39,9 +39,7 @@ public class HotelListActivity extends AppCompatActivity implements HotelAdapter
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
 
-        if(info.size()==0){
-            getMotelData();
-        }
+        info = getIntent().getParcelableArrayListExtra("list");
 
         findViewByIdFunc();
 
@@ -62,26 +60,7 @@ public class HotelListActivity extends AppCompatActivity implements HotelAdapter
         });
     }
 
-    private void getMotelData() {
-        dbRf = FirebaseDatabase.getInstance().getReference("storeInfo");
 
-        dbRf.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for(DataSnapshot s : snapshot.getChildren()){
-                    StoreInfo storeInfo = s.getValue(StoreInfo.class);
-                    info.add(storeInfo);
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
-        SystemClock.sleep(1000);
-    }
 
     private void eventHandlerFunc() {
         pscHome.setOnClickListener(view -> {
