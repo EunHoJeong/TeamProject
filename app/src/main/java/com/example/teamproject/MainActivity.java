@@ -47,8 +47,6 @@ public class MainActivity extends AppCompatActivity {
         f_MyMenu = new FragMyMenu();
         f_Steamed = new FragSteamed();
 
-
-
         setFrag(HOME);
     }
 

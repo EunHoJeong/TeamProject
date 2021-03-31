@@ -15,8 +15,6 @@
         android:orientation="vertical"
         android:padding="5dp">
 
-
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="45dp"
@@ -47,6 +45,7 @@
             android:textSize="20dp" />
 
         <ImageButton
+            android:id="@+id/pscLikeList"
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:layout_margin="40dp"
@@ -56,6 +55,7 @@
             android:src="@drawable/like_button" />
 
         <ImageButton
+            android:id="@+id/psctSearch"
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:layout_marginRight="15dp"
@@ -82,14 +82,14 @@
                 android:layout_marginTop="5dp">
 
                 <androidx.viewpager2.widget.ViewPager2
-                    android:id="@+id/viewPager2"
+                    android:id="@+id/pscViewPager"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="#EFDEDE"/>
             </FrameLayout>
 
             <TextView
-                android:id="@+id/tvRankName"
+                android:id="@+id/pscRankName"
                 android:layout_below="@id/imgRank"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -102,7 +102,7 @@
                 android:layout_height="wrap_content">
 
                 <ImageView
-                    android:id="@+id/imgStar"
+                    android:id="@+id/pscStar"
                     android:layout_gravity="center"
                     android:layout_marginRight="5dp"
                     android:layout_below="@id/tvRankName"
@@ -111,7 +111,7 @@
                     android:src="@drawable/star"/>
 
                 <TextView
-                    android:id="@+id/tvGrade"
+                    android:id="@+id/pscGrade"
                     android:layout_toRightOf="@id/imgStar"
                     android:layout_alignBottom="@+id/imgStar"
                     android:layout_width="wrap_content"
@@ -121,7 +121,7 @@
                     android:textStyle="bold"/>
 
                 <TextView
-                    android:id="@+id/tvMaxGrade"
+                    android:id="@+id/pscMaxGrade"
                     android:layout_toRightOf="@id/tvGrade"
                     android:layout_alignBottom="@+id/tvGrade"
                     android:layout_width="wrap_content"
@@ -129,7 +129,7 @@
                     android:text="/5"/>
 
                 <TextView
-                    android:id="@+id/tvReview"
+                    android:id="@+id/pscReview"
                     android:layout_alignBottom="@id/tvMaxGrade"
                     android:layout_toRightOf="@id/tvMaxGrade"
                     android:layout_marginLeft="15dp"
@@ -221,6 +221,7 @@
                             android:layout_height="wrap_content"/>
 
                         <TextView
+                            android:id="@+id/pscLargeRoom1"
                             android:text="20,000원"
                             android:layout_margin="3dp"
                             android:layout_width="match_parent"
@@ -233,6 +234,7 @@
                             android:layout_height="wrap_content"/>
 
                         <TextView
+                            android:id="@+id/pscLodgment1"
                             android:text="45,000원"
                             android:layout_margin="3dp"
                             android:layout_width="match_parent"
@@ -276,6 +278,7 @@
                             android:layout_height="wrap_content"/>
 
                         <TextView
+                            android:id="@+id/pscLargeRoom2"
                             android:text="20,000원"
                             android:layout_margin="3dp"
                             android:layout_width="match_parent"
@@ -288,6 +291,7 @@
                             android:layout_height="wrap_content"/>
 
                         <TextView
+                            android:id="@+id/pscLodgment2"
                             android:text="45,000원"
                             android:layout_margin="3dp"
                             android:layout_width="match_parent"
@@ -331,6 +335,7 @@
                             android:layout_height="wrap_content"/>
 
                         <TextView
+                            android:id="@+id/pscLargeRoom3"
                             android:text="20,000원"
                             android:layout_margin="3dp"
                             android:layout_width="match_parent"
@@ -343,6 +348,7 @@
                             android:layout_height="wrap_content"/>
 
                         <TextView
+                            android:id="@+id/pscLodgment3"
                             android:text="45,000원"
                             android:layout_margin="3dp"
                             android:layout_width="match_parent"
@@ -359,9 +365,8 @@
 
     </LinearLayout>
 
-
-
     <Button
+        android:id="@+id/pscRoomSelection"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
