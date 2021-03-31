@@ -56,6 +56,7 @@ public class HotelAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
         private ImageView pscRank;
         private TextView pscRocation, pscName, pscPernight, pscRankPrice;
         private RatingBar pscRatingBar;
+        private ArrayList<StoreInfo> info = new ArrayList<>();
 
         public RecyclerImage(@NonNull View itemView) {
             super(itemView);

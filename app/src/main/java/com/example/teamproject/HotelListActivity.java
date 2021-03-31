@@ -105,12 +105,12 @@ public class HotelListActivity extends AppCompatActivity implements HotelAdapter
     }
 
     private void findViewByIdFunc() {
-        pscHome     = findViewById(R.id.pscHome);
-        pscSearch   = findViewById(R.id.pscSearch);
-        pscLocation = findViewById(R.id.pscLocation);
-        pscDate     = findViewById(R.id.pscDate);
-        pscBack     = findViewById(R.id.pscBack);
-        recyclerLocation     = findViewById(R.id.recyclerLocation);
+        pscHome          = findViewById(R.id.pscHome);
+        pscSearch        = findViewById(R.id.pscSearch);
+        pscLocation      = findViewById(R.id.pscLocation);
+        pscDate          = findViewById(R.id.pscDate);
+        pscBack          = findViewById(R.id.pscBack);
+        recyclerLocation = findViewById(R.id.recyclerLocation);
     }
 
     @Override

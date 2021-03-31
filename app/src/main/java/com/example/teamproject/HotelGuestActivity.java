@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.SystemClock;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
@@ -53,7 +54,20 @@ public class HotelGuestActivity extends AppCompatActivity {
         findViewByIdFunc();
 
         eventHandlerFunc();
-        
+
+//        hotelAdapter = new HotelAdapter(getApplicationContext(), info);
+//        recyclerLocation.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
+//        recyclerLocation.setAdapter(hotelAdapter);
+//
+//        hotelAdapter.setOnItemClickListener(new HotelAdapter.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(View view, int position) {
+//                Intent intent = new Intent(getApplicationContext(), HotelGuestActivity.class);
+//                String name = info.get(position).getStoreName();
+//                intent.putExtra("name", name);
+//                startActivity(intent);
+//            }
+//        });
     }
 
     private void getMotelData() {
@@ -78,27 +92,24 @@ public class HotelGuestActivity extends AppCompatActivity {
     }
 
     private void eventHandlerFunc() {
-        pscLike.setOnClickListener(view -> {
-            Intent intent = new Intent(this, BestActivity.class);
-            startActivity(intent);
-        });
-
         pscLocation.setOnClickListener(view -> {
             Intent intent = new Intent(this, MapActivity.class);
             startActivity(intent);
         });
 
-        pscCall.setOnClickListener(view -> {
-            Uri uri = Uri.parse("");
-            Intent intent = new Intent(Intent.ACTION_DIAL, uri);
-            startActivity(intent);
+        pscCall.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Uri uri = Uri.parse("tel:");
+                Intent intent = new Intent(Intent.ACTION_DIAL, uri);
+                startActivity(intent);
+            }
         });
-
     }
 
     private void findViewByIdFunc() {
-        pscLike = findViewById(R.id.pscLike);
         pscLocation = findViewById(R.id.pscLocation);
         pscCall = findViewById(R.id.pscCall);
+        recyclerLocation = findViewById(R.id.recyclerLocation);
     }
 }
