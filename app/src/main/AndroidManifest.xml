@@ -17,8 +17,8 @@
         <activity android:name=".ReviewActivity"></activity>
 
         <meta-data
-            android:name="com.naver.maps.map.CLIENT_ID"
-            android:value="x68d9afedw" />
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyCLN_vC-iuGm7nUzBW9sj5-de5sMUHWRlE" />
 
         <activity android:name=".SearchMapActivity" />
         <activity android:name=".ReservationActivity" />

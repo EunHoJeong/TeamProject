@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.naver.maps.map.MapView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.gms.maps.MapView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/map_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".SearchMapActivity">
+    tools:context=".SearchMapActivity"
+    >
 
-    <RelativeLayout
+    <fragment
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:id="@+id/map_google1"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
         android:orientation="vertical">
 
 
@@ -52,7 +55,7 @@
                 android:layout_margin="5dp"
                 android:gravity="center"
                 android:padding="5dp"
-                android:text="주소" />
+                android:text="지도" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -85,7 +88,7 @@
 
         </LinearLayout>
 
-    </RelativeLayout>
+    </fragment>
 
 
-</com.naver.maps.map.MapView>
+</com.google.android.gms.maps.MapView>
