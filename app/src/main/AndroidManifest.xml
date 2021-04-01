@@ -25,6 +25,7 @@
         <activity android:name=".SignUpActivity" />
         <activity android:name=".HotelListActivity" />
         <activity android:name=".HotelGuestActivity" />
+        <activity android:name=".RoomDetailsActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>

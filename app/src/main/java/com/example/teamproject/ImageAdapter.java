@@ -46,10 +46,7 @@ public class ImageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             m.tvReview.setText("후기 " +infoList.get(position).getReview() +"개");
             m.tvRankPrice.setText(infoList.get(position).getSt_Lodgment());
 
-
         }
-
-
     }
 
     @Override

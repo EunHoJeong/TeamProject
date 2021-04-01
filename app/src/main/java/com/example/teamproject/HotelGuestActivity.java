@@ -5,10 +5,12 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,8 +18,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
 import com.bumptech.glide.Glide;
 import com.google.firebase.database.DataSnapshot;
@@ -33,6 +37,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class HotelGuestActivity extends AppCompatActivity {
+    private LinearLayout pscStandard, pscSuperior, pscSweet;
     private ImageButton pscBack, pscLikeList, psctSearch;
     private ImageView pscViewPager, pscStar, pscImg1, pscImg2, pscImg3;
     private TextView pscRoomSelection, pscRankName, pscGrade, pscMaxGrade, pscReview,
@@ -57,7 +62,6 @@ public class HotelGuestActivity extends AppCompatActivity {
 
         name = getIntent().getStringExtra("name");
 
-
         findViewByIdFunc();
 
         eventHandlerFunc();
@@ -70,7 +74,6 @@ public class HotelGuestActivity extends AppCompatActivity {
         setInfomation();
 
         SystemClock.sleep(500);
-
     }
 
     private void setInfomation() {
@@ -108,9 +111,6 @@ public class HotelGuestActivity extends AppCompatActivity {
         pscLargeRoom3.setText(storePrice.getSw_Large());
         tvSwTime2.setText("숙박 최대 "+storeTime.getSw_Time2()+"부터");
         pscLodgment3.setText(storePrice.getSw_Lodgment());
-
-
-
     }
 
     private void getMotelData() {
@@ -129,8 +129,6 @@ public class HotelGuestActivity extends AppCompatActivity {
         });
 
         SystemClock.sleep(2000);
-
-
     }
 
     private void eventHandlerFunc() {
@@ -149,12 +147,29 @@ public class HotelGuestActivity extends AppCompatActivity {
         });
 
         pscReservation.setOnClickListener(view -> {
+
             Intent intent = new Intent(this, CheckinOutActivity.class);
             startActivity(intent);
         });
 
         pscBack.setOnClickListener(view -> {
             Intent intent = new Intent(this, HotelListActivity.class);
+            startActivity(intent);
+        });
+
+        pscStandard.setOnClickListener(view -> {
+            Intent intent = new Intent(this, RoomDetailsActivity.class);
+            startActivity(intent);
+        });
+
+        pscSuperior.setOnClickListener(view -> {
+            Intent intent = new Intent(this, RoomDetailsActivity.class);
+            startActivity(intent);
+        });
+
+        pscSweet.setOnClickListener(view -> {
+            Intent intent = new Intent(this, RoomDetailsActivity.class);
+            startActivity(intent);
         });
     }
 
@@ -187,6 +202,9 @@ public class HotelGuestActivity extends AppCompatActivity {
         tvStTime2 = findViewById(R.id.tvStTime2);
         tvSpTime2 = findViewById(R.id.tvSpTime2);
         tvSwTime2 = findViewById(R.id.tvSwTime2);
+        pscStandard = findViewById(R.id.pscStandard);
+        pscSuperior = findViewById(R.id.pscSuperior);
+        pscSweet = findViewById(R.id.pscSweet);
 
     }
 }
