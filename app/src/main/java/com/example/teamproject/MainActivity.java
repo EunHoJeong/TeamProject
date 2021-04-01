@@ -41,6 +41,8 @@ public class MainActivity extends AppCompatActivity {
     private static ArrayList<StoreTime> time = new ArrayList<>();
     private static int position = 0;
 
+    private long backButtonTime = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -295,5 +297,21 @@ public class MainActivity extends AppCompatActivity {
         StoreTime storeTime = time.get(position);
 
         return storeTime;
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        long currentTimeMillis = System.currentTimeMillis(); //1초를 1000/1초 정수값을 표현
+        long getTime = currentTimeMillis - backButtonTime;
+
+
+        if(getTime >= 0 && getTime <= 2000) {
+            super.onBackPressed();
+        }else{
+            backButtonTime = currentTimeMillis;
+            Toast.makeText(getApplicationContext(), "한번 더 누르면 앱이 종료됩니다.", Toast.LENGTH_SHORT).show();
+        }
+
     }
 }

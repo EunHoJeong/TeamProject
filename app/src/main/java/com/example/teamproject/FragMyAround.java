@@ -20,4 +20,6 @@ public class FragMyAround extends Fragment {
 
         return view;
     }
+
+
 }

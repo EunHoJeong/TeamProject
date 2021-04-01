@@ -38,17 +38,15 @@ import java.util.List;
 import java.util.Map;
 
 public class FragHome extends Fragment {
-    public static final ArrayList<Integer> imageList = new ArrayList<>();
-    private static final long SPLASH_TIME_OUT = 1500;
 
     private ImageButton imgbtnHotel;
     private ImageButton imgbtnMotel;
     private ImageButton imgbtnPension;
     private ImageButton imgbtnTheme;
     private RecyclerView recyclerImage;
-    private SwipeRefreshLayout swipe;
     private ImageAdapter adapter;
-    private static ArrayList<StoreInfo> info = new ArrayList<>();
+    private ArrayList<StoreInfo> info = new ArrayList<>();
+    private static ArrayList<StoreInfo> infoData = new ArrayList<>();
 
     private FirebaseDatabase db;
     private DatabaseReference dbRf;
@@ -71,9 +69,18 @@ public class FragHome extends Fragment {
         recyclerImage.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
         recyclerImage.setAdapter(adapter);
 
+        adapter.setOnItemClickListener((v, position)-> {
+            Intent intent = new Intent(getActivity(), HotelGuestActivity.class);
+            String name = info.get(position).getStoreName();
+            intent.putExtra("name", name);
+            startActivity(intent);
+            });
+
+
+
         eventHandlerFunc();
 
-
+        infoData = info;
 
 
 
@@ -97,6 +104,7 @@ public class FragHome extends Fragment {
                 for(DataSnapshot s : snapshot.getChildren()){
                     StoreInfo storeInfo = s.getValue(StoreInfo.class);
                     info.add(storeInfo);
+
                 }
             }
 
@@ -142,7 +150,7 @@ public class FragHome extends Fragment {
 
     public static ArrayList<StoreInfo> getList(String[] tag){
         ArrayList<StoreInfo> list = new ArrayList<>();
-        for (StoreInfo s : info){
+        for (StoreInfo s : infoData){
             for(int i = 0; i < tag.length; i++){
                 if(tag[i].equals(s.getLocation_tag())){
                     list.add(s);
@@ -155,7 +163,7 @@ public class FragHome extends Fragment {
 
     public static ArrayList<StoreInfo> getSteamedList(String[] tag){
         ArrayList<StoreInfo> list = new ArrayList<>();
-        for (StoreInfo s : info){
+        for (StoreInfo s : infoData){
             for(int i = 0; i < tag.length; i++){
                 if(tag[i].equals(s.getStoreName())){
                     list.add(s);

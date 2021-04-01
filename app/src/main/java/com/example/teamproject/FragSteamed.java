@@ -1,5 +1,7 @@
 package com.example.teamproject;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.util.Log;
@@ -11,6 +13,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -47,9 +50,18 @@ public class FragSteamed extends Fragment {
             getData();
         }
 
-        btnSteamedLogin = view.findViewById(R.id.btnSteamedLogin);
-        recyclerSteamed = view.findViewById(R.id.recyclerSteamed);
+        findViewByIdFunc(view);
 
+        eventHandlerFunc();
+
+
+
+
+
+        return view;
+    }
+
+    private void eventHandlerFunc() {
         if(flag){
             btnSteamedLogin.setVisibility(View.INVISIBLE);
             btnSteamedLogin.setClickable(false);
@@ -61,9 +73,22 @@ public class FragSteamed extends Fragment {
         adapter = new HotelAdapter(getActivity(), info);
         recyclerSteamed.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
         recyclerSteamed.setAdapter(adapter);
-        Log.d("Test", nameList.size()+"");
-        Log.d("Test", info.size()+"");
-        return view;
+
+        adapter.setOnItemClickListener((v, position)-> {
+            Intent intent = new Intent(getActivity(), HotelGuestActivity.class);
+            String name = info.get(position).getStoreName();
+            intent.putExtra("name", name);
+            startActivity(intent);
+        });
+
+        btnSteamedLogin.setOnClickListener(view -> {
+            showDialog();
+        });
+    }
+
+    private void findViewByIdFunc(ViewGroup view) {
+        btnSteamedLogin = view.findViewById(R.id.btnSteamedLogin);
+        recyclerSteamed = view.findViewById(R.id.recyclerSteamed);
     }
 
     private void getData() {
@@ -97,6 +122,20 @@ public class FragSteamed extends Fragment {
 
 
 
+    }
+
+    private void showDialog(){
+        AlertDialog.Builder dlg = new AlertDialog.Builder(getActivity());
+        dlg.setMessage("로그인을 하시겠습니까?");
+        dlg.setPositiveButton("아니요", null);
+        dlg.setNeutralButton("예", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Intent intent = new Intent(getActivity(), LoginActivity.class);
+                startActivity(intent);
+            }
+        });
+        dlg.show();
     }
 
     public static void setFlag(boolean relay){
