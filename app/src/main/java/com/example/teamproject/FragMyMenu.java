@@ -1,5 +1,6 @@
 package com.example.teamproject;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
 import com.example.teamproject.R;
@@ -20,7 +22,7 @@ import com.example.teamproject.ReservationActivity;
 public class FragMyMenu extends Fragment {
     private Button btnLoginSignUp,btnRegister;
 
-    private LinearLayout llReservationPension, llReservationHotel, llReservationMotel, llMyReview;
+    private LinearLayout llReservationHotel, llMyReview;
 
     private static boolean flag = false;
     private static String id;
@@ -53,6 +55,8 @@ public class FragMyMenu extends Fragment {
                 Intent intent = new Intent(getActivity(), ReviewActivity.class);
                 intent.putExtra("id",id);
                 startActivity(intent);
+            }else{
+                showDialog();
             }
         });
 
@@ -62,14 +66,26 @@ public class FragMyMenu extends Fragment {
                 intent.putExtra("id", id);
                 startActivity(intent);
             }else{
-
+                showDialog();
             }
         });
     }
 
+    private void showDialog(){
+        AlertDialog.Builder dlg = new AlertDialog.Builder(getActivity());
+        dlg.setMessage("로그인을 하시겠습니까?");
+        dlg.setPositiveButton("아니요", null);
+        dlg.setNeutralButton("예", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Intent intent = new Intent(getActivity(), LoginActivity.class);
+                startActivity(intent);
+            }
+        });
+        dlg.show();
+    }
+
     private void findViewByIdFunc(ViewGroup v) {
-        llReservationPension = v.findViewById(R.id.llReservationPension);
-        llReservationMotel = v.findViewById(R.id.llReservationMotel);
         llReservationHotel = v.findViewById(R.id.llReservationHotel);
 
         btnLoginSignUp = v.findViewById(R.id.btnLoginSignUp);

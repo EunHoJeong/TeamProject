@@ -38,13 +38,6 @@
 
     </LinearLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:textColor="#000000"
-        android:text="예약 및 이용 내역"/>
-
     <LinearLayout
         android:id="@+id/llReservationHotel"
         android:layout_width="match_parent"
@@ -56,77 +49,16 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:text="호텔"
+            android:text="이용 내역  >"
             android:textSize="20sp"
             android:gravity="center_vertical"
             android:layout_weight="1"
             android:textColor="#000000"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:text="0  > "
-            android:textSize="20sp"
-            android:gravity="center_vertical"
-            android:textColor="#000000"
-            android:textStyle="bold"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/llReservationMotel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/layout_stroke"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:gravity="center_vertical"
-            android:text="모텔"
-            android:textSize="20sp"
-            android:layout_weight="1"
-            android:textColor="#000000"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:gravity="center_vertical"
-            android:text="0  > "
-            android:textSize="20sp"
-            android:textColor="#000000"
-            android:textStyle="bold"/>
 
     </LinearLayout>
 
 
-    <LinearLayout
-        android:id="@+id/llReservationPension"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/layout_stroke"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:gravity="center_vertical"
-            android:text="펜션"
-            android:textSize="20sp"
-            android:layout_weight="1"
-            android:textColor="#000000"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:gravity="center_vertical"
-            android:text="0  > "
-            android:textSize="20sp"
-            android:textColor="#000000"
-            android:textStyle="bold"/>
-
-    </LinearLayout>
 
 
 </LinearLayout>

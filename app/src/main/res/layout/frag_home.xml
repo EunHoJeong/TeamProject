@@ -14,6 +14,8 @@
         app:iconifiedByDefault="false"
         app:queryHint="지역, 숙소명으로 찾아보세요"/>
 
+
+
     <LinearLayout
         android:id="@+id/menu"
         android:layout_below="@id/mainSearchView"
@@ -114,15 +116,20 @@
 
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/tvRecommendMotel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/menu"
+        android:text="추천 모텔 > "
+        android:textSize="20sp"
+        android:textColor="#000000"
+        android:textStyle="bold"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerImage"
-        android:layout_below="@id/menu"
-        android:layout_width="match_parent"
-        android:layout_height="300dp"/>
-
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/swipe"
-        android:layout_below="@id/menu"
+        android:layout_below="@id/tvRecommendMotel"
         android:layout_width="match_parent"
         android:layout_height="300dp"/>
 

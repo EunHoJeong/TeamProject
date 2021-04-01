@@ -6,20 +6,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewpager.widget.PagerAdapter;
 
 import com.bumptech.glide.Glide;
-import com.example.teamproject.R;
 
 import java.util.ArrayList;
 
 public class ImageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private Context context;
     private ArrayList<StoreInfo> infoList;
+    private OnItemClickListener mListener = null;
 
     public ImageAdapter(Context context, ArrayList<StoreInfo> infoList) {
         this.context = context;
@@ -56,7 +54,7 @@ public class ImageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
     @Override
     public int getItemCount() {
-        return infoList != null ? infoList.size() : 0;
+        return infoList != null ? 10 : 0;
     }
 
 
@@ -73,9 +71,20 @@ public class ImageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             tvRankPrice = itemView.findViewById(R.id.tvRankPrice);
 
             itemView.setOnClickListener(view -> {
-                Toast.makeText(context, (getAdapterPosition()+1)+"번", Toast.LENGTH_SHORT).show();
-
+                int position = getAdapterPosition();
+                if(position != RecyclerView.NO_POSITION){
+                    mListener.onItemClick(view, position);
+                }
             });
         }
     }
+
+    public interface  OnItemClickListener{
+        void onItemClick(View view, int position);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener){
+        this.mListener = listener;
+    }
+
 }
