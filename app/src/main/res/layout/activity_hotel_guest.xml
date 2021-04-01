@@ -81,7 +81,7 @@
                 android:layout_height="200dp"
                 android:layout_marginTop="5dp">
 
-                <androidx.viewpager2.widget.ViewPager2
+                <ImageView
                     android:id="@+id/pscViewPager"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -193,6 +193,7 @@
                     android:background="@drawable/layout_stroke">
 
                     <ImageView
+                        android:id="@+id/pscImg1"
                         android:layout_width="120dp"
                         android:layout_height="153dp"
                         android:layout_margin="6dp" />
@@ -250,6 +251,7 @@
                     android:background="@drawable/layout_stroke">
 
                     <ImageView
+                        android:id="@+id/pscImg2"
                         android:layout_width="120dp"
                         android:layout_height="153dp"
                         android:layout_margin="6dp" />
@@ -307,6 +309,7 @@
                     android:background="@drawable/layout_stroke">
 
                     <ImageView
+                        android:id="@+id/pscImg3"
                         android:layout_width="120dp"
                         android:layout_height="153dp"
                         android:layout_margin="6dp" />

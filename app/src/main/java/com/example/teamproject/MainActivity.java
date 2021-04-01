@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     private static final int MY_AROUND = 1;
     private static final int STEAMED = 2;
     private static final int MY_MENU = 3;
+
     private BottomNavigationView bottomNavigationView;
     private FragHome f_Home;
     private FragMyAround f_MyAround;
@@ -33,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();

@@ -7,6 +7,8 @@ import android.os.SystemClock;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -22,13 +24,18 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import org.w3c.dom.Text;
+
 import java.io.Serializable;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class HotelGuestActivity extends AppCompatActivity {
-    private ImageButton pscBack;
-    private Button pscLocation, pscCall, pscReservation, pscAgain;
+    private ImageButton pscBack, pscLikeList, psctSearch;
+    private ImageView pscViewPager, pscStar, pscImg1, pscImg2, pscImg3;
+    private TextView pscRoomSelection, pscRankName, pscGrade, pscMaxGrade, pscReview,
+            pscLargeRoom1, pscLargeRoom2, pscLargeRoom3, pscLodgment1, pscLodgment2, pscLodgment3;
+    private Button pscLocation, pscCall, pscReservation;
     private DatabaseReference dbRf;
     private ArrayList<StoreInfo> info = new ArrayList<>();
 
@@ -115,9 +122,28 @@ public class HotelGuestActivity extends AppCompatActivity {
     }
 
     private void findViewByIdFunc() {
+        pscBack = findViewById(R.id.pscBack);
+        pscLikeList = findViewById(R.id.pscLikeList);
+        psctSearch = findViewById(R.id.psctSearch);
+        pscViewPager = findViewById(R.id.pscViewPager);
+        pscStar = findViewById(R.id.pscStar);
+        pscImg1 = findViewById(R.id.pscImg1);
+        pscImg2 = findViewById(R.id.pscImg2);
+        pscImg3 = findViewById(R.id.pscImg3);
         pscLocation = findViewById(R.id.pscLocation);
         pscCall = findViewById(R.id.pscCall);
-        pscBack = findViewById(R.id.pscBack);
         pscReservation = findViewById(R.id.pscReservation);
+        pscRoomSelection = findViewById(R.id.pscRoomSelection);
+        pscRankName = findViewById(R.id.pscRankName);
+        pscGrade = findViewById(R.id.pscGrade);
+        pscReview = findViewById(R.id.pscReview);
+        pscMaxGrade = findViewById(R.id.pscMaxGrade);
+        pscLargeRoom1 = findViewById(R.id.pscLargeRoom1);
+        pscLargeRoom2 = findViewById(R.id.pscLargeRoom2);
+        pscLargeRoom3 = findViewById(R.id.pscLargeRoom3);
+        pscLodgment1 = findViewById(R.id.pscLodgment1);
+        pscLodgment2 = findViewById(R.id.pscLodgment2);
+        pscLodgment3 = findViewById(R.id.pscLodgment3);
+
     }
 }
