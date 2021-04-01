@@ -19,6 +19,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -35,10 +36,15 @@ public class HotelGuestActivity extends AppCompatActivity {
     private ImageButton pscBack, pscLikeList, psctSearch;
     private ImageView pscViewPager, pscStar, pscImg1, pscImg2, pscImg3;
     private TextView pscRoomSelection, pscRankName, pscGrade, pscMaxGrade, pscReview,
-            pscLargeRoom1, pscLargeRoom2, pscLargeRoom3, pscLodgment1, pscLodgment2, pscLodgment3;
+            pscLargeRoom1, pscLargeRoom2, pscLargeRoom3, pscLodgment1, pscLodgment2, pscLodgment3,
+            tvStTime1, tvSpTime1, tvSwTime1, tvStTime2, tvSpTime2, tvSwTime2;
     private Button pscLocation, pscCall, pscReservation;
     private DatabaseReference dbRf;
-    private ArrayList<StoreInfo> info = new ArrayList<>();
+
+    private StoreInfo storeInfo;
+    private StoreImage storeImage;
+    private StorePrice storePrice;
+    private StoreTime storeTime;
 
     private String name;
 
@@ -52,16 +58,57 @@ public class HotelGuestActivity extends AppCompatActivity {
         name = getIntent().getStringExtra("name");
 
 
-
-        if (info.size() == 0){
-            getMotelData();
-        }
-
-        Log.d("Test", info.size()+"");
-        
         findViewByIdFunc();
 
         eventHandlerFunc();
+
+        storeInfo = MainActivity.getStoreInfo(name);
+        storeImage = MainActivity.getStoreImage();
+        storePrice = MainActivity.getStorePrice();
+        storeTime = MainActivity.getStoreTime();
+
+        setInfomation();
+
+        SystemClock.sleep(500);
+
+    }
+
+    private void setInfomation() {
+
+        Glide.with(getApplicationContext())
+                .load(storeInfo.getMainImage())
+                .into(pscViewPager);
+
+        Glide.with(getApplicationContext())
+                .load(storeInfo.getMainImage())
+                .into(pscImg1);
+
+        Glide.with(getApplicationContext())
+                .load(storeImage.getSp1())
+                .into(pscImg2);
+
+        Glide.with(getApplicationContext())
+                .load(storeImage.getSw1())
+                .into(pscImg3);
+
+        pscRankName.setText(storeInfo.getStoreName());
+        pscGrade.setText(String.valueOf(storeInfo.getGrade()));
+        pscReview.setText("후기 "+storeInfo.getReview()+"개");
+        tvStTime1.setText("대실 최대 "+storeInfo.getSt_Time1()+"시간");
+        pscLargeRoom1.setText(storeInfo.getSt_Large());
+        tvStTime2.setText("숙박 최대 "+storeInfo.getSt_Time2()+"부터");
+        pscLodgment1.setText(storeInfo.getSt_Lodgment());
+
+        tvSpTime1.setText("대실 최대 "+storeTime.getSp_Time1()+"시간");
+        pscLargeRoom2.setText(storePrice.getSp_Large());
+        tvSpTime2.setText("숙박 최대 "+storeTime.getSp_Time2()+"부터");
+        pscLodgment2.setText(storePrice.getSp_Lodgment());
+
+        tvSwTime1.setText("대실 최대 "+storeTime.getSw_Time1()+"시간");
+        pscLargeRoom3.setText(storePrice.getSw_Large());
+        tvSwTime2.setText("숙박 최대 "+storeTime.getSw_Time2()+"부터");
+        pscLodgment3.setText(storePrice.getSw_Lodgment());
+
 
 
     }
@@ -72,19 +119,18 @@ public class HotelGuestActivity extends AppCompatActivity {
         dbRf.child(name).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for(DataSnapshot s : snapshot.getChildren()){
-                    StoreInfo storeInfo = s.getValue(StoreInfo.class);
-                    info.add(storeInfo);
-                }
+                storeInfo = snapshot.getValue(StoreInfo.class);
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
+                Log.d("Test", error.toString());
             }
         });
 
-        SystemClock.sleep(1000);
+        SystemClock.sleep(2000);
+
+
     }
 
     private void eventHandlerFunc() {
@@ -135,6 +181,12 @@ public class HotelGuestActivity extends AppCompatActivity {
         pscLodgment1 = findViewById(R.id.pscLodgment1);
         pscLodgment2 = findViewById(R.id.pscLodgment2);
         pscLodgment3 = findViewById(R.id.pscLodgment3);
+        tvStTime1 = findViewById(R.id.tvStTime1);
+        tvSpTime1 = findViewById(R.id.tvSpTime1);
+        tvSwTime1 = findViewById(R.id.tvSwTime1);
+        tvStTime2 = findViewById(R.id.tvStTime2);
+        tvSpTime2 = findViewById(R.id.tvSpTime2);
+        tvSwTime2 = findViewById(R.id.tvSwTime2);
 
     }
 }

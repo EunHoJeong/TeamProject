@@ -216,6 +216,7 @@
                             android:layout_height="wrap_content"/>
 
                         <TextView
+                            android:id="@+id/tvStTime1"
                             android:text="대실 최대 6시간"
                             android:layout_margin="3dp"
                             android:layout_width="match_parent"
@@ -229,6 +230,7 @@
                             android:layout_height="wrap_content"/>
 
                         <TextView
+                            android:id="@+id/tvStTime2"
                             android:text="숙박 16 : 00부터"
                             android:layout_margin="3dp"
                             android:layout_width="match_parent"
@@ -274,6 +276,7 @@
                             android:layout_height="wrap_content"/>
 
                         <TextView
+                            android:id="@+id/tvSpTime1"
                             android:text="대실 최대 6시간"
                             android:layout_margin="3dp"
                             android:layout_width="match_parent"
@@ -287,6 +290,7 @@
                             android:layout_height="wrap_content"/>
 
                         <TextView
+                            android:id="@+id/tvSpTime2"
                             android:text="숙박 16 : 00부터"
                             android:layout_margin="3dp"
                             android:layout_width="match_parent"
@@ -332,6 +336,7 @@
                             android:layout_height="wrap_content"/>
 
                         <TextView
+                            android:id="@+id/tvSwTime1"
                             android:text="대실 최대 6시간"
                             android:layout_margin="3dp"
                             android:layout_width="match_parent"
@@ -345,6 +350,7 @@
                             android:layout_height="wrap_content"/>
 
                         <TextView
+                            android:id="@+id/tvSwTime2"
                             android:text="숙박 16 : 00부터"
                             android:layout_margin="3dp"
                             android:layout_width="match_parent"

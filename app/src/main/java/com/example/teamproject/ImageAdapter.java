@@ -51,9 +51,7 @@ public class ImageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
         }
 
-        holder.itemView.setOnClickListener(view -> {
-            Toast.makeText(context, (position+1)+"번", Toast.LENGTH_SHORT).show();
-        });
+
     }
 
     @Override
@@ -73,6 +71,11 @@ public class ImageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             tvGrade = itemView.findViewById(R.id.tvGrade);
             tvReview = itemView.findViewById(R.id.tvReview);
             tvRankPrice = itemView.findViewById(R.id.tvRankPrice);
+
+            itemView.setOnClickListener(view -> {
+                Toast.makeText(context, (getAdapterPosition()+1)+"번", Toast.LENGTH_SHORT).show();
+
+            });
         }
     }
 }

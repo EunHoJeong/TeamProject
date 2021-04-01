@@ -8,13 +8,18 @@ import androidx.fragment.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.SystemClock;
 import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -29,6 +34,12 @@ public class MainActivity extends AppCompatActivity {
     private FragMyAround f_MyAround;
     private FragMyMenu f_MyMenu;
     private FragSteamed f_Steamed;
+
+    private static ArrayList<StoreInfo> info = new ArrayList<>();
+    private static ArrayList<StoreImage> image = new ArrayList<>();
+    private static ArrayList<StorePrice> price = new ArrayList<>();
+    private static ArrayList<StoreTime> time = new ArrayList<>();
+    private static int position = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,12 +56,89 @@ public class MainActivity extends AppCompatActivity {
 
         eventHandler();
 
+        getData();
+
         f_Home = new FragHome();
         f_MyAround = new FragMyAround();
         f_MyMenu = new FragMyMenu();
         f_Steamed = new FragSteamed();
 
         setFrag(HOME);
+    }
+
+    private void getData() {
+        FirebaseDatabase db = FirebaseDatabase.getInstance();
+        DatabaseReference dbRf = db.getReference("storeInfo");
+
+        dbRf.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot s : snapshot.getChildren()){
+                    StoreInfo storeInfo = s.getValue(StoreInfo.class);
+                    info.add(storeInfo);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        FirebaseDatabase db2 = FirebaseDatabase.getInstance();
+        DatabaseReference dbRf2 = db.getReference("storeImage");
+
+        dbRf2.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot s : snapshot.getChildren()){
+                    StoreImage storeImage = s.getValue(StoreImage.class);
+                    image.add(storeImage);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        FirebaseDatabase db3 = FirebaseDatabase.getInstance();
+        DatabaseReference dbRf3 = db.getReference("storePrice");
+
+        dbRf3.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot s : snapshot.getChildren()){
+                    StorePrice storePrice = s.getValue(StorePrice.class);
+                    price.add(storePrice);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        FirebaseDatabase db4 = FirebaseDatabase.getInstance();
+        DatabaseReference dbRf4 = db.getReference("storeTime");
+
+        dbRf4.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot s : snapshot.getChildren()){
+                    StoreTime storeTime = s.getValue(StoreTime.class);
+                    time.add(storeTime);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
     }
 
     private void eventHandler() {
@@ -177,5 +265,35 @@ public class MainActivity extends AppCompatActivity {
 
         Toast.makeText(this, "DB삽입 성공", Toast.LENGTH_SHORT).show();
 
+    }
+
+    public static StoreInfo getStoreInfo(String name){
+        StoreInfo storeInfo = null;
+        for(int i = 0; i < info.size(); i++){
+            if(info.get(i).getStoreName().equals(name)){
+                storeInfo = info.get(i);
+                position = i;
+                break;
+            }
+        }
+        return storeInfo;
+    }
+
+    public static StoreImage getStoreImage(){
+        StoreImage storeImage = image.get(position);
+
+        return storeImage;
+    }
+
+    public static StorePrice getStorePrice(){
+        StorePrice storePrice = price.get(position);
+
+        return storePrice;
+    }
+
+    public static StoreTime getStoreTime(){
+        StoreTime storeTime = time.get(position);
+
+        return storeTime;
     }
 }

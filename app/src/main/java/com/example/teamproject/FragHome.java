@@ -66,6 +66,7 @@ public class FragHome extends Fragment {
             getMotelData();
         }
 
+
         adapter = new ImageAdapter(getActivity(), info);
         recyclerImage.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
         recyclerImage.setAdapter(adapter);
@@ -104,7 +105,6 @@ public class FragHome extends Fragment {
 
             }
         });
-
         SystemClock.sleep(1500);
 
     }
