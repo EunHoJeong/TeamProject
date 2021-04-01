@@ -26,7 +26,7 @@
         <activity android:name=".HotelListActivity" />
         <activity android:name=".HotelGuestActivity" />
         <activity android:name=".LoginActivity" />
-        <activity android:name=".SplashActivity" >
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -36,7 +36,7 @@
         <activity android:name=".MotelActivity" />
         <activity android:name=".MapActivity" />
         <activity android:name=".CheckinOutActivity" />
-        <activity android:name=".MainActivity"/>
+        <activity android:name=".SplashActivity" />
     </application>
 
 </manifest>

@@ -10,8 +10,10 @@ import android.os.SystemClock;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.widget.AbsListView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,11 +28,13 @@ public class LoginActivity extends AppCompatActivity {
     private EditText edtID, edtPassword;
     private TextView tvSignUp;
     private User user;
+    private DatabaseReference dbRf;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        dbRf = FirebaseDatabase.getInstance().getReference("User");
 
         findViewByIdFunc();
 
@@ -45,22 +49,14 @@ public class LoginActivity extends AppCompatActivity {
             String id =edtID.getText().toString();
             String pw = edtPassword.getText().toString();
 
-            DatabaseReference dbRf = FirebaseDatabase.getInstance().getReference("User");
-            dbRf.child(id).addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    user = snapshot.getValue(User.class);
-                }
 
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
 
-                }
-            });
+
+
 
 
             try{
-                Log.d("Test", id+"="+user.getId()+", "+pw+"="+user.getPassword());
+                Log.d("Test", user.getId());
                 if(id.equals(user.getId()) && pw.equals(user.getPassword())){
                     FragMyMenu.setFlag(true);
                     FragMyMenu.setId(id);
@@ -77,6 +73,34 @@ public class LoginActivity extends AppCompatActivity {
 
 
 
+        });
+
+        edtPassword.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                String id = edtID.getText().toString();
+                dbRf.child(id).addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        user = snapshot.getValue(User.class);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+            }
         });
 
         tvSignUp.setOnClickListener(v -> {

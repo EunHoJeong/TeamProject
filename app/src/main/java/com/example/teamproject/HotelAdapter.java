@@ -76,10 +76,6 @@ public class HotelAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
                         mListener.onItemClick(view, posiotion);
                     }
 
-                    Intent intent = new Intent(context, HotelGuestActivity.class);
-                    StoreInfo storeInfo = infoList.get(posiotion);
-                    intent.putExtra("storeInfo", storeInfo);
-                    context.startActivity(intent);
                 }
             });
         }

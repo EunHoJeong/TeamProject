@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.SystemClock;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -39,6 +40,8 @@ public class HotelGuestActivity extends AppCompatActivity {
     private DatabaseReference dbRf;
     private ArrayList<StoreInfo> info = new ArrayList<>();
 
+    private String name;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,39 +49,27 @@ public class HotelGuestActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
 
-        Intent intent = getIntent();
+        name = getIntent().getStringExtra("name");
 
-        StoreInfo storeInfo = (StoreInfo)intent.getSerializableExtra("storeInfo");
 
-        Toast.makeText(this, storeInfo.getMainImage(), Toast.LENGTH_SHORT).show();
 
         if (info.size() == 0){
             getMotelData();
         }
+
+        Log.d("Test", info.size()+"");
         
         findViewByIdFunc();
 
         eventHandlerFunc();
 
-//        hotelAdapter = new HotelAdapter(getApplicationContext(), info);
-//        recyclerLocation.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
-//        recyclerLocation.setAdapter(hotelAdapter);
-//
-//        hotelAdapter.setOnItemClickListener(new HotelAdapter.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(View view, int position) {
-//                Intent intent = new Intent(getApplicationContext(), HotelGuestActivity.class);
-//                String name = info.get(position).getStoreName();
-//                intent.putExtra("name", name);
-//                startActivity(intent);
-//            }
-//        });
+
     }
 
     private void getMotelData() {
         dbRf = FirebaseDatabase.getInstance().getReference("storeInfo");
 
-        dbRf.addListenerForSingleValueEvent(new ValueEventListener() {
+        dbRf.child(name).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot s : snapshot.getChildren()){

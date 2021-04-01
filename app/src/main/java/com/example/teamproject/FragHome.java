@@ -2,6 +2,7 @@ package com.example.teamproject;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.SystemClock;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,6 +16,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 
 import com.example.teamproject.ImageAdapter;
@@ -37,12 +39,14 @@ import java.util.Map;
 
 public class FragHome extends Fragment {
     public static final ArrayList<Integer> imageList = new ArrayList<>();
+    private static final long SPLASH_TIME_OUT = 1500;
 
     private ImageButton imgbtnHotel;
     private ImageButton imgbtnMotel;
     private ImageButton imgbtnPension;
     private ImageButton imgbtnTheme;
     private RecyclerView recyclerImage;
+    private SwipeRefreshLayout swipe;
     private ImageAdapter adapter;
     private static ArrayList<StoreInfo> info = new ArrayList<>();
 
@@ -54,12 +58,13 @@ public class FragHome extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         ViewGroup view = (ViewGroup) inflater.inflate(R.layout.frag_home, container, false);
 
-        if(info.size()==0){
-            getMotelData();
-        }
 
 
         findViewByIdFunc(view);
+
+        if(info.size()==0){
+            getMotelData();
+        }
 
         adapter = new ImageAdapter(getActivity(), info);
         recyclerImage.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
@@ -74,6 +79,11 @@ public class FragHome extends Fragment {
 
 
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
     }
 
     private void getMotelData() {
@@ -95,7 +105,8 @@ public class FragHome extends Fragment {
             }
         });
 
-        SystemClock.sleep(2000);
+        SystemClock.sleep(1500);
+
     }
 
     private void eventHandlerFunc() {
