@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:backgroundTint="@color/white"
+        android:orientation="vertical"
+        android:padding="5dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+
+            android:background="@color/white"
+            android:backgroundTint="@color/white"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/pscBack"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_margin="5dp"
+                android:background="@color/white"
+                android:backgroundTint="@color/white"
+                android:padding="5dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/backbutton" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:backgroundTint="@color/white"
+                android:padding="5dp"
+                android:text="객실상세"
+                android:textColor="@color/black"
+                android:textSize="20dp" />
+
+        </LinearLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:scrollbars="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/pscRoomName"
+                    android:layout_below="@id/imgRank"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="스탠다드"
+                    android:textColor="@color/black"
+                    android:layout_margin="5dp"
+                    android:textSize="25sp"/>
+
+                <TextView
+                    android:layout_below="@id/imgRank"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="기준 인원 2명(최대 2명)"
+                    android:textColor="@color/black"
+                    android:layout_margin="5dp"
+                    android:textSize="15sp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp">
+
+                    <TextView
+                        android:id="@+id/pscHotelName"
+                        android:text="대전 대흥 스타호텔"
+                        android:textColor="#000000"
+                        android:layout_width="200dp"
+                        android:layout_height="40dp"
+                        android:layout_marginRight="3dp"
+                        android:backgroundTint="@color/white"/>
+
+                    <Button
+                        android:id="@+id/pscCall"
+                        android:text="전화하기"
+                        android:textColor="#000000"
+                        android:layout_width="100dp"
+                        android:layout_height="40dp"
+                        android:layout_margin="3dp"
+                        android:backgroundTint="@color/teal_700" />
+
+                </LinearLayout>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_marginTop="5dp">
+
+                    <ImageView
+                        android:id="@+id/pscViewPager"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#EFDEDE"/>
+                </FrameLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/pscReservation"
+                        android:text="숙소 예약"
+                        android:textColor="#000000"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="3dp"
+                        android:backgroundTint="#FF5252" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5dp"
+                    android:orientation="vertical"
+                    android:background="@drawable/layout_stroke"
+                    android:padding="5dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:orientation="vertical"
+                        android:background="@drawable/layout_stroke">
+                        <TextView
+                            android:text="예약공지"
+                            android:textSize="18dp"
+                            android:textColor="@color/black"
+                            android:gravity="center"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:orientation="vertical"
+                        android:background="@drawable/layout_stroke">
+                        <TextView
+                            android:text="바로 예약 특성 상 환불 및 취소가 불가 합니다."
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:orientation="vertical"
+                        android:background="@drawable/layout_stroke">
+                        <TextView
+                            android:text="객실요금은 2인 입실 기준이며, 파티룸 등 특수 객실의 경우, 직접 입실인원 확인이 필요합니다."
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:orientation="vertical"
+                        android:background="@drawable/layout_stroke">
+                        <TextView
+                            android:text="미성년자의 입실 가능여부는 직접 제휴점에 확인 후 예약 진행하시기 바랍니다."
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:orientation="vertical"
+                        android:background="@drawable/layout_stroke">
+                        <TextView
+                            android:text="미성년자 혼숙예약으로 인해 발생하는 입실 거부에 대해서는 취소/환불이 불가능합니다."
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:orientation="vertical"
+                        android:background="@drawable/layout_stroke">
+                        <TextView
+                            android:text="제휴점 사정에 의한 취소 발생 시 100% 환불 처리 됩니다."
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:orientation="vertical"
+                        android:background="@drawable/layout_stroke">
+                        <TextView
+                            android:text="제휴점 사정으로 객실 정보가 수시로 변경될 수 있습니다."
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:orientation="vertical"
+                        android:background="@drawable/layout_stroke">
+                        <TextView
+                            android:text="이로 인한 불이익은 당사가 책임지지 않습니다."
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:orientation="vertical"
+                        android:background="@drawable/layout_stroke">
+                        <TextView
+                            android:text="취소 및 환불 불가"
+                            android:textSize="18dp"
+                            android:gravity="center"
+                            android:textColor="@color/black"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:orientation="vertical"
+                        android:background="@drawable/layout_stroke">
+                        <TextView
+                            android:text="취소 및 환불 불가"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:orientation="vertical"
+                        android:background="@drawable/layout_stroke">
+                        <TextView
+                            android:text="모텔의 경우 예약 완료시각으로부터 1시간 이내인 경우 야놀자
+                            앱/웹을 통해 전액 취소가 가능합니다. 단, 1시간이내라도 입실시간 경과 시 취소 불가능합니다."
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:orientation="vertical"
+                        android:background="@drawable/layout_stroke">
+                        <TextView
+                            android:text="상세한 취소 규정은 '자세히 보기'에서 확인하실 수 있습니다."
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/pscRoomSelection"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:text="숙박 예약하기"
+        android:textColor="#000000"
+        android:layout_margin="5dp"
+        android:backgroundTint="#FF4081" />
+
+</RelativeLayout>
