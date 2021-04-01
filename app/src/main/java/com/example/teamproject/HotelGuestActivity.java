@@ -52,6 +52,7 @@ public class HotelGuestActivity extends AppCompatActivity {
     private StoreTime storeTime;
 
     private String name;
+    private String hotelName;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -159,16 +160,32 @@ public class HotelGuestActivity extends AppCompatActivity {
 
         pscStandard.setOnClickListener(view -> {
             Intent intent = new Intent(this, RoomDetailsActivity.class);
+            hotelName = "스탠다드";
+            intent.putExtra("name", hotelName);
+
+            intent.putExtra("img", storeInfo.getMainImage());
+
             startActivity(intent);
+
         });
 
         pscSuperior.setOnClickListener(view -> {
             Intent intent = new Intent(this, RoomDetailsActivity.class);
+            hotelName = "슈페리얼";
+            intent.putExtra("name", hotelName);
+
+            intent.putExtra("img", storeImage.getSp1());
+
             startActivity(intent);
         });
 
         pscSweet.setOnClickListener(view -> {
             Intent intent = new Intent(this, RoomDetailsActivity.class);
+            hotelName = "스위트";
+            intent.putExtra("name", hotelName);
+
+            intent.putExtra("img", storeImage.getSw1());
+
             startActivity(intent);
         });
     }

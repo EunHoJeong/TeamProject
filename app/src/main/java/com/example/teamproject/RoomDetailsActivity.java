@@ -14,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
 
 import com.bumptech.glide.Glide;
 import com.google.firebase.database.DataSnapshot;
@@ -27,10 +28,13 @@ public class RoomDetailsActivity extends AppCompatActivity {
     private TextView pscRoomName, pscHotelName, pscCall;
     private ImageButton pscBack;
     private Button pscReservation, pscRoomSelection;
+    private ImageView pscViewPager;
 
     private DatabaseReference dbRf;
 
     private String name;
+
+    private String img;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -39,11 +43,19 @@ public class RoomDetailsActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
 
-        name = getIntent().getStringExtra("name");
-
         findViewByIdFunc();
 
         eventHandlerFunc();
+
+        img = getIntent().getStringExtra("img");
+
+        name = getIntent().getStringExtra("name");
+
+        Glide.with(getApplicationContext())
+                .load(img)
+                .into(pscViewPager);
+
+        pscRoomName.setText(name);
 
     }
 
@@ -72,5 +84,6 @@ public class RoomDetailsActivity extends AppCompatActivity {
         pscCall = findViewById(R.id.pscCall);
         pscReservation = findViewById(R.id.pscReservation);
         pscRoomSelection = findViewById(R.id.pscRoomSelection);
+        pscViewPager = findViewById(R.id.pscViewPager);
     }
 }

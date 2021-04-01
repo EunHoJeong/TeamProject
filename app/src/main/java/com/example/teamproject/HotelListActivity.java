@@ -62,8 +62,6 @@ public class HotelListActivity extends AppCompatActivity implements HotelAdapter
         });
     }
 
-
-
     private void eventHandlerFunc() {
         pscHome.setOnClickListener(view -> {
             Intent intent = new Intent(this, MainActivity.class);
