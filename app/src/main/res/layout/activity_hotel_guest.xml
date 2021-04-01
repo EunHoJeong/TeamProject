@@ -8,8 +8,9 @@
     tools:context=".MotelActivity">
 
     <LinearLayout
+        android:id="@+id/pscll"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:background="@color/white"
         android:backgroundTint="@color/white"
         android:orientation="vertical"
@@ -65,9 +66,23 @@
             android:src="@drawable/search" />
     </LinearLayout>
 
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/pscRoomSelection"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:text="객실 선택하기"
+        android:textColor="#000000"
+        android:layout_margin="5dp"
+        app:backgroundTint="#FF4081" />
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@+id/pscll"
+        android:layout_above="@+id/pscRoomSelection"
         android:fillViewport="true"
         android:scrollbars="vertical">
 
@@ -371,18 +386,6 @@
         </LinearLayout>
 
     </ScrollView>
-
-    </LinearLayout>
-
-    <Button
-        android:id="@+id/pscRoomSelection"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_alignParentBottom="true"
-        android:text="객실 선택하기"
-        android:textColor="#000000"
-        android:layout_margin="5dp"
-        app:backgroundTint="#FF4081" />
 
 
 </RelativeLayout>
