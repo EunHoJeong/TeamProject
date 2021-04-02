@@ -18,7 +18,7 @@
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyCLN_vC-iuGm7nUzBW9sj5-de5sMUHWRlE" />
+            android:value="AIzaSyDyHeQy_lJBW0KKxy51QHxx2hF39PCORbk" />
 
         <activity android:name=".SearchMapActivity" />
         <activity android:name=".ReservationActivity" />
