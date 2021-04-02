@@ -211,11 +211,11 @@ public class MainActivity extends AppCompatActivity {
         childUpdates = new HashMap<>();
 
         //storeInfo 삽입
-        String storeName = "서울대입구 폭스";
-        String location = "관악구 관악로 208-4";
-        String phone = "050-35050-0009";
-        String location_tag = "서울대";
-        String mainImage = "https://firebasestorage.googleapis.com/v0/b/teamproject-39add.appspot.com/o/%EC%84%9C%EC%9A%B8%EB%8C%80%EC%9E%85%EA%B5%AC%20%ED%8F%AD%EC%8A%A4%2Fsp1.jpg?alt=media&token=44f4938d-4b50-4d19-820c-7ff90ee637b4";
+        String storeName = "화곡 여우잠";
+        String location = "강서구 강서로5가길 14";
+        String phone = "050-35052-4201";
+        String location_tag = "화곡";
+        String mainImage = "https://firebasestorage.googleapis.com/v0/b/teamproject-39add.appspot.com/o/%ED%99%94%EA%B3%A1%20%EC%97%AC%EC%9A%B0%EC%9E%A0%2Fsp1.jpg?alt=media&token=44211a72-5e4b-4678-ac65-88c8b504fc31";
         String st_Large = "20,000원";
         String st_Lodgment = "40,000원";
         String st_Time1 = "4";
@@ -224,15 +224,18 @@ public class MainActivity extends AppCompatActivity {
         info = new StoreInfo(storeName, location, phone, 0, 0, 0, location_tag, mainImage, st_Large, st_Lodgment, st_Time1, st_Time2);
 
         //storeImage 삽입
-        String st1 = "https://firebasestorage.googleapis.com/v0/b/teamproject-39add.appspot.com/o/%EC%84%9C%EC%9A%B8%EB%8C%80%EC%9E%85%EA%B5%AC%20%ED%8F%AD%EC%8A%A4%2Fsp1.jpg?alt=media&token=44f4938d-4b50-4d19-820c-7ff90ee637b4";
-        String st2 = "https://firebasestorage.googleapis.com/v0/b/teamproject-39add.appspot.com/o/%EC%84%9C%EC%9A%B8%EB%8C%80%EC%9E%85%EA%B5%AC%20%ED%8F%AD%EC%8A%A4%2Fsp2.jpg?alt=media&token=1b40006d-0d6f-430e-bce1-80d69e7aa73a";
-        String st3 = "https://firebasestorage.googleapis.com/v0/b/teamproject-39add.appspot.com/o/%EC%84%9C%EC%9A%B8%EB%8C%80%EC%9E%85%EA%B5%AC%20%ED%8F%AD%EC%8A%A4%2Fsp3.jpg?alt=media&token=ebd9646d-6f3d-43c5-b46b-9c3376d99628";
-        String sp1 = "https://firebasestorage.googleapis.com/v0/b/teamproject-39add.appspot.com/o/%EC%84%9C%EC%9A%B8%EB%8C%80%EC%9E%85%EA%B5%AC%20%ED%8F%AD%EC%8A%A4%2Fst1.jpg?alt=media&token=937e9f21-6bd0-4953-beff-16f8f7151def";
-        String sp2 = "https://firebasestorage.googleapis.com/v0/b/teamproject-39add.appspot.com/o/%EC%84%9C%EC%9A%B8%EB%8C%80%EC%9E%85%EA%B5%AC%20%ED%8F%AD%EC%8A%A4%2Fst2.jpg?alt=media&token=b80387e0-d5a5-484b-9748-296eda8b21f4";
-        String sp3 = "https://firebasestorage.googleapis.com/v0/b/teamproject-39add.appspot.com/o/%EC%84%9C%EC%9A%B8%EB%8C%80%EC%9E%85%EA%B5%AC%20%ED%8F%AD%EC%8A%A4%2Fst3.jpg?alt=media&token=548030aa-c923-4f9e-aa46-f04ba179d6cf";
-        String sw2 = "https://firebasestorage.googleapis.com/v0/b/teamproject-39add.appspot.com/o/%EC%84%9C%EC%9A%B8%EB%8C%80%EC%9E%85%EA%B5%AC%20%ED%8F%AD%EC%8A%A4%2Fsw1.jpg?alt=media&token=ba23e868-6072-428f-9070-8ed3a39e28a5";
-        String sw1 = "https://firebasestorage.googleapis.com/v0/b/teamproject-39add.appspot.com/o/%EC%84%9C%EC%9A%B8%EB%8C%80%EC%9E%85%EA%B5%AC%20%ED%8F%AD%EC%8A%A4%2Fsw2.jpg?alt=media&token=78871da1-05dd-4484-a1f7-8549f5e790f3";
-        String sw3 = "https://firebasestorage.googleapis.com/v0/b/teamproject-39add.appspot.com/o/%EC%84%9C%EC%9A%B8%EB%8C%80%EC%9E%85%EA%B5%AC%20%ED%8F%AD%EC%8A%A4%2Fsw3.jpg?alt=media&token=30afc942-2e4f-4033-bec4-28f4e9704b4e";
+        String st1 = "https://firebasestorage.googleapis.com/v0/b/teamproject-39add.appspot.com/o/%ED%99%94%EA%B3%A1%20%EC%97%AC%EC%9A%B0%EC%9E%A0%2Fsp1.jpg?alt=media&token=44211a72-5e4b-4678-ac65-88c8b504fc31";
+        String st2 = "https://firebasestorage.googleapis.com/v0/b/teamproject-39add.appspot.com/o/%ED%99%94%EA%B3%A1%20%EC%97%AC%EC%9A%B0%EC%9E%A0%2Fsp2.jpg?alt=media&token=1cea0e58-6756-4569-bb75-bf75069c207d";
+        String st3 = "https://firebasestorage.googleapis.com/v0/b/teamproject-39add.appspot.com/o/%ED%99%94%EA%B3%A1%20%EC%97%AC%EC%9A%B0%EC%9E%A0%2Fsp3.jpg?alt=media&token=f827274f-6a87-413a-8e5e-423565ece476";
+        String sp1 = "https://firebasestorage.googleapis.com/v0/b/teamproject-39add.appspot.com/o/%ED%99%94%EA%B3%A1%20%EC%97%AC%EC%9A%B0%EC%9E%A0%2Fst1.jpg?alt=media&token=201ca6cd-796a-484a-8227-dfad90b9fb52";
+        String sp2 = "https://firebasestorage.googleapis.com/v0/b/teamproject-39add.appspot.com/o/%ED%99%94%EA%B3%A1%20%EC%97%AC%EC%9A%B0%EC%9E%A0%2Fst2.jpg?alt=media&token=d7d2c066-df7d-44ef-b6f5-4e8b86e93a17";
+        String sp3 = "https://firebasestorage.googleapis.com/v0/b/teamproject-39add.appspot.com/o/%ED%99%94%EA%B3%A1%20%EC%97%AC%EC%9A%B0%EC%9E%A0%2Fst3.jpg?alt=media&token=6d5d20a8-b2ae-42b5-981f-f3ab4c2f4dda";
+        String sw2 = "https://firebasestorage.googleapis.com/v0/b/teamproject-39add.appspot.com/o/%ED%99%94%EA%B3%A1%20%EC%97%AC%EC%9A%B0%EC%9E%A0%2Fsw1.jpg?alt=media&token=3abaf330-f5e4-4af6-a251-ec21b343bed6";
+        String sw1 = "https://firebasestorage.googleapis.com/v0/b/teamproject-39add.appspot.com/o/%ED%99%94%EA%B3%A1%20%EC%97%AC%EC%9A%B0%EC%9E%A0%2Fsw2.jpg?alt=media&token=59da2e97-1134-46a5-b495-f4ccb3de3fef";
+        String sw3 = "https://firebasestorage.googleapis.com/v0/b/teamproject-39add.appspot.com/o/%ED%99%94%EA%B3%A1%20%EC%97%AC%EC%9A%B0%EC%9E%A0%2Fsw3.jpg?alt=media&token=e5b15cc4-c7d7-4977-bc6d-8e7e033947f3";
+
+
+
 
 
 
@@ -241,9 +244,9 @@ public class MainActivity extends AppCompatActivity {
 
         //storePrice 삽입
         String sp_Large = "25,000원";
-        String sp_Lodgment = "45,000원";
-        String sw_Large = "25,0000원";
-        String sw_Lodgment = "50,000원";
+        String sp_Lodgment = "50,000원";
+        String sw_Large = "30,0000원";
+        String sw_Lodgment = "60,000원";
 
         price = new StorePrice(storeName, sp_Large, sp_Lodgment, sw_Large, sw_Lodgment);
 
