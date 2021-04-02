@@ -25,7 +25,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class RoomDetailsActivity extends AppCompatActivity {
 
-    private TextView pscRoomName, pscHotelName, pscCall;
+    private TextView pscRoomName, pscHotelName, pscCall, pscLargeRoomPrice, pscLodgmentPrice;
     private ImageButton pscBack;
     private Button pscReservation, pscRoomSelection;
     private ImageView pscViewPager;
@@ -39,6 +39,8 @@ public class RoomDetailsActivity extends AppCompatActivity {
     private String name;
     private String img;
     private String hotel;
+    private String largeRoom;
+    private String lodgment;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -53,7 +55,6 @@ public class RoomDetailsActivity extends AppCompatActivity {
 
         storeInfo = MainActivity.getStoreInfo(name);
         storePrice = MainActivity.getStorePrice();
-        storeTime = MainActivity.getStoreTime();
 
         img = getIntent().getStringExtra("img");
 
@@ -61,12 +62,18 @@ public class RoomDetailsActivity extends AppCompatActivity {
 
         hotel = getIntent().getStringExtra("hotel");
 
+        largeRoom = getIntent().getStringExtra("largeRoom");
+
+        lodgment = getIntent().getStringExtra("lodgment");
+
         Glide.with(getApplicationContext())
                 .load(img)
                 .into(pscViewPager);
 
         pscRoomName.setText(name);
         pscHotelName.setText(hotel);
+        pscLargeRoomPrice.setText(largeRoom);
+        pscLodgmentPrice.setText(lodgment);
 
     }
 
@@ -97,5 +104,7 @@ public class RoomDetailsActivity extends AppCompatActivity {
         pscReservation = findViewById(R.id.pscReservation);
         pscRoomSelection = findViewById(R.id.pscRoomSelection);
         pscViewPager = findViewById(R.id.pscViewPager);
+        pscLargeRoomPrice = findViewById(R.id.pscLargeRoomPrice);
+        pscLodgmentPrice = findViewById(R.id.pscLodgmentPrice);
     }
 }

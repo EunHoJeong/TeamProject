@@ -176,6 +176,10 @@ public class HotelGuestActivity extends AppCompatActivity {
 
             intent.putExtra("hotel", storeInfo.getStoreName());
 
+            intent.putExtra("largeRoom", storeInfo.getSt_Large());
+
+            intent.putExtra("lodgment", storeInfo.getSt_Lodgment());
+
             startActivity(intent);
 
         });
@@ -189,6 +193,10 @@ public class HotelGuestActivity extends AppCompatActivity {
 
             intent.putExtra("hotel", storeInfo.getStoreName());
 
+            intent.putExtra("largeRoom", storePrice.getSp_Large());
+
+            intent.putExtra("lodgment", storePrice.getSp_Lodgment());
+
             startActivity(intent);
         });
 
@@ -200,6 +208,10 @@ public class HotelGuestActivity extends AppCompatActivity {
             intent.putExtra("img", storeImage.getSw1());
 
             intent.putExtra("hotel", storeInfo.getStoreName());
+
+            intent.putExtra("largeRoom", storePrice.getSw_Large());
+
+            intent.putExtra("lodgment", storePrice.getSw_Lodgment());
 
             startActivity(intent);
         });

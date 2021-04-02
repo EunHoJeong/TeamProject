@@ -162,7 +162,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="25dp"/>
                             <TextView
-                                android:text="이용시간 최대 12시간"
+                                android:text="대실 최대 이용시간 4시간"
                                 android:layout_marginLeft="10dp"
                                 android:layout_width="match_parent"
                                 android:layout_height="20dp"/>
@@ -178,6 +178,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="20dp"/>
                             <TextView
+                                android:id="@+id/pscLargeRoomPrice"
                                 android:text="20,000원"
                                 android:textSize="25dp"
                                 android:gravity="right"
@@ -206,7 +207,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="25dp"/>
                             <TextView
-                                android:text="이용시간 최대 12시간"
+                                android:text="숙박 최대 18:00부터"
                                 android:layout_marginLeft="10dp"
                                 android:layout_width="match_parent"
                                 android:layout_height="20dp"/>
@@ -222,6 +223,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="20dp"/>
                             <TextView
+                                android:id="@+id/pscLodgmentPrice"
                                 android:text="30,000원"
                                 android:textSize="25dp"
                                 android:gravity="right"

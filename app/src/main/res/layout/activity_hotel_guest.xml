@@ -32,7 +32,7 @@
                     android:id="@+id/pscBack"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:layout_margin="5dp"
+                    android:layout_marginRight="20dp"
                     android:background="@color/white"
                     android:backgroundTint="@color/white"
                     android:padding="5dp"
@@ -40,7 +40,7 @@
                     android:src="@drawable/backbutton" />
 
                 <TextView
-                    android:layout_width="200dp"
+                    android:layout_width="163dp"
                     android:layout_height="wrap_content"
                     android:background="@color/white"
                     android:backgroundTint="@color/white"
@@ -53,7 +53,7 @@
                     android:id="@+id/pscLikeList"
                     android:layout_width="35dp"
                     android:layout_height="35dp"
-                    android:layout_margin="40dp"
+                    android:layout_marginRight="40dp"
                     android:background="@color/white"
                     android:backgroundTint="@color/white"
                     android:scaleType="fitXY"
@@ -63,7 +63,7 @@
                     android:id="@+id/psctSearch"
                     android:layout_width="35dp"
                     android:layout_height="35dp"
-                    android:layout_marginRight="15dp"
+                    android:layout_marginRight="30dp"
                     android:background="@color/white"
                     android:backgroundTint="@color/white"
                     android:scaleType="fitXY"
