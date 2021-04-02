@@ -6,17 +6,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".SearchMapActivity"
-    >
+    tools:context=".SearchMapActivity">
 
     <fragment
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
         android:id="@+id/map_google1"
         android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:orientation="vertical">
-
-
 
 
         <LinearLayout
@@ -33,9 +30,6 @@
                 android:gravity="center"
                 android:padding="5dp"
                 android:text="지도" />
-
-
-
 
 
         </LinearLayout>

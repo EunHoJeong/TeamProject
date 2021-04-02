@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
-        insertDB();
+        //insertDB();
 
         findViewByIdFunc();
 
@@ -224,15 +224,15 @@ public class MainActivity extends AppCompatActivity {
         info = new StoreInfo(storeName, location, phone, 0, 0, 0, location_tag, mainImage, st_Large, st_Lodgment, st_Time1, st_Time2);
 
         //storeImage 삽입
-        String st1 = "https://firebasestorage.googleapis.com/v0/b/teamproject-39add.appspot.com/o/%ED%99%94%EA%B3%A1%20%EC%97%AC%EC%9A%B0%EC%9E%A0%2Fsp1.jpg?alt=media&token=44211a72-5e4b-4678-ac65-88c8b504fc31";
-        String st2 = "https://firebasestorage.googleapis.com/v0/b/teamproject-39add.appspot.com/o/%ED%99%94%EA%B3%A1%20%EC%97%AC%EC%9A%B0%EC%9E%A0%2Fsp2.jpg?alt=media&token=1cea0e58-6756-4569-bb75-bf75069c207d";
-        String st3 = "https://firebasestorage.googleapis.com/v0/b/teamproject-39add.appspot.com/o/%ED%99%94%EA%B3%A1%20%EC%97%AC%EC%9A%B0%EC%9E%A0%2Fsp3.jpg?alt=media&token=f827274f-6a87-413a-8e5e-423565ece476";
-        String sp1 = "https://firebasestorage.googleapis.com/v0/b/teamproject-39add.appspot.com/o/%ED%99%94%EA%B3%A1%20%EC%97%AC%EC%9A%B0%EC%9E%A0%2Fst1.jpg?alt=media&token=201ca6cd-796a-484a-8227-dfad90b9fb52";
-        String sp2 = "https://firebasestorage.googleapis.com/v0/b/teamproject-39add.appspot.com/o/%ED%99%94%EA%B3%A1%20%EC%97%AC%EC%9A%B0%EC%9E%A0%2Fst2.jpg?alt=media&token=d7d2c066-df7d-44ef-b6f5-4e8b86e93a17";
-        String sp3 = "https://firebasestorage.googleapis.com/v0/b/teamproject-39add.appspot.com/o/%ED%99%94%EA%B3%A1%20%EC%97%AC%EC%9A%B0%EC%9E%A0%2Fst3.jpg?alt=media&token=6d5d20a8-b2ae-42b5-981f-f3ab4c2f4dda";
-        String sw2 = "https://firebasestorage.googleapis.com/v0/b/teamproject-39add.appspot.com/o/%ED%99%94%EA%B3%A1%20%EC%97%AC%EC%9A%B0%EC%9E%A0%2Fsw1.jpg?alt=media&token=3abaf330-f5e4-4af6-a251-ec21b343bed6";
-        String sw1 = "https://firebasestorage.googleapis.com/v0/b/teamproject-39add.appspot.com/o/%ED%99%94%EA%B3%A1%20%EC%97%AC%EC%9A%B0%EC%9E%A0%2Fsw2.jpg?alt=media&token=59da2e97-1134-46a5-b495-f4ccb3de3fef";
-        String sw3 = "https://firebasestorage.googleapis.com/v0/b/teamproject-39add.appspot.com/o/%ED%99%94%EA%B3%A1%20%EC%97%AC%EC%9A%B0%EC%9E%A0%2Fsw3.jpg?alt=media&token=e5b15cc4-c7d7-4977-bc6d-8e7e033947f3";
+        String st1 = "https://firebasestorage.googleapis.com/v0/b/teamproject-39add.appspot.com/o/%EC%B2%9C%ED%98%B8%20%EC%9B%94%2Fsp1.jpg?alt=media&token=eec8ea4c-31fa-4989-ada7-9a078135f4c1";
+        String st2 = "https://firebasestorage.googleapis.com/v0/b/teamproject-39add.appspot.com/o/%EC%B2%9C%ED%98%B8%20%EC%9B%94%2Fsp2.jpg?alt=media&token=0fb02ee3-9234-473d-8008-d303240da0e9";
+        String st3 = "https://firebasestorage.googleapis.com/v0/b/teamproject-39add.appspot.com/o/%EC%B2%9C%ED%98%B8%20%EC%9B%94%2Fsp3.jpg?alt=media&token=c947dedf-b517-4bc9-b439-7cb26cbb2a41";
+        String sp1 = "https://firebasestorage.googleapis.com/v0/b/teamproject-39add.appspot.com/o/%EC%B2%9C%ED%98%B8%20%EC%9B%94%2Fst1.jpg?alt=media&token=5b577071-66eb-4ab4-a95a-95c793ce0c1d";
+        String sp2 = "https://firebasestorage.googleapis.com/v0/b/teamproject-39add.appspot.com/o/%EC%B2%9C%ED%98%B8%20%EC%9B%94%2Fst2.jpg?alt=media&token=21813f0f-f647-4f99-8f91-0fba908bb6b6";
+        String sp3 = "https://firebasestorage.googleapis.com/v0/b/teamproject-39add.appspot.com/o/%EC%B2%9C%ED%98%B8%20%EC%9B%94%2Fst3.jpg?alt=media&token=9ac3cc24-5102-4311-851e-ea45f00924b8";
+        String sw2 = "https://firebasestorage.googleapis.com/v0/b/teamproject-39add.appspot.com/o/%EC%B2%9C%ED%98%B8%20%EC%9B%94%2Fsw1.jpg?alt=media&token=e77e29b4-ca45-4e53-9681-9227e56c6b19";
+        String sw1 = "https://firebasestorage.googleapis.com/v0/b/teamproject-39add.appspot.com/o/%EC%B2%9C%ED%98%B8%20%EC%9B%94%2Fsw2.jpg?alt=media&token=9d78c2e7-0edb-4572-8a6b-cac048afda01";
+        String sw3 = "https://firebasestorage.googleapis.com/v0/b/teamproject-39add.appspot.com/o/%EC%B2%9C%ED%98%B8%20%EC%9B%94%2Fsw3.jpg?alt=media&token=3f111af0-bae7-44dc-9d8f-3572d766a661";
 
 
 
