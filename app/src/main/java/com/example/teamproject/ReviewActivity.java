@@ -1,11 +1,18 @@
 package com.example.teamproject;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -23,10 +30,10 @@ public class ReviewActivity extends AppCompatActivity {
         setContentView(R.layout.activity_review);
         id = getIntent().getStringExtra("id");
 
-        getMyReviewData();
+        if(reviewList.size() == 0){
+            getMyReviewData();
+        }
 
-
-        Log.d("Test", reviewList.size()+"");
         myReviewAdapter = new ReviewAdapter(getApplicationContext(), reviewList);
         recyclerReview = findViewById(R.id.recyclerReview);
         recyclerReview.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
@@ -34,8 +41,10 @@ public class ReviewActivity extends AppCompatActivity {
     }
 
     private void getMyReviewData() {
-        for(int i = 1; i <= 5; i++){
-            reviewList.add(new Review("숙소이름"+i,4.5f,id+i, "리뷰내용 ex: 깨끗해요" ));
-        }
+        Review review = new Review();
+
+        reviewList = review.getData(id);
+
+
     }
 }

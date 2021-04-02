@@ -15,7 +15,7 @@
         android:id="@+id/btnRegister"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="사장님 숙소 등록하기"/>
+        android:text="내 가게 예약확인"/>
 
     <LinearLayout
         android:id="@+id/llMyReview"

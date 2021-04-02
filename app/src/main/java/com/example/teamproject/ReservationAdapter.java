@@ -13,9 +13,9 @@ import java.util.ArrayList;
 
 public class ReservationAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private Context context;
-    private ArrayList<ReservationConfirmData> list;
+    private ArrayList<Reservation> list;
 
-    public ReservationAdapter(Context context, ArrayList<ReservationConfirmData> list) {
+    public ReservationAdapter(Context context, ArrayList<Reservation> list) {
         this.context = context;
         this.list = list;
     }
@@ -44,7 +44,7 @@ public class ReservationAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     }
 
     public class BreakdownHolder extends RecyclerView.ViewHolder{
-        private TextView tvState, tvStoreName, tvRoomInfo, tvReservationDate;
+        private TextView tvStoreName, tvRoomInfo, tvReservationDate;
 
 
         public BreakdownHolder(@NonNull View itemView) {
@@ -57,7 +57,7 @@ public class ReservationAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         public void setText(int position){
 
             tvStoreName.setText(list.get(position).getStoreName());
-            tvRoomInfo.setText(list.get(position).getRoomInfo());
+            tvRoomInfo.setText(list.get(position).getRoomName());
             tvReservationDate.setText(list.get(position).getDate());
         }
 

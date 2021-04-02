@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
     private static ArrayList<StoreImage> image = new ArrayList<>();
     private static ArrayList<StorePrice> price = new ArrayList<>();
     private static ArrayList<StoreTime> time = new ArrayList<>();
+    private static ArrayList<User> ceo = new ArrayList<>();
     private static int position = 0;
 
     private long backButtonTime = 0;
@@ -302,6 +303,27 @@ public class MainActivity extends AppCompatActivity {
         StoreTime storeTime = time.get(position);
 
         return storeTime;
+    }
+
+    public static ArrayList<User> getCeo(){
+        DatabaseReference dbRf = FirebaseDatabase.getInstance().getReference("CEO");
+        dbRf.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot s : snapshot.getChildren()){
+                    User user = s.getValue(User.class);
+                    ceo.add(user);
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        return ceo;
     }
 
     @Override

@@ -89,10 +89,7 @@ public class FragHome extends Fragment {
         return view;
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-    }
+
 
     private void getMotelData() {
         db = FirebaseDatabase.getInstance();
@@ -170,6 +167,8 @@ public class FragHome extends Fragment {
                 }
             }
         }
+
+        Log.d("Test", list.size()+"여기");
 
         return list;
     }

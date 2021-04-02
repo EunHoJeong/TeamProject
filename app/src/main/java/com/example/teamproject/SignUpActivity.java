@@ -10,6 +10,7 @@ import android.os.SystemClock;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -31,13 +32,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class SignUpActivity extends AppCompatActivity {
-    private EditText edtSUID, edtSUPassword, edtSUPWCheck, edtSUEmailID, edtSUEmail, edtSUPhone;
+    private EditText edtSUID, edtSUPassword, edtSUPWCheck, edtSUEmailID, edtSUEmail, edtSUPhone, edtSUCeo;
     private Button btnOverlapCheckID, btnJoin;
     private TextView tvCheckID, tvCheckPassword, tvCheckPasswordCheck;
 
     private boolean idCheck = false;
     private boolean pwCheck = false;
     private boolean pwCheck2 = false;
+    private boolean userAndCeo = false;
 
 
     @Override
@@ -45,8 +47,14 @@ public class SignUpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
 
-        findViewByIdFunc();
+        userAndCeo = getIntent().getBooleanExtra("flag", false);
 
+        findViewByIdFunc();
+        if(userAndCeo){
+            edtSUCeo.setVisibility(View.VISIBLE);
+        }else{
+            edtSUCeo.setVisibility(View.INVISIBLE);
+        }
 
         eventHandlerFunc();
     }
@@ -177,21 +185,35 @@ public class SignUpActivity extends AppCompatActivity {
         btnJoin.setOnClickListener(v -> {
 
             if(idCheck && pwCheck && pwCheck2){
+
                 String id = edtSUID.getText().toString();
                 String password = edtSUPassword.getText().toString();
                 String email = edtSUEmailID.getText().toString() + "@" + edtSUEmail.getText().toString();
                 String phone = edtSUPhone.getText().toString();
 
                 DatabaseReference dbRf = FirebaseDatabase.getInstance().getReference();
+                DatabaseReference dbRf2 = FirebaseDatabase.getInstance().getReference();
 
                 HashMap<String, Object> childUpdates = new HashMap<>();
+
+
                 Map<String, Object> userMap = null;
 
                 User user = new User(id, password, email, phone);
                 userMap = user.toMap();
-                childUpdates.put("User/"+id, userMap);
+                if(userAndCeo){
+                    String storeName = edtSUCeo.getText().toString();
 
+
+                    HashMap<String, Object> childUpdates2 = new HashMap<>();
+                    childUpdates2.put("CEO/"+storeName, userMap);
+                    dbRf2.updateChildren(childUpdates2);
+
+                }
+
+                childUpdates.put("User/"+id, userMap);
                 dbRf.updateChildren(childUpdates);
+
 
                 Toast.makeText(this, "회원가입 성공", Toast.LENGTH_SHORT).show();
                 finish();
@@ -273,6 +295,7 @@ public class SignUpActivity extends AppCompatActivity {
         edtSUEmailID = findViewById(R.id.edtSUEmailID);
         edtSUEmail = findViewById(R.id.edtSUEmail);
         edtSUPhone = findViewById(R.id.edtSUPhone);
+        edtSUCeo = findViewById(R.id.edtSUCeo);
 
         btnOverlapCheckID = findViewById(R.id.btnOverlapCheckID);
         btnJoin = findViewById(R.id.btnJoin);

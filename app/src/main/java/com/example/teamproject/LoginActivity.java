@@ -23,19 +23,23 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+
 public class LoginActivity extends AppCompatActivity {
     private Button btnLogin;
     private EditText edtID, edtPassword;
-    private TextView tvSignUp;
+    private TextView tvSignUp, tvSignUpCeo;
     private User user;
+    private ArrayList<User> ceo = new ArrayList<>();
     private DatabaseReference dbRf;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        dbRf = FirebaseDatabase.getInstance().getReference("User");
 
+        ceo = MainActivity.getCeo();
+        dbRf = FirebaseDatabase.getInstance().getReference("User");
         findViewByIdFunc();
 
         eventHandlerFunc();
@@ -46,22 +50,29 @@ public class LoginActivity extends AppCompatActivity {
 
 
         btnLogin.setOnClickListener(view -> {
+            dbRf = FirebaseDatabase.getInstance().getReference("User");
+
             String id =edtID.getText().toString();
             String pw = edtPassword.getText().toString();
 
-
-
-
-
-
-
             try{
-                Log.d("Test", user.getId());
+
                 if(id.equals(user.getId()) && pw.equals(user.getPassword())){
                     FragMyMenu.setFlag(true);
-                    FragMyMenu.setId(id);
                     FragSteamed.setFlag(true);
+                    FragMyMenu.setId(id);
                     FragSteamed.setId(id);
+                    Steamed steamed = new Steamed();
+
+                    ArrayList<String>nameList = steamed.getData(id);
+                    FragSteamed.setList(nameList);
+                    for(User u : ceo){
+
+                        if(id.equals(u.getId())){
+                            FragMyMenu.setFlag2(true);
+                            break;
+                        }
+                    }
                     finish();
                 }else{
                     Toast.makeText(LoginActivity.this, "아이디와 비밀번호를 확인해주세요", Toast.LENGTH_SHORT).show();
@@ -88,23 +99,34 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                String id = edtID.getText().toString();
-                dbRf.child(id).addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        user = snapshot.getValue(User.class);
-                    }
+                try{
+                    String id = edtID.getText().toString();
+                    dbRf.child(id).addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            user = snapshot.getValue(User.class);
+                        }
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
 
-                    }
-                });
+                        }
+                    });
+                }catch (Exception e){
+
+                }
+
             }
         });
 
         tvSignUp.setOnClickListener(v -> {
             Intent intent = new Intent(this, SignUpActivity.class);
+            startActivity(intent);
+        });
+
+        tvSignUpCeo.setOnClickListener(view -> {
+            Intent intent = new Intent(this, SignUpActivity.class);
+            intent.putExtra("flag", true);
             startActivity(intent);
         });
 
@@ -117,6 +139,7 @@ public class LoginActivity extends AppCompatActivity {
         edtPassword = findViewById(R.id.edtPassword);
 
         tvSignUp = findViewById(R.id.tvSignUp);
+        tvSignUpCeo = findViewById(R.id.tvSignUpCeo);
     }
 
 

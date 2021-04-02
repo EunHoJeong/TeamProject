@@ -9,25 +9,21 @@ import android.os.Bundle;
 import java.util.ArrayList;
 
 public class ReservationActivity extends AppCompatActivity {
-    private static final int HOTEL = 0;
-    private static final int MOTEL = 1;
-    private static final int PENSION = 2;
 
     private RecyclerView recyclerReservation;
     private ReservationAdapter adapter;
 
-    private ArrayList<ReservationConfirmData> list = new ArrayList<>();
+    private ArrayList<Reservation> list = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reservation);
 
-        for(int i = 0; i < 10; i++){
-            String state = "퇴실완료"+i;
-            String storeName = "숙소이름"+i;
-            String roomInfo = "스탠다드룸"+i;
-            String date = "0000/00/00(월) 00:00 ~ 0000/00/00(화) 00:00"+i;
-            list.add(new ReservationConfirmData(state, storeName, roomInfo, date));
+        String id = getIntent().getStringExtra("id");
+
+        if(list.size() == 0){
+            Reservation reservation = new Reservation();
+            list = reservation.getData(id);
         }
 
         adapter = new ReservationAdapter(getApplicationContext(), list);

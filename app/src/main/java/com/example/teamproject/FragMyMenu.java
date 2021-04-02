@@ -25,6 +25,7 @@ public class FragMyMenu extends Fragment {
     private LinearLayout llReservationHotel, llMyReview;
 
     private static boolean flag = false;
+    private static boolean flag2 = false;
     private static String id;
 
     @Nullable
@@ -37,13 +38,24 @@ public class FragMyMenu extends Fragment {
 
         eventHandlerFunc();
 
+
+
         return view;
     }
 
     private void eventHandlerFunc() {
+
+
+
+
+
         btnLoginSignUp.setOnClickListener(view -> {
-            Intent intent = new Intent(getActivity(), LoginActivity.class);
-            startActivity(intent);
+            if (flag){
+                showDialogLogout();
+            }else{
+                Intent intent = new Intent(getActivity(), LoginActivity.class);
+                startActivity(intent);
+            }
         });
         btnRegister.setOnClickListener(v->{
             Intent intent=new Intent(getActivity(),RegisterActivity.class);
@@ -85,6 +97,23 @@ public class FragMyMenu extends Fragment {
         dlg.show();
     }
 
+    private void showDialogLogout(){
+        AlertDialog.Builder dlg = new AlertDialog.Builder(getActivity());
+        dlg.setMessage("로그아웃 하시겠습니까?");
+        dlg.setPositiveButton("아니요", null);
+        dlg.setNeutralButton("예", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                flag = false;
+                flag2 = false;
+                FragSteamed.setFlag(false);
+                btnLoginSignUp.setText("로그인 및 회원가입 하기");
+                btnRegister.setVisibility(View.INVISIBLE);
+            }
+        });
+        dlg.show();
+    }
+
     private void findViewByIdFunc(ViewGroup v) {
         llReservationHotel = v.findViewById(R.id.llReservationHotel);
 
@@ -98,16 +127,24 @@ public class FragMyMenu extends Fragment {
     public void onStart() {
         super.onStart();
         if (flag){
-            btnLoginSignUp.setText("환영합니다");
-            btnLoginSignUp.setClickable(false);
+            btnLoginSignUp.setText("로그아웃");
         }else{
             btnLoginSignUp.setText("로그인 및 회원가입 하기");
+        }
+
+        if(flag2){
+            btnRegister.setVisibility(View.VISIBLE);
+        }else{
+            btnRegister.setVisibility(View.INVISIBLE);
         }
 
     }
 
     public static void setFlag(boolean relay){
         flag = relay;
+    }
+    public static void setFlag2(boolean relay){
+        flag2 = relay;
     }
 
     public static void setId(String i){

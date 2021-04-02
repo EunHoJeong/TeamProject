@@ -1,7 +1,6 @@
 package com.example.teamproject;
 
 import android.os.SystemClock;
-import android.util.Log;
 
 import androidx.annotation.NonNull;
 
@@ -15,58 +14,49 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Review {
+public class Reservation {
     private String storeName;
-    private float grade;
-    private String id;
-    private String contents;
+    private String roomName;
+    private String date;
 
-    public Review(){};
+    public Reservation(){}
 
-    public Review(String storeName, float grade, String id, String contents) {
+    public Reservation(String storeName, String roomName, String date) {
         this.storeName = storeName;
-        this.grade = grade;
-        this.id = id;
-        this.contents = contents;
+        this.roomName = roomName;
+        this.date = date;
     }
 
     public String getStoreName() {
         return storeName;
     }
 
-    public float getGrade() {
-        return grade;
+    public String getRoomName() {
+        return roomName;
     }
 
-    public String getId() {
-        return id;
-    }
-
-    public String getContents() {
-        return contents;
+    public String getDate() {
+        return date;
     }
 
     public Map<String, Object> toMap() {
         HashMap<String, Object> result = new HashMap<>();
         result.put("storeName", storeName);
-        result.put("grade", grade);
-        result.put("id", id);
-        result.put("contents", contents);
+        result.put("roomName", roomName);
+        result.put("date", date);
+
 
         return result;
     }
 
-    public ArrayList<Review> getData(String id){
-        ArrayList<Review> reviewList = new ArrayList<>();
-        Review review = null;
-
-        DatabaseReference dbRf = FirebaseDatabase.getInstance().getReference("Review");
+    public ArrayList<Reservation> getData(String id){
+        ArrayList<Reservation> list = new ArrayList<>();
+        DatabaseReference dbRf = FirebaseDatabase.getInstance().getReference("Reservation");
         dbRf.child(id).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot s : snapshot.getChildren()){
-                    reviewList.add(s.getValue(Review.class));
-
+                    list.add(s.getValue(Reservation.class));
                 }
             }
 
@@ -78,7 +68,6 @@ public class Review {
 
         SystemClock.sleep(500);
 
-        return reviewList;
+        return list;
     }
-
 }
