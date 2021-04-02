@@ -160,24 +160,24 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="30dp">
+                    android:layout_height="40dp">
 
                     <Button
                         android:id="@+id/pscLocation"
-                        android:text="울산 KTX역까지 도보 3분"
+                        android:text="모텔(호텔) 위치"
                         android:textColor="#000000"
-                        android:layout_width="200dp"
+                        android:layout_width="150dp"
                         android:layout_height="40dp"
-                        android:layout_marginRight="3dp"
+                        android:layout_weight="1"
                         app:backgroundTint="#FFFFFF" />
 
                     <Button
                         android:id="@+id/pscCall"
                         android:text="전화하기"
                         android:textColor="#000000"
-                        android:layout_width="100dp"
+                        android:layout_width="150dp"
                         android:layout_height="40dp"
-                        android:layout_margin="3dp"
+                        android:layout_weight="1"
                         app:backgroundTint="#FFFFFF" />
                 </LinearLayout>
 
@@ -191,7 +191,7 @@
                         android:textColor="#000000"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
-                        android:layout_marginLeft="3dp"
+                        android:layout_margin="10dp"
                         app:backgroundTint="#FF5252" />
                 </LinearLayout>
 
@@ -384,6 +384,82 @@
                                 android:layout_margin="3dp"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"/>
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="180dp"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:text="후기"
+                                android:gravity="center"
+                                android:textColor="#000000"
+                                android:layout_width="100dp"
+                                android:layout_height="40dp"
+                                app:backgroundTint="#FFFFFF" />
+
+                            <Button
+                                android:id="@+id/pscViewAll"
+                                android:layout_width="100dp"
+                                android:layout_height="40dp"
+                                android:layout_marginLeft="180dp"
+                                android:text="전체보기"
+                                android:textColor="#2432AE"
+                                app:backgroundTint="#FFFFFF" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:orientation="horizontal"
+                            android:background="@drawable/layout_stroke">
+
+                            <RatingBar
+                                android:id="@+id/pscRatingBar"
+                                android:isIndicator="false"
+                                style="@style/Widget.AppCompat.RatingBar.Indicator"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+
+                            <TextView
+                                android:id="@+id/pscRatingBarScore"
+                                android:layout_width="wrap_content"
+                                android:layout_height="40dp"
+                                android:textSize="20dp"
+                                android:layout_marginLeft="10dp"
+                                android:gravity="center"
+                                android:text="별점 : "/>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
+
+                            <EditText
+                                android:id="@+id/pscWriteReview"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:hint="후기를 입력해 주세요." />
+
+                            <Button
+                                android:id="@+id/pscCompletedReview"
+                                android:backgroundTint="#FFAB40"
+                                android:textSize="15dp"
+                                android:text="작성 완료"
+                                android:layout_marginLeft="10dp"
+                                android:textColor="@color/black"
+                                android:layout_width="80dp"
+                                android:layout_height="match_parent"/>
                         </LinearLayout>
 
                     </LinearLayout>

@@ -32,9 +32,13 @@ public class RoomDetailsActivity extends AppCompatActivity {
 
     private DatabaseReference dbRf;
 
-    private String name;
+    private StoreInfo storeInfo;
+    private StorePrice storePrice;
+    private StoreTime storeTime;
 
+    private String name;
     private String img;
+    private String hotel;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -47,17 +51,25 @@ public class RoomDetailsActivity extends AppCompatActivity {
 
         eventHandlerFunc();
 
+        storeInfo = MainActivity.getStoreInfo(name);
+        storePrice = MainActivity.getStorePrice();
+        storeTime = MainActivity.getStoreTime();
+
         img = getIntent().getStringExtra("img");
 
         name = getIntent().getStringExtra("name");
+
+        hotel = getIntent().getStringExtra("hotel");
 
         Glide.with(getApplicationContext())
                 .load(img)
                 .into(pscViewPager);
 
         pscRoomName.setText(name);
+        pscHotelName.setText(hotel);
 
     }
+
 
     private void eventHandlerFunc() {
         pscBack.setOnClickListener(view -> {

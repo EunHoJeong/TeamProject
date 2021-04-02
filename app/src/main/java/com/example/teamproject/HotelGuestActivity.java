@@ -8,9 +8,11 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -42,8 +44,10 @@ public class HotelGuestActivity extends AppCompatActivity {
     private ImageView pscViewPager, pscStar, pscImg1, pscImg2, pscImg3;
     private TextView pscRoomSelection, pscRankName, pscGrade, pscMaxGrade, pscReview,
             pscLargeRoom1, pscLargeRoom2, pscLargeRoom3, pscLodgment1, pscLodgment2, pscLodgment3,
-            tvStTime1, tvSpTime1, tvSwTime1, tvStTime2, tvSpTime2, tvSwTime2;
-    private Button pscLocation, pscCall, pscReservation;
+            tvStTime1, tvSpTime1, tvSwTime1, tvStTime2, tvSpTime2, tvSwTime2, pscRatingBarScore;
+    private Button pscLocation, pscCall, pscReservation, pscViewAll, pscCompletedReview;
+    private EditText pscWriteReview;
+    private RatingBar pscRatingBar;
     private DatabaseReference dbRf;
 
     private StoreInfo storeInfo;
@@ -52,7 +56,8 @@ public class HotelGuestActivity extends AppCompatActivity {
     private StoreTime storeTime;
 
     private String name;
-    private String hotelName;
+    private String RoomName;
+    private String HotelName;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -154,16 +159,22 @@ public class HotelGuestActivity extends AppCompatActivity {
         });
 
         pscBack.setOnClickListener(view -> {
-            Intent intent = new Intent(this, HotelListActivity.class);
-            startActivity(intent);
+            finish();
+        });
+
+        pscCompletedReview.setOnClickListener(view -> {
+            String str = pscWriteReview.getText().toString();
+            Toast.makeText(HotelGuestActivity.this, str, Toast.LENGTH_SHORT).show();
         });
 
         pscStandard.setOnClickListener(view -> {
             Intent intent = new Intent(this, RoomDetailsActivity.class);
-            hotelName = "스탠다드";
-            intent.putExtra("name", hotelName);
+            RoomName = "스탠다드";
+            intent.putExtra("name", RoomName);
 
             intent.putExtra("img", storeInfo.getMainImage());
+
+            intent.putExtra("hotel", storeInfo.getStoreName());
 
             startActivity(intent);
 
@@ -171,22 +182,33 @@ public class HotelGuestActivity extends AppCompatActivity {
 
         pscSuperior.setOnClickListener(view -> {
             Intent intent = new Intent(this, RoomDetailsActivity.class);
-            hotelName = "슈페리얼";
-            intent.putExtra("name", hotelName);
+            RoomName = "슈페리얼";
+            intent.putExtra("name", RoomName);
 
             intent.putExtra("img", storeImage.getSp1());
+
+            intent.putExtra("hotel", storeInfo.getStoreName());
 
             startActivity(intent);
         });
 
         pscSweet.setOnClickListener(view -> {
             Intent intent = new Intent(this, RoomDetailsActivity.class);
-            hotelName = "스위트";
-            intent.putExtra("name", hotelName);
+            RoomName = "스위트";
+            intent.putExtra("name", RoomName);
 
             intent.putExtra("img", storeImage.getSw1());
 
+            intent.putExtra("hotel", storeInfo.getStoreName());
+
             startActivity(intent);
+        });
+
+        pscRatingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+                pscRatingBarScore.setText("별점 : " + rating);
+            }
         });
     }
 
@@ -222,6 +244,10 @@ public class HotelGuestActivity extends AppCompatActivity {
         pscStandard = findViewById(R.id.pscStandard);
         pscSuperior = findViewById(R.id.pscSuperior);
         pscSweet = findViewById(R.id.pscSweet);
-
+        pscViewAll = findViewById(R.id.pscViewAll);
+        pscCompletedReview = findViewById(R.id.pscCompletedReview);
+        pscWriteReview = findViewById(R.id.pscWriteReview);
+        pscRatingBar = findViewById(R.id.pscRatingBar);
+        pscRatingBarScore = findViewById(R.id.pscRatingBarScore);
     }
 }
