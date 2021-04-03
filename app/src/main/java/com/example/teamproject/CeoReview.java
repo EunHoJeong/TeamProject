@@ -1,6 +1,7 @@
 package com.example.teamproject;
 
 import android.os.SystemClock;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 
@@ -10,11 +11,12 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class CeoReview {
+public class CeoReview implements Serializable {
     private String id;
     private float grade;
     private String date;
@@ -57,7 +59,7 @@ public class CeoReview {
 
     public ArrayList<CeoReview> getData(String storeName){
         ArrayList<CeoReview> reviewList = new ArrayList<>();
-        CeoReview review = null;
+
 
         DatabaseReference dbRf = FirebaseDatabase.getInstance().getReference("CeoReview");
         dbRf.child(storeName).addListenerForSingleValueEvent(new ValueEventListener() {
@@ -65,6 +67,7 @@ public class CeoReview {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot s : snapshot.getChildren()){
                     reviewList.add(s.getValue(CeoReview.class));
+
 
                 }
             }
@@ -75,7 +78,6 @@ public class CeoReview {
             }
         });
 
-        SystemClock.sleep(500);
 
         return reviewList;
     }

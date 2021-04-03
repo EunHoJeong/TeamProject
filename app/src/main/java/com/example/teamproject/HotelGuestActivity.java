@@ -57,6 +57,8 @@ public class HotelGuestActivity extends AppCompatActivity {
     private RatingBar pscRatingBar;
     private DatabaseReference dbRf;
 
+    private ArrayList<CeoReview> list = new ArrayList<>();
+
     private StoreInfo storeInfo;
     private StoreImage storeImage;
     private StorePrice storePrice;
@@ -97,6 +99,9 @@ public class HotelGuestActivity extends AppCompatActivity {
         storeTime = MainActivity.getStoreTime();
         index = MainActivity.getIndex();
 
+        getReviewData();
+
+
         if(id != null){
             checkSteamed();
         }
@@ -104,6 +109,11 @@ public class HotelGuestActivity extends AppCompatActivity {
         setInfomation();
 
         SystemClock.sleep(500);
+    }
+
+    private void getReviewData() {
+        CeoReview ceoReview = new CeoReview();
+        list = ceoReview.getData(storeInfo.getStoreName());
     }
 
     private void checkSteamed() {
@@ -287,6 +297,14 @@ public class HotelGuestActivity extends AppCompatActivity {
             }
 
         });
+
+        pscViewAll.setOnClickListener(v -> {
+            Intent intent = new Intent(this, CeoReviewActivity.class);
+            intent.putExtra("list", list);
+            intent.putExtra("grade", storeInfo.getGrade());
+            intent.putExtra("review", storeInfo.getReview());
+            startActivity(intent);
+        });
     }
 
 
@@ -300,22 +318,28 @@ public class HotelGuestActivity extends AppCompatActivity {
 
         Review review = new Review(storeInfo.getStoreName(), grade, date.substring(0, 14), contents);
 
-
         map = review.toMap();
 
+        childUpdates.put("Review/"+id+"/"+date.substring(8, 17), map);
+
+        CeoReview ceoReview = new CeoReview(id ,grade, date.substring(0, 14), contents);
+
+        map = ceoReview.toMap();
+
         date = date.substring(8, 17);
-        childUpdates.put("Review/"+id+"/"+date, map);
+        childUpdates.put("CeoReview/"+storeInfo.getStoreName()+"/"+date, map);
 
         String storeName = storeInfo.getStoreName();
         String location = storeInfo.getLocation();
         String phone = storeInfo.getPhone();
+
         float in_Grade = (storeInfo.getGrade()*storeInfo.getGradeCount())+grade;
         int gradeCount = storeInfo.getGradeCount()+1;
-        Log.d("Test", in_Grade+"");
-        Log.d("Test", gradeCount+"");
+
         in_Grade = (float)(Math.round((in_Grade/(float)gradeCount)*10)/10.0);
-        Log.d("Test", in_Grade+"결과");
+
         int in_Review = storeInfo.getReview()+1;
+
         String location_tag = storeInfo.getLocation_tag();
         String mainImage = storeInfo.getMainImage();
         String st_Large = storeInfo.getSt_Large();
