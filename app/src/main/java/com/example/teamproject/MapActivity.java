@@ -32,7 +32,6 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         mapView.getMapAsync(this);
     }
 
-
     @Override
     public void onMapReady(@NonNull NaverMap naverMap) {
         UiSettings uiSettings = naverMap.getUiSettings();
