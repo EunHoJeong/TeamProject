@@ -87,7 +87,7 @@ public class HotelAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
             pscRocation.setText(infoList.get(position).getLocation());
             pscName.setText(infoList.get(position).getStoreName());
-            pscRatingBar.setNumStars(infoList.get(position).getGrade());
+            pscRatingBar.setRating(infoList.get(position).getGrade());
             pscPernight.setText("대실 "+infoList.get(position).getSt_Time1()+"시간 " + infoList.get(position).getSt_Large());
             pscRankPrice.setText("숙박 "+infoList.get(position).getSt_Time2()+"부터 " + infoList.get(position).getSt_Lodgment());
         }

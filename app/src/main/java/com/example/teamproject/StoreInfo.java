@@ -8,7 +8,7 @@ public class StoreInfo implements Serializable {
     private String storeName;
     private String location;
     private String phone;
-    private int grade;
+    private float grade;
     private int gradeCount;
     private int review;
     private String location_tag;
@@ -20,7 +20,7 @@ public class StoreInfo implements Serializable {
 
     public StoreInfo(){}
 
-    public StoreInfo(String storeName, String location, String phone, int grade, int gradeCount, int review, String location_tag, String mainImage, String st_Large, String st_Lodgment, String st_Time1, String st_Time2) {
+    public StoreInfo(String storeName, String location, String phone, float grade, int gradeCount, int review, String location_tag, String mainImage, String st_Large, String st_Lodgment, String st_Time1, String st_Time2) {
         this.storeName = storeName;
         this.location = location;
         this.phone = phone;
@@ -47,7 +47,7 @@ public class StoreInfo implements Serializable {
         return phone;
     }
 
-    public int getGrade() {
+    public float getGrade() {
         return grade;
     }
 
@@ -81,6 +81,18 @@ public class StoreInfo implements Serializable {
 
     public String getSt_Time2() {
         return st_Time2;
+    }
+
+    public void setGrade(float grade) {
+        this.grade = grade;
+    }
+
+    public void setGradeCount(int gradeCount) {
+        this.gradeCount = gradeCount;
+    }
+
+    public void setReview(int review) {
+        this.review = review;
     }
 
     public Map<String, Object> toMap(){

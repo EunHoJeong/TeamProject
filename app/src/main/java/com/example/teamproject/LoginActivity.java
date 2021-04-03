@@ -58,21 +58,9 @@ public class LoginActivity extends AppCompatActivity {
             try{
 
                 if(id.equals(user.getId()) && pw.equals(user.getPassword())){
-                    FragMyMenu.setFlag(true);
-                    FragSteamed.setFlag(true);
-                    FragMyMenu.setId(id);
-                    FragSteamed.setId(id);
-                    Steamed steamed = new Steamed();
 
-                    ArrayList<String>nameList = steamed.getData(id);
-                    FragSteamed.setList(nameList);
-                    for(User u : ceo){
+                    relayData(id);
 
-                        if(id.equals(u.getId())){
-                            FragMyMenu.setFlag2(true);
-                            break;
-                        }
-                    }
                     finish();
                 }else{
                     Toast.makeText(LoginActivity.this, "아이디와 비밀번호를 확인해주세요", Toast.LENGTH_SHORT).show();
@@ -130,6 +118,28 @@ public class LoginActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+    }
+
+    private void relayData(String id) {
+
+        FragMyMenu.setFlag(true);
+        FragSteamed.setFlag(true);
+        FragSteamed.setStart();
+        FragMyMenu.setId(id);
+        FragSteamed.setId(id);
+        HotelGuestActivity.setLogin(id, true);
+
+        Steamed steamed = new Steamed();
+
+        ArrayList<String>nameList = steamed.getData(id);
+        FragSteamed.setList(nameList);
+        for(User u : ceo){
+
+            if(id.equals(u.getId())){
+                FragMyMenu.setFlag2(true);
+                break;
+            }
+        }
     }
 
     private void findViewByIdFunc() {

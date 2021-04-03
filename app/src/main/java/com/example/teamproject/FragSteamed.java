@@ -31,7 +31,7 @@ import java.util.ArrayList;
 public class FragSteamed extends Fragment {
     private Button btnSteamedLogin;
     private RecyclerView recyclerSteamed;
-    private HotelAdapter adapter;
+    private static HotelAdapter adapter;
     private static ArrayList<StoreInfo> info = new ArrayList<>();
     private static ArrayList<String> nameList = new ArrayList<>();
 
@@ -39,6 +39,7 @@ public class FragSteamed extends Fragment {
     private DatabaseReference dbRf;
 
     private static boolean flag = false;
+    private static boolean start = false;
     private static String id;
 
     @Nullable
@@ -69,7 +70,6 @@ public class FragSteamed extends Fragment {
             btnSteamedLogin.setVisibility(View.VISIBLE);
             btnSteamedLogin.setClickable(true);
         }
-
         adapter = new HotelAdapter(getActivity(), info);
         recyclerSteamed.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
         recyclerSteamed.setAdapter(adapter);
@@ -95,6 +95,7 @@ public class FragSteamed extends Fragment {
 
 
         int size = nameList.size();
+
         String[] tag = new String[size];
         for(int i = 0; i < size; i++){
             tag[i] = nameList.get(i);
@@ -130,5 +131,48 @@ public class FragSteamed extends Fragment {
 
     public static void setList(ArrayList<String> list){
         nameList = list;
+    }
+
+    public static void insertList(String storeName){
+
+        info.add(MainActivity.getStoreInfo(storeName));
+    }
+
+    public static void deleteList(String storeName){
+        for(int i = 0; i < info.size(); i++){
+            if(storeName.equals(info.get(i).getStoreName())){
+                info.remove(i);
+            }
+        }
+    }
+
+    public static void clearNameList(){
+        nameList.clear();
+        info.clear();
+    }
+
+    public static void setStart(){
+        start = true;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        if(start){
+            start = false;
+            getData();
+
+            if(flag){
+                btnSteamedLogin.setVisibility(View.INVISIBLE);
+                btnSteamedLogin.setClickable(false);
+            }else{
+                btnSteamedLogin.setVisibility(View.VISIBLE);
+                btnSteamedLogin.setClickable(true);
+            }
+            adapter = new HotelAdapter(getActivity(), info);
+            recyclerSteamed.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
+            recyclerSteamed.setAdapter(adapter);
+        }
     }
 }

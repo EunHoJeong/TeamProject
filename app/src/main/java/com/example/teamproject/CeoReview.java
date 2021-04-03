@@ -1,7 +1,6 @@
 package com.example.teamproject;
 
 import android.os.SystemClock;
-import android.util.Log;
 
 import androidx.annotation.NonNull;
 
@@ -15,23 +14,23 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Review {
-    private String storeName;
+public class CeoReview {
+    private String id;
     private float grade;
     private String date;
     private String contents;
 
-    public Review(){};
+    public CeoReview(){};
 
-    public Review(String storeName, float grade, String date, String contents) {
-        this.storeName = storeName;
+    public CeoReview(String id, float grade, String date, String contents) {
+        this.id = id;
         this.grade = grade;
         this.date = date;
         this.contents = contents;
     }
 
-    public String getStoreName() {
-        return storeName;
+    public String getId() {
+        return id;
     }
 
     public float getGrade() {
@@ -48,7 +47,7 @@ public class Review {
 
     public Map<String, Object> toMap() {
         HashMap<String, Object> result = new HashMap<>();
-        result.put("storeName", storeName);
+        result.put("id", id);
         result.put("grade", grade);
         result.put("date", date);
         result.put("contents", contents);
@@ -56,16 +55,16 @@ public class Review {
         return result;
     }
 
-    public ArrayList<Review> getData(String id){
-        ArrayList<Review> reviewList = new ArrayList<>();
-        Review review = null;
+    public ArrayList<CeoReview> getData(String storeName){
+        ArrayList<CeoReview> reviewList = new ArrayList<>();
+        CeoReview review = null;
 
-        DatabaseReference dbRf = FirebaseDatabase.getInstance().getReference("Review");
-        dbRf.child(id).addListenerForSingleValueEvent(new ValueEventListener() {
+        DatabaseReference dbRf = FirebaseDatabase.getInstance().getReference("CeoReview");
+        dbRf.child(storeName).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot s : snapshot.getChildren()){
-                    reviewList.add(s.getValue(Review.class));
+                    reviewList.add(s.getValue(CeoReview.class));
 
                 }
             }
@@ -80,5 +79,4 @@ public class Review {
 
         return reviewList;
     }
-
 }

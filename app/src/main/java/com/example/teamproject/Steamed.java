@@ -16,19 +16,17 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Steamed {
-    private String id;
+
     private String storeName;
 
     public Steamed(){}
 
-    public Steamed(String id, String storeName) {
-        this.id = id;
+    public Steamed(String storeName) {
+
         this.storeName = storeName;
     }
 
-    public String getId() {
-        return id;
-    }
+
 
     public String getStoreName() {
         return storeName;
@@ -36,15 +34,15 @@ public class Steamed {
 
     public Map<String, Object> toMap() {
         HashMap<String, Object> result = new HashMap<>();
-        result.put("id", id);
-        result.put("storeName", storeName);
+
+        result.put(storeName, storeName);
 
         return result;
     }
 
     public ArrayList<String> getData(String id){
 
-        ArrayList<String> nameList = new ArrayList<>();
+        ArrayList<String> nameList2 = new ArrayList<>();
         FirebaseDatabase db = FirebaseDatabase.getInstance();
         DatabaseReference dbRf = db.getReference();
 
@@ -52,8 +50,8 @@ public class Steamed {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot s : snapshot.getChildren()){
-                    nameList.add(s.getKey());
-                    Log.d("Test", nameList.size()+"");
+                    nameList2.add(s.getKey());
+
 
                 }
             }
@@ -66,6 +64,6 @@ public class Steamed {
 
         SystemClock.sleep(500);
 
-        return nameList;
+        return nameList2;
     }
 }

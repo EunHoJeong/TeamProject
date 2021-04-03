@@ -40,9 +40,13 @@ public class MainActivity extends AppCompatActivity {
     private static ArrayList<StorePrice> price = new ArrayList<>();
     private static ArrayList<StoreTime> time = new ArrayList<>();
     private static ArrayList<User> ceo = new ArrayList<>();
+
     private static int position = 0;
 
     private long backButtonTime = 0;
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -325,6 +329,17 @@ public class MainActivity extends AppCompatActivity {
 
         return ceo;
     }
+
+
+    public static void changeList(StoreInfo newStoreInfo) {
+        info.remove(position);
+        info.add(position, newStoreInfo);
+    }
+
+    public static int getIndex() {
+        return position;
+    }
+
 
     @Override
     public void onBackPressed() {

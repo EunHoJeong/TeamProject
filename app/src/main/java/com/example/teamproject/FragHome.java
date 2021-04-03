@@ -44,9 +44,8 @@ public class FragHome extends Fragment {
     private ImageButton imgbtnPension;
     private ImageButton imgbtnTheme;
     private RecyclerView recyclerImage;
-    private ImageAdapter adapter;
-    private ArrayList<StoreInfo> info = new ArrayList<>();
-    private static ArrayList<StoreInfo> infoData = new ArrayList<>();
+    private static ImageAdapter adapter;
+    private static ArrayList<StoreInfo> info = new ArrayList<>();
 
     private FirebaseDatabase db;
     private DatabaseReference dbRf;
@@ -80,7 +79,6 @@ public class FragHome extends Fragment {
 
         eventHandlerFunc();
 
-        infoData = info;
 
 
 
@@ -147,7 +145,7 @@ public class FragHome extends Fragment {
 
     public static ArrayList<StoreInfo> getList(String[] tag){
         ArrayList<StoreInfo> list = new ArrayList<>();
-        for (StoreInfo s : infoData){
+        for (StoreInfo s : info){
             for(int i = 0; i < tag.length; i++){
                 if(tag[i].equals(s.getLocation_tag())){
                     list.add(s);
@@ -160,7 +158,7 @@ public class FragHome extends Fragment {
 
     public static ArrayList<StoreInfo> getSteamedList(String[] tag){
         ArrayList<StoreInfo> list = new ArrayList<>();
-        for (StoreInfo s : infoData){
+        for (StoreInfo s : info){
             for(int i = 0; i < tag.length; i++){
                 if(tag[i].equals(s.getStoreName())){
                     list.add(s);
@@ -168,8 +166,13 @@ public class FragHome extends Fragment {
             }
         }
 
-        Log.d("Test", list.size()+"여기");
 
         return list;
+    }
+
+    public static void changeInfoList(StoreInfo newStoreInfo, int index){
+        info.remove(index);
+        info.add(index, newStoreInfo);
+        adapter.notifyDataSetChanged();
     }
 }

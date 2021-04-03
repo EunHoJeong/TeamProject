@@ -1,5 +1,6 @@
 package com.example.teamproject;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -19,6 +20,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -26,6 +28,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import com.bumptech.glide.Glide;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -36,7 +39,11 @@ import org.w3c.dom.Text;
 
 import java.io.Serializable;
 import java.lang.reflect.Array;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 public class HotelGuestActivity extends AppCompatActivity {
     private LinearLayout pscStandard, pscSuperior, pscSweet;
@@ -58,6 +65,16 @@ public class HotelGuestActivity extends AppCompatActivity {
     private String name;
     private String RoomName;
     private String HotelName;
+    private String contents;
+    private static String id;
+
+    private int index = 0;
+
+    private float grade = 0;
+
+    private boolean like = false;
+    private static boolean login;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -66,20 +83,49 @@ public class HotelGuestActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
 
+
         name = getIntent().getStringExtra("name");
 
         findViewByIdFunc();
 
         eventHandlerFunc();
 
+
         storeInfo = MainActivity.getStoreInfo(name);
         storeImage = MainActivity.getStoreImage();
         storePrice = MainActivity.getStorePrice();
         storeTime = MainActivity.getStoreTime();
+        index = MainActivity.getIndex();
+
+        if(id != null){
+            checkSteamed();
+        }
 
         setInfomation();
 
         SystemClock.sleep(500);
+    }
+
+    private void checkSteamed() {
+        String name = storeInfo.getStoreName();
+        DatabaseReference dbRf = FirebaseDatabase.getInstance().getReference("Steamed");
+        dbRf.child(id).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot s : snapshot.getChildren()){
+                    if(s.getKey().equals(name)){
+                        pscLikeList.setImageResource(R.drawable.img_like);
+                        like = true;
+                        break;
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     private void setInfomation() {
@@ -119,25 +165,29 @@ public class HotelGuestActivity extends AppCompatActivity {
         pscLodgment3.setText(storePrice.getSw_Lodgment());
     }
 
-    private void getMotelData() {
-        dbRf = FirebaseDatabase.getInstance().getReference("storeInfo");
-
-        dbRf.child(name).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                storeInfo = snapshot.getValue(StoreInfo.class);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Log.d("Test", error.toString());
-            }
-        });
-
-        SystemClock.sleep(2000);
-    }
 
     private void eventHandlerFunc() {
+        pscLikeList.setOnClickListener(v -> {
+            if(login){
+                if(like){
+                    deleteSteamedDB();
+                    FragSteamed.deleteList(storeInfo.getStoreName());
+                    pscLikeList.setImageResource(R.drawable.img_unlike);
+                    like = false;
+                }else{
+                    insertSteamedDB();
+                    FragSteamed.insertList(storeInfo.getStoreName());
+                    pscLikeList.setImageResource(R.drawable.img_like);
+                    like = true;
+                    Toast.makeText(this, "찜 목록에 추가했습니다.", Toast.LENGTH_SHORT).show();
+                }
+            }else{
+                showLoginDialog();
+            }
+
+        });
+
+
         pscLocation.setOnClickListener(view -> {
             Intent intent = new Intent(this, MapActivity.class);
             startActivity(intent);
@@ -162,10 +212,7 @@ public class HotelGuestActivity extends AppCompatActivity {
             finish();
         });
 
-        pscCompletedReview.setOnClickListener(view -> {
-            String str = pscWriteReview.getText().toString();
-            Toast.makeText(HotelGuestActivity.this, str, Toast.LENGTH_SHORT).show();
-        });
+
 
         pscStandard.setOnClickListener(view -> {
             Intent intent = new Intent(this, RoomDetailsActivity.class);
@@ -220,8 +267,110 @@ public class HotelGuestActivity extends AppCompatActivity {
             @Override
             public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
                 pscRatingBarScore.setText("별점 : " + rating);
+                grade = rating;
             }
         });
+
+        pscCompletedReview.setOnClickListener(view -> {
+            if(login){
+                contents = pscWriteReview.getText().toString();
+                if(contents.trim().equals("")){
+                    Toast.makeText(HotelGuestActivity.this, "후기를 입력해주세요.", Toast.LENGTH_SHORT).show();
+                }else{
+                    insertReviewDB();
+                    pscRatingBar.setRating(0);
+                    pscRatingBarScore.setText("별점 : ");
+                    pscWriteReview.setText("");
+                }
+            }else{
+                showLoginDialog();
+            }
+
+        });
+    }
+
+
+
+    private void insertReviewDB() {
+        SimpleDateFormat sdf = new SimpleDateFormat("yy/MM/dd HH:mm:ss");
+        String date = sdf.format(new Date(System.currentTimeMillis()));
+        DatabaseReference insert = FirebaseDatabase.getInstance().getReference();
+        HashMap<String, Object> childUpdates= new HashMap<>();
+        Map<String, Object> map = null;
+
+        Review review = new Review(storeInfo.getStoreName(), grade, date.substring(0, 14), contents);
+
+
+        map = review.toMap();
+
+        date = date.substring(8, 17);
+        childUpdates.put("Review/"+id+"/"+date, map);
+
+        String storeName = storeInfo.getStoreName();
+        String location = storeInfo.getLocation();
+        String phone = storeInfo.getPhone();
+        float in_Grade = (storeInfo.getGrade()*storeInfo.getGradeCount())+grade;
+        int gradeCount = storeInfo.getGradeCount()+1;
+        Log.d("Test", in_Grade+"");
+        Log.d("Test", gradeCount+"");
+        in_Grade = (float)(Math.round((in_Grade/(float)gradeCount)*10)/10.0);
+        Log.d("Test", in_Grade+"결과");
+        int in_Review = storeInfo.getReview()+1;
+        String location_tag = storeInfo.getLocation_tag();
+        String mainImage = storeInfo.getMainImage();
+        String st_Large = storeInfo.getSt_Large();
+        String st_Lodgment = storeInfo.getSt_Lodgment();
+        String st_Time1 = storeInfo.getSt_Time1();
+        String st_Time2 = storeInfo.getSt_Time2();
+
+        StoreInfo info = new StoreInfo(storeName, location, phone, in_Grade, gradeCount, in_Review, location_tag, mainImage, st_Large, st_Lodgment, st_Time1, st_Time2);
+        map = info.toMap();
+        childUpdates.put("storeInfo/"+storeName, map);
+        insert.updateChildren(childUpdates);
+
+
+        storeInfo.setGrade(in_Grade);
+        storeInfo.setGradeCount(gradeCount);
+        storeInfo.setReview(in_Review);
+
+        pscGrade.setText(String.valueOf(storeInfo.getGrade()));
+        pscReview.setText("후기 "+storeInfo.getReview()+"개");
+
+        MainActivity.changeList(storeInfo);
+        FragHome.changeInfoList(storeInfo, index);
+
+    }
+
+    private void insertSteamedDB() {
+        DatabaseReference insert = FirebaseDatabase.getInstance().getReference();
+        HashMap<String, Object> childUpdates= new HashMap<>();
+        Map<String, Object> map = null;
+        Steamed steamed = new Steamed(storeInfo.getStoreName());
+
+        map = steamed.toMap();
+
+        childUpdates.put("Steamed/"+id+"/"+storeInfo.getStoreName(), map);
+        insert.updateChildren(childUpdates);
+    }
+
+    private void deleteSteamedDB() {
+        DatabaseReference delete = FirebaseDatabase.getInstance().getReference("Steamed");
+        delete.child(id).child(storeInfo.getStoreName()).removeValue();
+
+    }
+
+    private void showLoginDialog(){
+        AlertDialog.Builder dlg = new AlertDialog.Builder(HotelGuestActivity.this);
+        dlg.setMessage("로그인을 하시겠습니까?");
+        dlg.setPositiveButton("아니요", null);
+        dlg.setNeutralButton("예", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Intent intent = new Intent(HotelGuestActivity.this, LoginActivity.class);
+                startActivity(intent);
+            }
+        });
+        dlg.show();
     }
 
     private void findViewByIdFunc() {
@@ -261,5 +410,18 @@ public class HotelGuestActivity extends AppCompatActivity {
         pscWriteReview = findViewById(R.id.pscWriteReview);
         pscRatingBar = findViewById(R.id.pscRatingBar);
         pscRatingBarScore = findViewById(R.id.pscRatingBarScore);
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        if(id != null){
+            checkSteamed();
+        }
+    }
+
+    public static void setLogin(String i, boolean f){
+        id = i;
+        login = f;
     }
 }

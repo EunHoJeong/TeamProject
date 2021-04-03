@@ -106,7 +106,11 @@ public class FragMyMenu extends Fragment {
             public void onClick(DialogInterface dialogInterface, int i) {
                 flag = false;
                 flag2 = false;
+                id = null;
                 FragSteamed.setFlag(false);
+                FragSteamed.setId(null);
+                HotelGuestActivity.setLogin(null, false);
+                FragSteamed.clearNameList();
                 btnLoginSignUp.setText("로그인 및 회원가입 하기");
                 btnRegister.setVisibility(View.INVISIBLE);
             }
@@ -146,6 +150,10 @@ public class FragMyMenu extends Fragment {
     public static void setFlag2(boolean relay){
         flag2 = relay;
     }
+    public static boolean getLogin(){
+        return flag;
+    }
+    public static String getMyId() {return id;}
 
     public static void setId(String i){
         id = i;

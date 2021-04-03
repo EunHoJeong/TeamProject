@@ -62,7 +62,7 @@ public class ReviewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         public void setInfo(int position){
             tvReviewName.setText(list.get(position).getStoreName());
             myRatingBar.setRating(list.get(position).getGrade());
-            tvReviewId.setText(list.get(position).getId());
+            tvReviewId.setText(list.get(position).getDate());
             tvReviewContents.setText(list.get(position).getContents());
         }
     }
