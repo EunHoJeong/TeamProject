@@ -108,7 +108,9 @@ public class FragMyMenu extends Fragment {
                 flag2 = false;
                 id = null;
                 FragSteamed.setFlag(false);
+                RoomDetailsActivity.setLogin(false);
                 FragSteamed.setId(null);
+                RoomDetailsActivity.setId(null);
                 HotelGuestActivity.setLogin(null, false);
                 FragSteamed.clearNameList();
                 btnLoginSignUp.setText("로그인 및 회원가입 하기");

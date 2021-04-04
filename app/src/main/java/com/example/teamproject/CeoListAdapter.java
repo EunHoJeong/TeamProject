@@ -10,9 +10,9 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 public class CeoListAdapter extends BaseAdapter {
-    private ArrayList<CeoReservationData> list = new ArrayList<>();
+    private ArrayList<CeoReservation> list = new ArrayList<>();
 
-    public CeoListAdapter(ArrayList<CeoReservationData> list) {
+    public CeoListAdapter(ArrayList<CeoReservation> list) {
         this.list = list;
     }
 
@@ -44,7 +44,7 @@ public class CeoListAdapter extends BaseAdapter {
 
         tvCeoId.setText(list.get(position).getId());
         tvCeoRoomName.setText(list.get(position).getRoomName());
-        tvCeoRoomData.setText(list.get(position).getRoomData());
+        tvCeoRoomData.setText(list.get(position).getRoomType());
 
         return view;
     }

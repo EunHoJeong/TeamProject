@@ -30,18 +30,24 @@ public class CheckinOutActivity extends AppCompatActivity {
     static MenuItem menuItem;
     private DatePickerDialog.OnDateSetListener callbackMethod;
 
+    private static boolean flag = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
 
+
+
         checkintext = (TextView) findViewById(R.id.checkindate);
         checkouttext = (TextView) findViewById(R.id.checkoutdate);
-        checkout.add(Calendar.DATE,1);
+        if (!flag){
+            checkout.add(Calendar.DATE,1);
+            flag = true;
+        }
         checkintext.setText(formatter.format(checkin.getTime()));
         checkouttext.setText(formatter.format(checkout.getTime()));
         type = check.in;
-
         Button psc_select  = (Button)findViewById(R.id.psc_select);
         Button psc_checkin  = (Button)findViewById(R.id.psc_checkin);
         Button psc_checkout = (Button) findViewById(R.id.psc_checkout) ;
@@ -49,7 +55,7 @@ public class CheckinOutActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 type = check.in;
-                DatePickerDialog dialog = new DatePickerDialog(view.getContext(), listener, 2020, 11, 10);
+                DatePickerDialog dialog = new DatePickerDialog(view.getContext(), listener, checkin.get(checkin.YEAR), checkin.get(checkin.MONTH), checkin.get(checkin.DATE));
                 dialog.show();
             }
         });
@@ -57,13 +63,18 @@ public class CheckinOutActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 type = check.out;
-                DatePickerDialog dialog = new DatePickerDialog(view.getContext(), listener, 2020, 11, 10);
+                DatePickerDialog dialog = new DatePickerDialog(view.getContext(), listener, checkout.get(checkin.YEAR), checkout.get(checkin.MONTH), checkout.get(checkin.DATE));
                 dialog.show();
             }
         });
+        //checkout.add(Calendar.DATE,-1);
+
         psc_select.setOnClickListener(view -> {
-            Intent intent = new Intent(this, HotelListActivity.class);
-            startActivity(intent);
+            HotelGuestActivity.setDate(checkintext.getText().toString(), checkouttext.getText().toString());
+            RoomDetailsActivity.setDate(checkintext.getText().toString(), checkouttext.getText().toString());
+
+
+            finish();
         });
     }
 

@@ -39,8 +39,10 @@ import org.w3c.dom.Text;
 
 import java.io.Serializable;
 import java.lang.reflect.Array;
+import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -68,6 +70,8 @@ public class HotelGuestActivity extends AppCompatActivity {
     private String RoomName;
     private String HotelName;
     private String contents;
+    private static String check_In;
+    private static String check_Out;
     private static String id;
 
     private int index = 0;
@@ -85,6 +89,14 @@ public class HotelGuestActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
 
+        Format formatter = new SimpleDateFormat("yyyy-MM-dd");
+        Calendar cal = Calendar.getInstance();
+
+        check_In = formatter.format(cal.getTime());
+        cal.add(Calendar.DATE, 1);
+        check_Out = formatter.format(cal.getTime());
+
+        RoomDetailsActivity.setDate(check_In, check_Out);
 
         name = getIntent().getStringExtra("name");
 
@@ -227,6 +239,8 @@ public class HotelGuestActivity extends AppCompatActivity {
         pscStandard.setOnClickListener(view -> {
             Intent intent = new Intent(this, RoomDetailsActivity.class);
             RoomName = "스탠다드";
+            intent.putExtra("storeName", storeInfo.getStoreName());
+
             intent.putExtra("name", RoomName);
 
             intent.putExtra("img", storeInfo.getMainImage());
@@ -237,6 +251,10 @@ public class HotelGuestActivity extends AppCompatActivity {
 
             intent.putExtra("lodgment", storeInfo.getSt_Lodgment());
 
+            intent.putExtra("check_In", check_In);
+            intent.putExtra("check_Out", check_Out);
+
+
             startActivity(intent);
 
         });
@@ -244,6 +262,8 @@ public class HotelGuestActivity extends AppCompatActivity {
         pscSuperior.setOnClickListener(view -> {
             Intent intent = new Intent(this, RoomDetailsActivity.class);
             RoomName = "슈페리얼";
+            intent.putExtra("storeName", storeInfo.getStoreName());
+
             intent.putExtra("name", RoomName);
 
             intent.putExtra("img", storeImage.getSp1());
@@ -254,12 +274,18 @@ public class HotelGuestActivity extends AppCompatActivity {
 
             intent.putExtra("lodgment", storePrice.getSp_Lodgment());
 
+            intent.putExtra("check_in", check_In);
+            intent.putExtra("check_out", check_Out);
+
+
             startActivity(intent);
         });
 
         pscSweet.setOnClickListener(view -> {
             Intent intent = new Intent(this, RoomDetailsActivity.class);
             RoomName = "스위트";
+            intent.putExtra("storeName", storeInfo.getStoreName());
+
             intent.putExtra("name", RoomName);
 
             intent.putExtra("img", storeImage.getSw1());
@@ -269,6 +295,9 @@ public class HotelGuestActivity extends AppCompatActivity {
             intent.putExtra("largeRoom", storePrice.getSw_Large());
 
             intent.putExtra("lodgment", storePrice.getSw_Lodgment());
+
+            intent.putExtra("check_in", check_In);
+            intent.putExtra("check_out", check_Out);
 
             startActivity(intent);
         });
@@ -447,5 +476,10 @@ public class HotelGuestActivity extends AppCompatActivity {
     public static void setLogin(String i, boolean f){
         id = i;
         login = f;
+    }
+
+    public static void setDate(String in, String out){
+        check_In = in;
+        check_Out = out;
     }
 }

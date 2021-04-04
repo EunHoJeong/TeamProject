@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.SystemClock;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -19,6 +20,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -40,6 +43,9 @@ public class MainActivity extends AppCompatActivity {
     private static ArrayList<StorePrice> price = new ArrayList<>();
     private static ArrayList<StoreTime> time = new ArrayList<>();
     private static ArrayList<User> ceo = new ArrayList<>();
+    private static ArrayList<String> storeName = new ArrayList<>();
+    private static ArrayList<CeoReservation> crvList = new ArrayList<>();
+
 
     private static int position = 0;
 
@@ -309,14 +315,35 @@ public class MainActivity extends AppCompatActivity {
         return storeTime;
     }
 
-    public static ArrayList<User> getCeo(){
-        DatabaseReference dbRf = FirebaseDatabase.getInstance().getReference("CEO");
-        dbRf.addListenerForSingleValueEvent(new ValueEventListener() {
+
+
+
+
+
+    public static void changeList(StoreInfo newStoreInfo) {
+        info.remove(position);
+        info.add(position, newStoreInfo);
+    }
+
+    public static int getIndex() {
+        return position;
+    }
+
+
+    public static void getCRVData(String storeName) {
+        DatabaseReference dbRf = FirebaseDatabase.getInstance().getReference("CeoReservation");
+        Date date = new Date(System.currentTimeMillis());
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
+        CeoReservation crv = null;
+
+
+        dbRf.child(sdf.format(date.getTime())).child(storeName).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot s : snapshot.getChildren()){
-                    User user = s.getValue(User.class);
-                    ceo.add(user);
+                    CeoReservation crv = s.getValue(CeoReservation.class);
+                    crvList.add(crv);
                 }
 
             }
@@ -327,17 +354,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        return ceo;
-    }
+        RegisterActivity.setList(crvList);
 
-
-    public static void changeList(StoreInfo newStoreInfo) {
-        info.remove(position);
-        info.add(position, newStoreInfo);
-    }
-
-    public static int getIndex() {
-        return position;
     }
 
 

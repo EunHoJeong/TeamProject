@@ -31,6 +31,7 @@ public class LoginActivity extends AppCompatActivity {
     private TextView tvSignUp, tvSignUpCeo;
     private User user;
     private ArrayList<User> ceo = new ArrayList<>();
+    private ArrayList<String> storeName = new ArrayList<>();
     private DatabaseReference dbRf;
 
     @Override
@@ -38,7 +39,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        ceo = MainActivity.getCeo();
+
         dbRf = FirebaseDatabase.getInstance().getReference("User");
         findViewByIdFunc();
 
@@ -100,6 +101,26 @@ public class LoginActivity extends AppCompatActivity {
 
                         }
                     });
+
+                    DatabaseReference dbRf = FirebaseDatabase.getInstance().getReference("CEO");
+                    dbRf.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            for(DataSnapshot s : snapshot.getChildren()){
+                                User user = s.getValue(User.class);
+                                ceo.add(user);
+                                storeName.add(s.getKey());
+                            }
+
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+
+
                 }catch (Exception e){
 
                 }
@@ -124,19 +145,22 @@ public class LoginActivity extends AppCompatActivity {
 
         FragMyMenu.setFlag(true);
         FragSteamed.setFlag(true);
+        RoomDetailsActivity.setLogin(true);
         FragSteamed.setStart();
         FragMyMenu.setId(id);
         FragSteamed.setId(id);
         HotelGuestActivity.setLogin(id, true);
+        RoomDetailsActivity.setId(id);
 
         Steamed steamed = new Steamed();
 
         ArrayList<String>nameList = steamed.getData(id);
         FragSteamed.setList(nameList);
-        for(User u : ceo){
+        for(int i = 0; i < ceo.size(); i++){
 
-            if(id.equals(u.getId())){
+            if(id.equals(ceo.get(i).getId())){
                 FragMyMenu.setFlag2(true);
+                MainActivity.getCRVData(storeName.get(i));
                 break;
             }
         }
