@@ -48,8 +48,9 @@
                 android:id="@+id/btnOverlapCheckID"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
-                android:background="@drawable/edt_gray"
-                android:text="중복확인"/>
+                android:background="@drawable/round_border"
+                android:text="중복확인"
+                app:backgroundTint="#FF4081" />
 
         </LinearLayout>
 
@@ -195,10 +196,12 @@
 
         <Button
             android:id="@+id/btnJoin"
-            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:text="가입하기"/>
+            android:layout_marginTop="10dp"
+            android:background="@drawable/round_border"
+            android:text="가입하기"
+            app:backgroundTint="#FF4081" />
 
     </LinearLayout>
 

@@ -6,14 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-
-
    <FrameLayout
        android:id="@+id/frameMain"
        android:layout_above="@+id/bottomNavi"
        android:layout_width="match_parent"
        android:layout_height="match_parent"/>
 
+   <ImageView
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:layout_marginTop="150dp"
+       android:src="@drawable/hani"/>
 
    <com.google.android.material.bottomnavigation.BottomNavigationView
        android:id="@+id/bottomNavi"
@@ -25,9 +28,6 @@
        app:itemTextColor="@drawable/item_text_color"
        android:background="?android:attr/windowBackground"
       app:menu="@menu/main_menu"/>
-
-
-
 
 
 </RelativeLayout>

@@ -9,31 +9,53 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="580dp"
         android:gravity="center"
         android:orientation="vertical">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:orientation="vertical"
+            android:background="#FFFFFF">
+
+            <ImageView
+                android:layout_width="250dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:src="@drawable/yanolja"/>
+
+        </LinearLayout>
+
+
         <EditText
             android:id="@+id/edtID"
+            android:layout_marginTop="20dp"
             android:layout_width="300dp"
             android:layout_height="40dp"
-            android:hint="아이디" />
+            android:hint=" 아이디"
+            android:drawableStart="@drawable/ic_baseline_person_24"
+            android:drawableLeft="@drawable/ic_baseline_person_24" />
 
 
         <EditText
             android:id="@+id/edtPassword"
             android:layout_width="300dp"
             android:layout_height="40dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:inputType="textPassword"
-            android:hint="비밀번호" />
+            android:hint=" 비밀번호"
+            android:drawableStart="@drawable/ic_baseline_lock_24"
+            android:drawableLeft="@drawable/ic_baseline_lock_24"/>
 
         <Button
             android:id="@+id/btnLogin"
             android:layout_width="300dp"
             android:layout_height="50dp"
-            android:layout_marginTop="10dp"
-            android:text="로그인" />
+            android:layout_marginTop="20dp"
+            android:background="@drawable/round_border"
+            android:text="로그인"
+            app:backgroundTint="#FF4081" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -58,7 +80,7 @@
             android:id="@+id/tvSignUpCeo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="20dp"
             android:textSize="20sp"
             android:text="사장 회원가입" />
 
