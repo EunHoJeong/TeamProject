@@ -189,13 +189,13 @@
 
                     <Button
                         android:id="@+id/pscReservation"
-                        android:text="숙소 예약"
-                        android:textColor="#FFFFFF"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
                         android:layout_margin="10dp"
                         android:background="@drawable/round_border"
-                        app:backgroundTint="#FF5252" />
+                        android:text="숙소 예약"
+                        android:textColor="#FFFFFF"
+                        app:backgroundTint="#FF4081" />
                 </LinearLayout>
 
                 <LinearLayout

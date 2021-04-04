@@ -70,14 +70,15 @@
                 android:textSize="20sp"
                 android:gravity="center"
                 android:text="0000-00-00"/>
+
             <Button
                 android:id="@+id/psc_checkin"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
-                android:backgroundTint="#FF5252"
+                android:text="선택"
                 android:textSize="20sp"
-                android:text="선택"/>
+                app:backgroundTint="#FF4081" />
         </LinearLayout>
 
         <LinearLayout
@@ -106,7 +107,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
-                android:backgroundTint="#FF5252"
+                android:backgroundTint="#FF4081"
                 android:textSize="20sp"
                 android:text="선택"/>
         </LinearLayout>
@@ -115,11 +116,12 @@
 
     <Button
         android:id="@+id/psc_select"
-        android:text="선택 완료"
-        android:textSize="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:background="@drawable/round_border"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:text="선택 완료"
+        android:textSize="20dp"
+        app:backgroundTint="#FF4081" />
 
 </LinearLayout>

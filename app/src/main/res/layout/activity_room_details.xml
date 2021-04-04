@@ -132,10 +132,9 @@
                         android:layout_height="45dp"
                         android:layout_margin="10dp"
                         android:background="@drawable/round_border"
-                        android:backgroundTint="#FF5252"
                         android:text="숙소 예약"
                         android:textColor="#FFFFFF"
-                        app:backgroundTint="#FF5252" />
+                        app:backgroundTint="#FF4081" />
                 </LinearLayout>
 
                 <LinearLayout
