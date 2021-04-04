@@ -29,5 +29,4 @@
        android:background="?android:attr/windowBackground"
       app:menu="@menu/main_menu"/>
 
-
 </RelativeLayout>
