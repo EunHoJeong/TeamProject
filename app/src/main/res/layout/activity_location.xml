@@ -14,31 +14,39 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:orientation="vertical"
+            android:orientation="horizontal"
             android:padding="3dp">
+
+            <ImageButton
+                android:id="@+id/pscBack"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_margin="5dp"
+                android:background="@color/white"
+                android:backgroundTint="@color/white"
+                android:padding="5dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/backbutton" />
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:background="@color/white"
                 android:backgroundTint="@color/white"
                 android:text="지역선택"
+                android:layout_margin="5dp"
                 android:textColor="@color/black"
                 android:textSize="25dp" />
-
-
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="3dp"
+            android:padding="8dp"
             android:orientation="horizontal">
 
             <TextView
@@ -58,13 +66,12 @@
                 android:id="@+id/tvLocation2"
                 android:gravity="center"
                 android:text="서초/신사/방배 " />
-
-
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="3dp"
+            android:padding="8dp"
             android:orientation="horizontal">
 
             <TextView
@@ -84,13 +91,12 @@
                 android:gravity="center"
                 android:textColor="@color/black"
                 android:text="영등포/여의도" />
-
-
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="3dp"
+            android:padding="8dp"
             android:orientation="horizontal">
 
             <TextView
@@ -110,13 +116,12 @@
                 android:textColor="@color/black"
                 android:gravity="center"
                 android:text="천호/길동/둔촌" />
-
-
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="3dp"
+            android:padding="8dp"
             android:orientation="horizontal">
 
             <TextView
@@ -136,13 +141,12 @@
                 android:id="@+id/tvLocation8"
                 android:gravity="center"
                 android:text="구로/금천/오류/신도림" />
-
-
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="3dp"
+            android:padding="8dp"
             android:orientation="horizontal">
 
             <TextView
@@ -162,13 +166,12 @@
                 android:textColor="@color/black"
                 android:gravity="center"
                 android:text="연신내/불광/응암" />
-
-
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="3dp"
+            android:padding="8dp"
             android:orientation="horizontal">
 
             <TextView
@@ -188,13 +191,12 @@
                 android:id="@+id/tvLocation12"
                 android:textColor="@color/black"
                 android:text="성신여대/성북/월곡" />
-
-
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="3dp"
+            android:padding="8dp"
             android:orientation="horizontal">
 
             <TextView
@@ -213,14 +215,13 @@
                 android:id="@+id/tvLocation14"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="동대문/을지로/충무로/신당/약수" />
-
-
+                android:text="동대문/을지로/충무로/신당" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="3dp"
+            android:padding="8dp"
             android:orientation="horizontal">
 
             <TextView
@@ -240,12 +241,11 @@
                 android:textColor="@color/black"
                 android:gravity="center"
                 android:text="장안동/답십리" />
-
-
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:padding="3dp"
+            android:padding="8dp"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
@@ -266,13 +266,12 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="왕십리/성수/금호" />
-
-
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="3dp"
+            android:padding="8dp"
             android:orientation="horizontal">
 
             <TextView
@@ -292,49 +291,44 @@
                 android:id="@+id/tvLocation20"
                 android:textColor="@color/black"
                 android:text="상봉/중랑/면목" />
+        </LinearLayout>
 
-
-        </LinearLayout><LinearLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="3dp"
+            android:padding="8dp"
             android:orientation="horizontal">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:gravity="center"
                 android:id="@+id/tvLocation21"
                 android:textColor="@color/black"
-                android:gravity="left"
-                android:text="             태릉/노원/도봉/창동" />
+                android:text="태릉/노원/도봉/창동" />
 
-
-
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/black"/>
 
         </LinearLayout>
-
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:layout_margin="5dp"
-            android:gravity="center"
-            android:padding="5dp">
+            android:layout_height="match_parent">
 
-            <androidx.viewpager.widget.ViewPager
-                android:id="@+id/pager"
-                android:layout_width="250dp"
-                android:layout_height="250dp">
-
-
-            </androidx.viewpager.widget.ViewPager>
+            <pl.droidsonroids.gif.GifImageView
+                android:id="@+id/hani"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/hanigg"/>
 
         </LinearLayout>
 
-
     </LinearLayout>
-
 
 </ScrollView>

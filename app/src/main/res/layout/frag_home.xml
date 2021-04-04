@@ -14,8 +14,6 @@
         app:iconifiedByDefault="false"
         app:queryHint="지역, 숙소명으로 찾아보세요"/>
 
-
-
     <LinearLayout
         android:id="@+id/menu"
         android:layout_below="@id/mainSearchView"
@@ -132,6 +130,5 @@
         android:layout_below="@id/tvRecommendMotel"
         android:layout_width="match_parent"
         android:layout_height="300dp"/>
-
 
 </RelativeLayout>

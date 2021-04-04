@@ -38,9 +38,6 @@ public class RoomDetailsActivity extends AppCompatActivity {
     private Button pscReservation, pscRoomSelection;
     private ImageView pscViewPager;
 
-
-
-
     private String storeName;
     private String name;
     private String img;

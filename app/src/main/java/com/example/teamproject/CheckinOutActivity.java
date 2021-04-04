@@ -7,6 +7,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,7 +27,7 @@ public class CheckinOutActivity extends AppCompatActivity {
     private TextView checkouttext;
     private enum check{in, out};
     private check type;
-    private Button psc_select;
+    private ImageButton pscBack;
 
     static MenuItem menuItem;
     private DatePickerDialog.OnDateSetListener callbackMethod;
@@ -38,7 +40,7 @@ public class CheckinOutActivity extends AppCompatActivity {
         setContentView(R.layout.activity_calendar);
 
 
-
+        pscBack = (ImageButton) findViewById(R.id.pscBack);
         checkintext = (TextView) findViewById(R.id.checkindate);
         checkouttext = (TextView) findViewById(R.id.checkoutdate);
         if (!flag){
@@ -74,6 +76,10 @@ public class CheckinOutActivity extends AppCompatActivity {
             RoomDetailsActivity.setDate(checkintext.getText().toString(), checkouttext.getText().toString());
 
 
+            finish();
+        });
+
+        pscBack.setOnClickListener(v -> {
             finish();
         });
     }

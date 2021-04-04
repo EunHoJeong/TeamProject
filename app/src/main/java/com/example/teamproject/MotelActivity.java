@@ -3,6 +3,8 @@ package com.example.teamproject;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -13,10 +15,11 @@ import androidx.viewpager.widget.ViewPager;
 import java.util.ArrayList;
 
 public class MotelActivity extends AppCompatActivity {
-    ViewPager pager;
     //텍스트뷰 순서대로 아이디값
     private TextView tvLocation1,tvLocation2,tvLocation3,tvLocation4,tvLocation5,tvLocation6,tvLocation7,tvLocation8,tvLocation9,tvLocation10,tvLocation11,
             tvLocation12,tvLocation13,tvLocation14,tvLocation15,tvLocation16,tvLocation17,tvLocation18,tvLocation19,tvLocation20,tvLocation21;
+
+    private ImageButton pscBack;
 
     private static ArrayList<StoreInfo> list;
 
@@ -28,9 +31,6 @@ public class MotelActivity extends AppCompatActivity {
         actionBar.hide();
 
         findViewByIdFunc();
-
-        CustomAdapter customAdapter = new CustomAdapter(getLayoutInflater());
-        pager.setAdapter(customAdapter);
 
         tvLocation1.setOnClickListener(v->{
             Intent intent = new Intent(getApplicationContext(), HotelListActivity.class);
@@ -164,7 +164,7 @@ public class MotelActivity extends AppCompatActivity {
         tvLocation14.setOnClickListener(v->{
             Intent intent = new Intent(getApplicationContext(), HotelListActivity.class);
 
-            String[] tag = new String[]{"동대문","을지로","충무로","신당","약수"};
+            String[] tag = new String[]{"동대문","을지로","충무로","신당"};
             list = FragHome.getList(tag);
             intent.putExtra("list", list);
 
@@ -240,10 +240,13 @@ public class MotelActivity extends AppCompatActivity {
 
             startActivity(intent);
         });
+
+        pscBack.setOnClickListener(v -> {
+            finish();
+        });
     }
 
     public void findViewByIdFunc() {
-        pager = findViewById(R.id.pager);
         tvLocation1 = findViewById(R.id.tvLocation1);
         tvLocation2 = findViewById(R.id.tvLocation2);
         tvLocation3 = findViewById(R.id.tvLocation3);
@@ -265,6 +268,6 @@ public class MotelActivity extends AppCompatActivity {
         tvLocation19 = findViewById(R.id.tvLocation19);
         tvLocation20 = findViewById(R.id.tvLocation20);
         tvLocation21 = findViewById(R.id.tvLocation21);
-
+        pscBack = findViewById(R.id.pscBack);
     }
 }

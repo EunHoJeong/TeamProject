@@ -21,6 +21,7 @@
         android:orientation="horizontal">
 
         <ImageButton
+            android:id="@+id/pscBack"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_margin="5dp"
@@ -47,6 +48,7 @@
         android:id="@+id/period"
         android:layout_width="match_parent"
         android:layout_height="100dp"
+        android:layout_marginTop="50dp"
         android:orientation="vertical">
 
         <LinearLayout
@@ -118,10 +120,16 @@
         android:id="@+id/psc_select"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="40dp"
         android:background="@drawable/round_border"
         android:text="선택 완료"
         android:textSize="20dp"
         app:backgroundTint="#FF4081" />
+
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/hani"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/hanirr"/>
 
 </LinearLayout>

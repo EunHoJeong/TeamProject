@@ -69,7 +69,7 @@
 
         <Button
             android:id="@+id/pscLocation"
-            android:text="천안 동남구"
+            android:text="숙소 위치"
             android:textColor="#FFFFFF"
             android:layout_width="match_parent"
             android:layout_height="40dp"
@@ -80,7 +80,7 @@
 
         <Button
             android:id="@+id/pscDate"
-            android:text="모텔 예약"
+            android:text="숙소 예약"
             android:textColor="#FFFFFF"
             android:layout_width="match_parent"
             android:layout_height="40dp"
@@ -110,7 +110,8 @@
         android:layout_gravity="center"
         android:layout_margin="5dp"
         android:gravity="center"
-        android:padding="5dp">
+        android:padding="5dp"
+        android:orientation="vertical">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerLocation"
@@ -118,6 +119,5 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
     </LinearLayout>
-
 
 </LinearLayout>

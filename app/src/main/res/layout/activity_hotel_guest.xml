@@ -114,6 +114,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="울산 진장동 보스턴"
+                    android:layout_marginLeft="10dp"
                     android:textColor="@color/black"
                     android:textSize="20sp"/>
 
@@ -124,6 +125,7 @@
                     <ImageView
                         android:id="@+id/pscStar"
                         android:layout_gravity="center"
+                        android:layout_marginLeft="10dp"
                         android:layout_marginRight="5dp"
                         android:layout_below="@id/tvRankName"
                         android:layout_width="17dp"
@@ -465,6 +467,16 @@
                                 android:layout_height="match_parent"/>
                         </LinearLayout>
 
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="200dp"
+                            android:src="@drawable/hani" />
                     </LinearLayout>
 
                 </LinearLayout>
