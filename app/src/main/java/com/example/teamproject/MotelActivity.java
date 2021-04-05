@@ -40,6 +40,7 @@ public class MotelActivity extends AppCompatActivity {
             intent.putExtra("list", list);
 
             startActivity(intent);
+            finish();
         });
 
         tvLocation2.setOnClickListener(v->{
@@ -50,6 +51,7 @@ public class MotelActivity extends AppCompatActivity {
             intent.putExtra("list", list);
 
             startActivity(intent);
+            finish();
         });
 
         tvLocation3.setOnClickListener(v->{
@@ -60,6 +62,7 @@ public class MotelActivity extends AppCompatActivity {
             intent.putExtra("list", list);
 
             startActivity(intent);
+            finish();
         });
 
         tvLocation4.setOnClickListener(v->{
@@ -70,6 +73,7 @@ public class MotelActivity extends AppCompatActivity {
             intent.putExtra("list", list);
 
             startActivity(intent);
+            finish();
         });
 
         tvLocation5.setOnClickListener(v->{
@@ -80,6 +84,7 @@ public class MotelActivity extends AppCompatActivity {
             intent.putExtra("list", list);
 
             startActivity(intent);
+            finish();
         });
 
         tvLocation6.setOnClickListener(v->{
@@ -90,6 +95,7 @@ public class MotelActivity extends AppCompatActivity {
             intent.putExtra("list", list);
 
             startActivity(intent);
+            finish();
         });
 
         tvLocation7.setOnClickListener(v->{
@@ -100,6 +106,7 @@ public class MotelActivity extends AppCompatActivity {
             intent.putExtra("list", list);
 
             startActivity(intent);
+            finish();
         });
 
         tvLocation8.setOnClickListener(v->{
@@ -109,6 +116,7 @@ public class MotelActivity extends AppCompatActivity {
             intent.putExtra("list", list);
 
             startActivity(intent);
+            finish();
         });
 
         tvLocation9.setOnClickListener(v->{
@@ -119,6 +127,7 @@ public class MotelActivity extends AppCompatActivity {
             intent.putExtra("list", list);
 
             startActivity(intent);
+            finish();
         });
 
         tvLocation10.setOnClickListener(v->{
@@ -129,6 +138,7 @@ public class MotelActivity extends AppCompatActivity {
             intent.putExtra("list", list);
 
             startActivity(intent);
+            finish();
         });
 
         tvLocation11.setOnClickListener(v->{
@@ -139,6 +149,7 @@ public class MotelActivity extends AppCompatActivity {
             intent.putExtra("list", list);
 
             startActivity(intent);
+            finish();
         });
 
         tvLocation12.setOnClickListener(v->{
@@ -149,6 +160,7 @@ public class MotelActivity extends AppCompatActivity {
             intent.putExtra("list", list);
 
             startActivity(intent);
+            finish();
         });
 
         tvLocation13.setOnClickListener(v->{
@@ -159,6 +171,7 @@ public class MotelActivity extends AppCompatActivity {
             intent.putExtra("list", list);
 
             startActivity(intent);
+            finish();
         });
 
         tvLocation14.setOnClickListener(v->{
@@ -169,6 +182,7 @@ public class MotelActivity extends AppCompatActivity {
             intent.putExtra("list", list);
 
             startActivity(intent);
+            finish();
         });
 
         tvLocation15.setOnClickListener(v->{
@@ -179,6 +193,7 @@ public class MotelActivity extends AppCompatActivity {
             intent.putExtra("list", list);
 
             startActivity(intent);
+            finish();
         });
 
         tvLocation16.setOnClickListener(v->{
@@ -189,6 +204,7 @@ public class MotelActivity extends AppCompatActivity {
             intent.putExtra("list", list);
 
             startActivity(intent);
+            finish();
         });
 
         tvLocation17.setOnClickListener(v->{
@@ -199,6 +215,7 @@ public class MotelActivity extends AppCompatActivity {
             intent.putExtra("list", list);
 
             startActivity(intent);
+            finish();
         });
 
         tvLocation18.setOnClickListener(v->{
@@ -209,6 +226,7 @@ public class MotelActivity extends AppCompatActivity {
             intent.putExtra("list", list);
 
             startActivity(intent);
+            finish();
         });
 
         tvLocation19.setOnClickListener(v->{
@@ -219,6 +237,7 @@ public class MotelActivity extends AppCompatActivity {
             intent.putExtra("list", list);
 
             startActivity(intent);
+            finish();
         });
 
         tvLocation20.setOnClickListener(v->{
@@ -229,6 +248,7 @@ public class MotelActivity extends AppCompatActivity {
             intent.putExtra("list", list);
 
             startActivity(intent);
+            finish();
         });
 
         tvLocation21.setOnClickListener(v->{
@@ -239,6 +259,7 @@ public class MotelActivity extends AppCompatActivity {
             intent.putExtra("list", list);
 
             startActivity(intent);
+            finish();
         });
 
         pscBack.setOnClickListener(v -> {

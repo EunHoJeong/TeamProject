@@ -8,11 +8,13 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -39,13 +41,12 @@ import java.util.Map;
 
 public class FragHome extends Fragment {
 
-    private ImageButton imgbtnHotel;
-    private ImageButton imgbtnMotel;
-    private ImageButton imgbtnPension;
-    private ImageButton imgbtnTheme;
+    private Button btnMotel;
     private RecyclerView recyclerImage;
+    private SearchView mainSearchView;
     private static ImageAdapter adapter;
     private static ArrayList<StoreInfo> info = new ArrayList<>();
+    private ArrayList<StoreInfo> searchList = new ArrayList<>();
 
     private FirebaseDatabase db;
     private DatabaseReference dbRf;
@@ -63,6 +64,8 @@ public class FragHome extends Fragment {
             getMotelData();
         }
 
+        mainSearchView.setMaxWidth(Integer.MAX_VALUE);
+
 
         adapter = new ImageAdapter(getActivity(), info);
         recyclerImage.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
@@ -75,6 +78,24 @@ public class FragHome extends Fragment {
             startActivity(intent);
             });
 
+        mainSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                searchList.clear();
+                getSearchData(query);
+                Intent intent = new Intent(getActivity(), HotelListActivity.class);
+                intent.putExtra("list", searchList);
+                startActivity(intent);
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+
+                return true;
+            }
+        });
+
 
 
         eventHandlerFunc();
@@ -86,6 +107,15 @@ public class FragHome extends Fragment {
 
         return view;
     }
+
+    private void getSearchData(String query) {
+        for(StoreInfo s : info){
+            if(s.getStoreName().contains(query) || s.getLocation_tag().contains(query)){
+                searchList.add(s);
+            }
+        }
+    }
+
 
 
 
@@ -114,32 +144,16 @@ public class FragHome extends Fragment {
 
     private void eventHandlerFunc() {
 
-        imgbtnHotel.setOnClickListener(v -> {
-            Intent intent=new Intent(getActivity(), MotelActivity.class);
-            startActivity(intent);
-        });
-
-        imgbtnMotel.setOnClickListener(view1 -> {
-            Intent intent=new Intent(getActivity(), MotelActivity.class);
-            startActivity(intent);
-        });
-
-        imgbtnPension.setOnClickListener(v->{
-            Intent intent=new Intent(getActivity(), MotelActivity.class);
-            startActivity(intent);
-        });
-
-        imgbtnTheme.setOnClickListener(v->{
-            Intent intent=new Intent(getActivity(), MotelActivity.class);
+        btnMotel.setOnClickListener(v -> {
+            Intent intent = new Intent(getActivity(), MotelActivity.class);
             startActivity(intent);
         });
     }
 
     private void findViewByIdFunc(ViewGroup view) {
-        imgbtnHotel = view.findViewById(R.id.imgbtnHotel);
-        imgbtnMotel = view.findViewById(R.id.imgbtnMotel);
-        imgbtnPension = view.findViewById(R.id.imgbtnPension);
-        imgbtnTheme = view.findViewById(R.id.imgbtnTheme);
+        btnMotel = view.findViewById(R.id.btnMotel);
+        mainSearchView = view.findViewById(R.id.mainSearchView);
+
         recyclerImage = view.findViewById(R.id.recyclerImage);
     }
 

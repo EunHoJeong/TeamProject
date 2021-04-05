@@ -50,15 +50,6 @@
             android:scaleType="fitXY"
             android:src="@drawable/home" />
 
-        <ImageButton
-            android:id="@+id/pscSearch"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:layout_marginRight="15dp"
-            android:background="@color/white"
-            android:backgroundTint="@color/white"
-            android:scaleType="fitXY"
-            android:src="@drawable/search" />
     </LinearLayout>
 
     <LinearLayout
