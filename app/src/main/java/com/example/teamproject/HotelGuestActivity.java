@@ -211,7 +211,8 @@ public class HotelGuestActivity extends AppCompatActivity {
 
 
         pscLocation.setOnClickListener(view -> {
-            Intent intent = new Intent(this, MapActivity.class);
+            Intent intent = new Intent(this, SearchMapActivity.class);
+            intent.putExtra("location",storeInfo.getLocation());
             startActivity(intent);
         });
 
