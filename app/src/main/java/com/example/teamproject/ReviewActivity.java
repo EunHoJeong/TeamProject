@@ -1,6 +1,7 @@
 package com.example.teamproject;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -28,6 +29,9 @@ public class ReviewActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_review);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
+
         id = getIntent().getStringExtra("id");
 
         if(reviewList.size() == 0){

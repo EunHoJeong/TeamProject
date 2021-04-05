@@ -1,6 +1,7 @@
 package com.example.teamproject;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -19,6 +20,8 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
 
         mapView = findViewById(R.id.mapView);
         mapView.onCreate(savedInstanceState);

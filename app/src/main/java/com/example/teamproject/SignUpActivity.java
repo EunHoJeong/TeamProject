@@ -1,6 +1,7 @@
 package com.example.teamproject;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -46,6 +47,8 @@ public class SignUpActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
 
         userAndCeo = getIntent().getBooleanExtra("flag", false);
 

@@ -1,5 +1,6 @@
 package com.example.teamproject;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -28,6 +29,8 @@ public class CeoReviewActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ceo_review);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
         Intent intent = getIntent();
 
         list = (ArrayList<CeoReview>) intent.getSerializableExtra("list");

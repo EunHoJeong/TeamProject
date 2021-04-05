@@ -1,6 +1,7 @@
 package com.example.teamproject;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -38,7 +39,8 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
 
         dbRf = FirebaseDatabase.getInstance().getReference("User");
         findViewByIdFunc();
