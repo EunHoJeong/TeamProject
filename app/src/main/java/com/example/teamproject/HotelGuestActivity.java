@@ -218,7 +218,7 @@ public class HotelGuestActivity extends AppCompatActivity {
         pscCall.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Uri uri = Uri.parse("tel:");
+                Uri uri = Uri.parse("tel:"+storeInfo.getPhone());
                 Intent intent = new Intent(Intent.ACTION_DIAL, uri);
                 startActivity(intent);
             }

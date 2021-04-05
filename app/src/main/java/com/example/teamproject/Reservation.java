@@ -11,6 +11,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -49,6 +50,7 @@ public class Reservation {
         return result;
     }
 
+
     public ArrayList<Reservation> getData(String id){
         ArrayList<Reservation> list = new ArrayList<>();
         DatabaseReference dbRf = FirebaseDatabase.getInstance().getReference("Reservation");
@@ -66,8 +68,30 @@ public class Reservation {
             }
         });
 
-        SystemClock.sleep(500);
+
 
         return list;
     }
+
+    public ArrayList<String> getKey(String id){
+        ArrayList<String> key = new ArrayList<>();
+        DatabaseReference dbRf = FirebaseDatabase.getInstance().getReference("Reservation");
+        dbRf.child(id).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot s : snapshot.getChildren()){
+                    key.add(s.getKey());
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
+        return key;
+    }
+
 }

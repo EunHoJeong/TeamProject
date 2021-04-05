@@ -1,88 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:focusableInTouchMode="true"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-
-    <androidx.appcompat.widget.SearchView
-        android:id="@+id/mainSearchView"
-        android:layout_alignParentTop="true"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:iconifiedByDefault="false"
-        app:queryHint="지역, 숙소명으로 찾아보세요"/>
+        android:layout_height="match_parent">
 
-    <LinearLayout
-        android:id="@+id/menu"
-        android:layout_below="@id/mainSearchView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="7dp"
-        android:padding="3dp"
-        android:orientation="horizontal">
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/mainSearchView"
+            android:layout_alignParentTop="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:iconifiedByDefault="false"
+            app:queryHint="지역, 숙소명으로 찾아보세요"/>
 
         <LinearLayout
+            android:id="@+id/menu"
+            android:layout_below="@id/mainSearchView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:layout_weight="1">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:padding="3dp"
+            android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/btnMotel"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/round_border"
-                app:backgroundTint="#FF4081"
-                android:text="모텔 예약"/>
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_weight="1">
+
+                <Button
+                    android:id="@+id/btnMotel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/round_border"
+                    app:backgroundTint="#FF4081"
+                    android:text="모텔 예약"/>
 
 
+
+            </LinearLayout>
 
         </LinearLayout>
 
-    </LinearLayout>
+        <TextView
+            android:id="@+id/tvRecommendMotel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/menu"
+            android:text="  추천 모텔 > "
+            android:textSize="20sp"
+            android:textColor="#000000"
+            android:textStyle="bold"/>
 
-    <TextView
-        android:id="@+id/tvRecommendMotel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_below="@id/menu"
-        android:text="  추천 모텔 > "
-        android:textSize="20sp"
-        android:textColor="#000000"
-        android:textStyle="bold"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerImage"
+            android:layout_below="@id/tvRecommendMotel"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"/>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerImage"
-        android:layout_below="@id/tvRecommendMotel"
-        android:layout_width="match_parent"
-        android:layout_height="300dp"/>
-
-    <ImageView
-        android:id="@+id/ivHotel"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:scaleType="fitXY"
-        android:padding="8dp"
-        android:layout_below="@id/recyclerImage"
-        android:src="@drawable/lo"/>
-    <TextView
-        android:id="@+id/tv1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:layout_below="@id/ivHotel"
-        android:text=" (주) 숙박"/>
-    <TextView
-        android:id="@+id/tv2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tv1"
-        android:layout_margin="10dp"
-        android:text=" 대표: 정은호,이관호,박성철 \n 사업자 등록번호:123-45-67890 \n 메일:help@sukbak.com \n 고객센터: 02-1234-5678 (오전 9시-익일 새벽 3시) \n 주소: 서울 성동구 행당1동 왕십리로 303"/>
+        <ImageView
+            android:id="@+id/ivHotel"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:scaleType="fitXY"
+            android:padding="8dp"
+            android:layout_below="@id/recyclerImage"
+            android:src="@drawable/lo"/>
+        <TextView
+            android:id="@+id/tv1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_below="@id/ivHotel"
+            android:text=" (주) 숙박"/>
+        <TextView
+            android:id="@+id/tv2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv1"
+            android:layout_margin="10dp"
+            android:text=" 대표: 정은호,이관호,박성철 \n 사업자 등록번호:123-45-67890 \n 메일:help@sukbak.com \n 고객센터: 02-1234-5678 (오전 9시-익일 새벽 3시) \n 주소: 서울 성동구 행당1동 왕십리로 303"/>
 
 
-</RelativeLayout>
+    </RelativeLayout>
+
+
+
+</ScrollView>

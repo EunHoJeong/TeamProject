@@ -61,7 +61,8 @@ public class FragHome extends Fragment {
         findViewByIdFunc(view);
 
         if(info.size()==0){
-            getMotelData();
+            SystemClock.sleep(1500);
+            info = MainActivity.getStoreInfoData();
         }
 
         mainSearchView.setMaxWidth(Integer.MAX_VALUE);
@@ -119,28 +120,8 @@ public class FragHome extends Fragment {
 
 
 
-    private void getMotelData() {
-        db = FirebaseDatabase.getInstance();
-        dbRf = db.getReference("storeInfo");
 
-        dbRf.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for(DataSnapshot s : snapshot.getChildren()){
-                    StoreInfo storeInfo = s.getValue(StoreInfo.class);
-                    info.add(storeInfo);
 
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-        SystemClock.sleep(1500);
-
-    }
 
     private void eventHandlerFunc() {
 
@@ -188,5 +169,9 @@ public class FragHome extends Fragment {
         info.remove(index);
         info.add(index, newStoreInfo);
         adapter.notifyDataSetChanged();
+    }
+
+    public static void setInfo(ArrayList<StoreInfo> infoList){
+        info = infoList;
     }
 }

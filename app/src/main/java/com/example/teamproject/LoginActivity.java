@@ -151,6 +151,7 @@ public class LoginActivity extends AppCompatActivity {
         FragSteamed.setId(id);
         HotelGuestActivity.setLogin(id, true);
         RoomDetailsActivity.setId(id);
+        MainActivity.setRvData(id);
 
         Steamed steamed = new Steamed();
 

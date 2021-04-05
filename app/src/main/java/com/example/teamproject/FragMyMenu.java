@@ -19,10 +19,13 @@ import com.example.teamproject.R;
 import com.example.teamproject.LoginActivity;
 import com.example.teamproject.ReservationActivity;
 
+import java.util.ArrayList;
+
 public class FragMyMenu extends Fragment {
     private Button btnLoginSignUp,btnRegister;
 
     private LinearLayout llReservationHotel, llMyReview;
+
 
     private static boolean flag = false;
     private static boolean flag2 = false;
@@ -32,6 +35,8 @@ public class FragMyMenu extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         ViewGroup view = (ViewGroup) inflater.inflate(R.layout.frag_my_menu, container, false);
+
+        Reservation reservation = new Reservation();
 
 
         findViewByIdFunc(view);

@@ -23,6 +23,8 @@ import com.google.firebase.database.ValueEventListener;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -43,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
     private static ArrayList<StorePrice> price = new ArrayList<>();
     private static ArrayList<StoreTime> time = new ArrayList<>();
     private static ArrayList<CeoReservation> crvList = new ArrayList<>();
+    private static ArrayList<Reservation> rvList = new ArrayList<>();
 
 
     private static int position = 0;
@@ -94,59 +97,74 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        FirebaseDatabase db2 = FirebaseDatabase.getInstance();
-        DatabaseReference dbRf2 = db.getReference("storeImage");
+        Thread thread = new Thread(()->{
+            FirebaseDatabase db2 = FirebaseDatabase.getInstance();
+            DatabaseReference dbRf2 = db.getReference("storeImage");
 
-        dbRf2.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for(DataSnapshot s : snapshot.getChildren()){
-                    StoreImage storeImage = s.getValue(StoreImage.class);
-                    image.add(storeImage);
+            dbRf2.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    for(DataSnapshot s : snapshot.getChildren()){
+                        StoreImage storeImage = s.getValue(StoreImage.class);
+                        image.add(storeImage);
+                    }
                 }
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
 
-            }
-        });
-
-        FirebaseDatabase db3 = FirebaseDatabase.getInstance();
-        DatabaseReference dbRf3 = db.getReference("storePrice");
-
-        dbRf3.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for(DataSnapshot s : snapshot.getChildren()){
-                    StorePrice storePrice = s.getValue(StorePrice.class);
-                    price.add(storePrice);
                 }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
+            });
         });
+        thread.start();
 
-        FirebaseDatabase db4 = FirebaseDatabase.getInstance();
-        DatabaseReference dbRf4 = db.getReference("storeTime");
+        Thread thread2 = new Thread(()->{
+            FirebaseDatabase db3 = FirebaseDatabase.getInstance();
+            DatabaseReference dbRf3 = db.getReference("storePrice");
 
-        dbRf4.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for(DataSnapshot s : snapshot.getChildren()){
-                    StoreTime storeTime = s.getValue(StoreTime.class);
-                    time.add(storeTime);
+            dbRf3.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    for(DataSnapshot s : snapshot.getChildren()){
+                        StorePrice storePrice = s.getValue(StorePrice.class);
+                        price.add(storePrice);
+                    }
                 }
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
 
-            }
+                }
+            });
         });
+        thread2.start();
+
+        Thread thread3 = new Thread(()->{
+            FirebaseDatabase db4 = FirebaseDatabase.getInstance();
+            DatabaseReference dbRf4 = db.getReference("storeTime");
+
+            dbRf4.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    for(DataSnapshot s : snapshot.getChildren()){
+                        StoreTime storeTime = s.getValue(StoreTime.class);
+                        time.add(storeTime);
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+        });
+        thread3.start();
+
+
+
+
+
+
 
     }
 
@@ -273,6 +291,37 @@ public class MainActivity extends AppCompatActivity {
 
         RegisterActivity.setList(crvList);
 
+    }
+
+    public static void setRvData(String id){
+        rvList.clear();
+        Reservation rv = new Reservation();
+        rvList = rv.getData(id);
+    }
+
+    public static void sortRvData(){
+        Collections.sort(rvList, new Comparator<Reservation>() {
+            @Override
+            public int compare(Reservation a, Reservation b) {
+                return b.getDate().compareTo(a.getDate());
+            }
+        });
+    }
+
+    public static ArrayList<Reservation> getRvData(){
+        return rvList;
+    }
+
+    public static void insertRvData(Reservation rv){
+        rvList.add(rv);
+    }
+
+    public static void deleteRvData(int position){
+        rvList.remove(position);
+    }
+
+    public static ArrayList<StoreInfo> getStoreInfoData() {
+        return info;
     }
 
 

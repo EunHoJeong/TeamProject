@@ -172,6 +172,8 @@ public class RoomDetailsActivity extends AppCompatActivity {
 
         String date = check_In+" 18:00 ~ "+check_Out+" 12:00";
         Reservation rv = new Reservation(storeName, name, date);
+        MainActivity.insertRvData(rv);
+
 
         Calendar cal = Calendar.getInstance();
         SimpleDateFormat sdf = new SimpleDateFormat("hh:mm:ss");

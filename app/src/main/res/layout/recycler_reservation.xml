@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="130dp"
+    android:layout_height="110dp"
     android:background="@drawable/layout_stroke">
 
 
@@ -30,7 +30,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="객실정보"
-        android:textSize="11sp"
+        android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.045"
@@ -44,7 +44,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:text="방문일자"
-        android:textSize="11sp"
+        android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.045"
@@ -56,8 +56,8 @@
         android:id="@+id/tvRoomInfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="정보가져와"
-        android:textSize="11sp"
+        android:text="스탠다드"
+        android:textSize="15sp"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="@+id/tv_eh1"
         app:layout_constraintEnd_toEndOf="parent"
@@ -70,13 +70,27 @@
         android:id="@+id/tvReservationDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="0000/00/00(월) 00:00 ~ 0000/00/00(화) 00:00"
+        android:text="0000/00/00 00:00 ~ 0000/00/00 00:00"
         android:textColor="@color/black"
-        android:textSize="11sp"
+        android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="@+id/tv_eh2"
         app:layout_constraintEnd_toEndOf="@+id/tvRoomInfo"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/tvRoomInfo"
         app:layout_constraintTop_toTopOf="@+id/tv_eh2"
         app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/btnCancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="예약 취소"
+        android:background="@drawable/round_border"
+        app:backgroundTint="#FF4081"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.981"
+        app:layout_constraintStart_toEndOf="@+id/tvStoreName"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.036" />
 </androidx.constraintlayout.widget.ConstraintLayout>
