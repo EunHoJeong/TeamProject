@@ -2,7 +2,6 @@ package com.example.teamproject;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -67,8 +66,13 @@ public class SearchMapActivity extends AppCompatActivity implements OnMapReadyCa
     boolean mMoveMapByUser = true;
     boolean mMoveMapByAPI = true;
     LatLng currentPosition;
-
+    LatLng currentPosition1;
+    ArrayList<MarkerItem> markerList = new ArrayList();
+    MarkerItem markerItem;
     Marker selectedMarker;
+    Geocoder geocoder;
+    //Location location1 = null;
+
 
 
     LocationRequest locationRequest = new LocationRequest().setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
@@ -81,8 +85,9 @@ public class SearchMapActivity extends AppCompatActivity implements OnMapReadyCa
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON, WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         setContentView(R.layout.activity_search_map);
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.hide();
+        setTitle("주변 숙소 찾기");
+
+
 
         mActivity = this;
 
@@ -153,16 +158,82 @@ public class SearchMapActivity extends AppCompatActivity implements OnMapReadyCa
     @Override
     public void onMapReady(GoogleMap googleMap) {
         MarkerOptions markerOptions = new MarkerOptions();
-
+        geocoder=new Geocoder(this);
 
         Log.d(TAG, "onMapReady :");
 
         mGoogleMap = googleMap;
+        String locationAddress = getIntent().getStringExtra("location");
+        if(locationAddress == null){
+//            setDefaultLocation();
+//            MarkerOptions markerOptions2=new MarkerOptions();
+//            Location location1 = null;
+//            markerOptions2.title("현재위치");
+//            LatLng currentLatLng1 = new LatLng(location1.getLatitude(), location1.getLongitude());
+//            mGoogleMap.addMarker(markerOptions2);
+//            mGoogleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng1,15));
+
+
+
+            LocationCallback locationCallback = new LocationCallback() {
+                @Override
+                public void onLocationResult(LocationResult locationResult) {
+                    super.onLocationResult(locationResult);
+
+                    List<Location> locationList = locationResult.getLocations();
+
+                    if (locationList.size() > 0) {
+                        Location location = locationList.get(locationList.size() - 1);
+                        //location = locationList.get(0);
+
+                        currentPosition1
+                                = new LatLng(location.getLatitude(), location.getLongitude());
+
+
+                        String markerTitle = getCurrentAddress(currentPosition1);
+                        String markerSnippet = "위도:" + String.valueOf(location.getLatitude())
+                                + " 경도:" + String.valueOf(location.getLongitude());
+
+                        Log.d(TAG, "onLocationResult : " + markerSnippet);
+
+
+                        //현재 위치에 마커 생성하고 이동
+                        setCurrentLocation(location, markerTitle, markerSnippet);
+
+                        mCurrentLocatiion = location;
+                    }
+
+
+                }
+
+            };
+
+
+        }else{
+            List<Address> addressList=null;
+            try {
+                addressList=geocoder.getFromLocationName(locationAddress,20);
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+            String[] splitStr=addressList.get(0).toString().split(",");
+            String address=splitStr[0].substring(splitStr[0].indexOf("/")+1,splitStr[0].length()-2);
+            String latitude=splitStr[10].substring(splitStr[10].indexOf("=")+1);
+            String longitude=splitStr[12].substring(splitStr[12].indexOf("=")+1);
+            LatLng point=new LatLng(Double.parseDouble(latitude),Double.parseDouble(longitude));
+            MarkerOptions markerOptions1=new MarkerOptions();
+            markerOptions1.title(locationAddress);
+            markerOptions1.snippet(address);
+            markerOptions1.position(point);
+            mGoogleMap.addMarker(markerOptions1);
+            mGoogleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(point,15));
+
+
+        }
 
 
         //런타임 퍼미션 요청 대화상자나 GPS 활성 요청 대화상자 보이기전에
         //지도의 초기위치를 서울로 이동
-        setDefaultLocation();
 
         //mGoogleMap.getUiSettings().setZoomControlsEnabled(false);
         mGoogleMap.getUiSettings().setMyLocationButtonEnabled(true);
@@ -215,8 +286,10 @@ public class SearchMapActivity extends AppCompatActivity implements OnMapReadyCa
 
     }
 
+
+
     private void getSampleMarkerItems() {
-        ArrayList<MarkerItem> markerList = new ArrayList();
+
 
         markerList.add(new MarkerItem(37.562603, 126.990499, "New stay inn"));
         markerList.add(new MarkerItem(37.589148, 127.018659, "RG 모텔"));
@@ -312,10 +385,11 @@ public class SearchMapActivity extends AppCompatActivity implements OnMapReadyCa
                 + " 경도:" + String.valueOf(location.getLongitude());
 
         //현재 위치에 마커 생성하고 이동
-        setCurrentLocation(location, markerTitle, markerSnippet);
+        //setCurrentLocation(location, markerTitle, markerSnippet);
 
         mCurrentLocatiion = location;
     }
+
 
 
     @Override
@@ -463,7 +537,7 @@ public class SearchMapActivity extends AppCompatActivity implements OnMapReadyCa
         markerOptions.position(currentLatLng);
         markerOptions.title(markerTitle);
         markerOptions.snippet(markerSnippet);
-        markerOptions.draggable(true);
+        markerOptions.draggable(false);
 
 
         currentMarker = mGoogleMap.addMarker(markerOptions);
@@ -473,11 +547,12 @@ public class SearchMapActivity extends AppCompatActivity implements OnMapReadyCa
 
             Log.d(TAG, "setCurrentLocation :  mGoogleMap moveCamera "
                     + location.getLatitude() + " " + location.getLongitude());
-            // CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(currentLatLng, 15);
-            CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLng(currentLatLng);
-            mGoogleMap.moveCamera(cameraUpdate);
+            //CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(currentLatLng, 15);
+            //CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLng(currentLatLng);
+            mGoogleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng,15));
         }
     }
+
 
 
     public void setDefaultLocation() {
@@ -498,7 +573,7 @@ public class SearchMapActivity extends AppCompatActivity implements OnMapReadyCa
         markerOptions.title(markerTitle);
         markerOptions.snippet(markerSnippet);
         markerOptions.draggable(true);
-        markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
+        markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_VIOLET));
         currentMarker = mGoogleMap.addMarker(markerOptions);
 
         CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(DEFAULT_LOCATION, 15);
