@@ -84,13 +84,13 @@
         android:id="@+id/btnCancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="예약 취소"
         android:background="@drawable/round_border"
+        android:text="예약 취소"
         app:backgroundTint="#FF4081"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.981"
+        app:layout_constraintHorizontal_bias="0.927"
         app:layout_constraintStart_toEndOf="@+id/tvStoreName"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.036" />
+        app:layout_constraintVertical_bias="0.177" />
 </androidx.constraintlayout.widget.ConstraintLayout>

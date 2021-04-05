@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.text.Format;
@@ -38,7 +39,8 @@ public class CheckinOutActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
-
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
 
         pscBack = (ImageButton) findViewById(R.id.pscBack);
         checkintext = (TextView) findViewById(R.id.checkindate);
