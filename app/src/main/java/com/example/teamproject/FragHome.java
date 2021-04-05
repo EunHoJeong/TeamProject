@@ -61,7 +61,6 @@ public class FragHome extends Fragment {
         findViewByIdFunc(view);
 
         if(info.size()==0){
-            SystemClock.sleep(1500);
             info = MainActivity.getStoreInfoData();
         }
 

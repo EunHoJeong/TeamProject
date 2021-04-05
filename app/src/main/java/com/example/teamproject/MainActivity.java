@@ -5,12 +5,15 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.SystemClock;
 import android.util.Log;
 import android.view.MenuItem;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -36,7 +39,6 @@ public class MainActivity extends AppCompatActivity {
 
     private BottomNavigationView bottomNavigationView;
     private FragHome f_Home;
-//    private FragMyAround f_MyAround;
     private FragMyMenu f_MyMenu;
     private FragSteamed f_Steamed;
 
@@ -60,16 +62,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
+
 
         findViewByIdFunc();
 
         eventHandler();
 
-        getData();
 
         f_Home = new FragHome();
         f_MyMenu = new FragMyMenu();
@@ -78,7 +78,9 @@ public class MainActivity extends AppCompatActivity {
         setFrag(HOME);
     }
 
-    private void getData() {
+
+
+    public static void getData() {
         FirebaseDatabase db = FirebaseDatabase.getInstance();
         DatabaseReference dbRf = db.getReference("storeInfo");
 

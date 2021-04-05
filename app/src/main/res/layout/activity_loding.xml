@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LodingActivity">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:srcCompat="@drawable/loding"
+        android:scaleType="fitXY"
+        tools:layout_editor_absoluteX="36dp"
+        tools:layout_editor_absoluteY="148dp" />
+
+    <TextView
+        android:id="@+id/tvEunHo2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="숙소 예약"
+        android:textColor="#506E2D"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/tvEunHo"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="취 향 대 로"
+        android:textColor="#506E2D"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/tvEunHo2"/>
+
+    <TextView
+        android:id="@+id/tvEunHo"
+        android:layout_width="50dp"
+        android:layout_height="350dp"
+        android:layout_centerInParent="true"/>
+</RelativeLayout>
