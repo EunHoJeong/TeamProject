@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
     private BottomNavigationView bottomNavigationView;
     private FragHome f_Home;
-    private FragMyAround f_MyAround;
+//    private FragMyAround f_MyAround;
     private FragMyMenu f_MyMenu;
     private FragSteamed f_Steamed;
 
@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
         getData();
 
         f_Home = new FragHome();
-        f_MyAround = new FragMyAround();
+        //f_MyAround = new FragMyAround();
         f_MyMenu = new FragMyMenu();
         f_Steamed = new FragSteamed();
 
@@ -162,7 +162,9 @@ public class MainActivity extends AppCompatActivity {
                 switch(menuItem.getItemId()){
                     case R.id.action_home: setFrag(HOME);
                         break;
-                    case R.id.action_my_around: setFrag(MY_AROUND);
+                    case R.id.action_my_around: //setFrag(MY_AROUND);
+                        Intent intent=new Intent(getApplicationContext(),SearchMapActivity.class);
+                        startActivity(intent);
                         break;
                     case R.id.action_steamed: setFrag(STEAMED);
                         break;
@@ -189,10 +191,10 @@ public class MainActivity extends AppCompatActivity {
                 ft.replace(R.id.frameMain, f_Home);
                 ft.commit();
                 break;
-            case MY_AROUND:
-                ft.replace(R.id.frameMain, f_MyAround);
-                ft.commit();
-                break;
+//            case MY_AROUND:
+//                ft.replace(R.id.frameMain, f_MyAround);
+//                ft.commit();
+//                break;
             case STEAMED:
                 ft.replace(R.id.frameMain, f_Steamed);
                 ft.commit();
