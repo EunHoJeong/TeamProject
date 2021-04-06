@@ -6,20 +6,20 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     android:backgroundTint="@color/white"
-    android:padding="5dp"
+    android:padding="7dp"
     tools:context=".MotelActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="#D6D4D4">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:orientation="horizontal"
-            android:padding="3dp">
+            android:background="@color/white"
+            android:orientation="horizontal">
 
             <ImageButton
                 android:id="@+id/pscBack"
@@ -54,7 +54,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:id="@+id/tvLocation1"
-                android:gravity="center"
+                android:gravity="start"
                 android:textColor="@color/black"
                 android:text="강남/역삼/삼성/논현" />
 
@@ -64,7 +64,7 @@
                 android:layout_weight="1"
                 android:textColor="@color/black"
                 android:id="@+id/tvLocation2"
-                android:gravity="center"
+                android:gravity="start"
                 android:text="서초/신사/방배 " />
         </LinearLayout>
 
@@ -79,7 +79,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:id="@+id/tvLocation3"
-                android:gravity="center"
+                android:gravity="start"
                 android:textColor="@color/black"
                 android:text="잠실/신천(잠실새내)" />
 
@@ -88,7 +88,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:id="@+id/tvLocation4"
-                android:gravity="center"
+                android:gravity="start"
                 android:textColor="@color/black"
                 android:text="영등포/여의도" />
         </LinearLayout>
@@ -105,7 +105,7 @@
                 android:layout_weight="1"
                 android:textColor="@color/black"
                 android:id="@+id/tvLocation5"
-                android:gravity="center"
+                android:gravity="start"
                 android:text="신림/서울대/사당/동작" />
 
             <TextView
@@ -114,7 +114,7 @@
                 android:layout_weight="1"
                 android:id="@+id/tvLocation6"
                 android:textColor="@color/black"
-                android:gravity="center"
+                android:gravity="start"
                 android:text="천호/길동/둔촌" />
         </LinearLayout>
 
@@ -130,7 +130,7 @@
                 android:layout_weight="1"
                 android:textColor="@color/black"
                 android:id="@+id/tvLocation7"
-                android:gravity="center"
+                android:gravity="start"
                 android:text="화곡/까치산/양천/목동" />
 
             <TextView
@@ -139,7 +139,7 @@
                 android:layout_weight="1"
                 android:textColor="@color/black"
                 android:id="@+id/tvLocation8"
-                android:gravity="center"
+                android:gravity="start"
                 android:text="구로/금천/오류/신도림" />
         </LinearLayout>
 
@@ -155,7 +155,7 @@
                 android:layout_weight="1"
                 android:id="@+id/tvLocation9"
                 android:textColor="@color/black"
-                android:gravity="center"
+                android:gravity="start"
                 android:text="신촌/홍대/합정" />
 
             <TextView
@@ -164,7 +164,7 @@
                 android:layout_weight="1"
                 android:id="@+id/tvLocation10"
                 android:textColor="@color/black"
-                android:gravity="center"
+                android:gravity="start"
                 android:text="연신내/불광/응암" />
         </LinearLayout>
 
@@ -180,14 +180,14 @@
                 android:layout_weight="1"
                 android:id="@+id/tvLocation11"
                 android:textColor="@color/black"
-                android:gravity="center"
+                android:gravity="start"
                 android:text="종로/대학로/동묘앞역" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:gravity="center"
+                android:gravity="start"
                 android:id="@+id/tvLocation12"
                 android:textColor="@color/black"
                 android:text="성신여대/성북/월곡" />
@@ -204,7 +204,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:id="@+id/tvLocation13"
-                android:gravity="center"
+                android:gravity="start"
                 android:textColor="@color/black"
                 android:text="이태원/용산/서울역/명동/회현" />
 
@@ -214,7 +214,7 @@
                 android:textColor="@color/black"
                 android:id="@+id/tvLocation14"
                 android:layout_weight="1"
-                android:gravity="center"
+                android:gravity="start"
                 android:text="동대문/을지로/충무로/신당" />
         </LinearLayout>
 
@@ -230,7 +230,7 @@
                 android:layout_weight="1"
                 android:id="@+id/tvLocation15"
                 android:textColor="@color/black"
-                android:gravity="center"
+                android:gravity="start"
                 android:text="회기/고려대/청량리/신설동" />
 
             <TextView
@@ -239,7 +239,7 @@
                 android:layout_weight="1"
                 android:id="@+id/tvLocation16"
                 android:textColor="@color/black"
-                android:gravity="center"
+                android:gravity="start"
                 android:text="장안동/답십리" />
         </LinearLayout>
 
@@ -254,7 +254,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:id="@+id/tvLocation17"
-                android:gravity="center"
+                android:gravity="start"
                 android:textColor="@color/black"
                 android:text="건대/군자/구의" />
 
@@ -264,7 +264,7 @@
                 android:textColor="@color/black"
                 android:id="@+id/tvLocation18"
                 android:layout_weight="1"
-                android:gravity="center"
+                android:gravity="start"
                 android:text="왕십리/성수/금호" />
         </LinearLayout>
 
@@ -279,7 +279,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:id="@+id/tvLocation19"
-                android:gravity="center"
+                android:gravity="start"
                 android:textColor="@color/black"
                 android:text="수유/미아" />
 
@@ -287,7 +287,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:gravity="center"
+                android:gravity="start"
                 android:id="@+id/tvLocation20"
                 android:textColor="@color/black"
                 android:text="상봉/중랑/면목" />
@@ -303,7 +303,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:gravity="center"
+                android:gravity="start"
                 android:id="@+id/tvLocation21"
                 android:textColor="@color/black"
                 android:text="태릉/노원/도봉/창동" />
@@ -319,10 +319,13 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="@color/white">
 
             <pl.droidsonroids.gif.GifImageView
                 android:id="@+id/hani"
+                android:scaleType="fitStart"
+                android:layout_marginTop="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/hanigg"/>

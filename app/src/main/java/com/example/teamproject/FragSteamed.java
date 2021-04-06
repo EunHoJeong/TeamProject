@@ -28,7 +28,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-public class FragSteamed extends Fragment {
+public class FragSteamed extends Fragment implements HotelAdapter.OnItemClickListener {
     private Button btnSteamedLogin;
     private RecyclerView recyclerSteamed;
     private static HotelAdapter adapter;
@@ -47,7 +47,7 @@ public class FragSteamed extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         ViewGroup view = (ViewGroup) inflater.inflate(R.layout.frag_steamed, container, false);
 
-        if(info.size() == 0 && flag){
+        if(info.size() == 0 && flag && !start){
             getData();
         }
 
@@ -57,6 +57,16 @@ public class FragSteamed extends Fragment {
 
 
 
+
+        adapter.setOnItemClickListener(new HotelAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                Intent intent = new Intent(getActivity(), HotelGuestActivity.class);
+                String name = info.get(position).getStoreName();
+                intent.putExtra("name", name);
+                startActivity(intent);
+            }
+        });
 
 
         return view;
@@ -74,12 +84,7 @@ public class FragSteamed extends Fragment {
         recyclerSteamed.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
         recyclerSteamed.setAdapter(adapter);
 
-        adapter.setOnItemClickListener((v, position)-> {
-            Intent intent = new Intent(getActivity(), HotelGuestActivity.class);
-            String name = info.get(position).getStoreName();
-            intent.putExtra("name", name);
-            startActivity(intent);
-        });
+
 
         btnSteamedLogin.setOnClickListener(view -> {
             showDialog();
@@ -144,6 +149,8 @@ public class FragSteamed extends Fragment {
                 info.remove(i);
             }
         }
+        adapter.notifyDataSetChanged();
+
     }
 
     public static void clearNameList(){
@@ -173,6 +180,22 @@ public class FragSteamed extends Fragment {
             adapter = new HotelAdapter(getActivity(), info);
             recyclerSteamed.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
             recyclerSteamed.setAdapter(adapter);
+
+            adapter.setOnItemClickListener(new HotelAdapter.OnItemClickListener() {
+                @Override
+                public void onItemClick(View view, int position) {
+                    Intent intent = new Intent(getActivity(), HotelGuestActivity.class);
+                    String name = info.get(position).getStoreName();
+                    intent.putExtra("name", name);
+                    startActivity(intent);
+                }
+            });
         }
+    }
+
+
+    @Override
+    public void onItemClick(View view, int position) {
+
     }
 }

@@ -43,13 +43,15 @@ import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 public class HotelGuestActivity extends AppCompatActivity {
     private LinearLayout pscStandard, pscSuperior, pscSweet;
-    private ImageButton pscBack, pscLikeList, psctSearch;
+    private ImageButton pscBack, pscLikeList;
     private ImageView pscViewPager, pscStar, pscImg1, pscImg2, pscImg3;
     private TextView pscRoomSelection, pscRankName, pscGrade, pscMaxGrade, pscReview,
             pscLargeRoom1, pscLargeRoom2, pscLargeRoom3, pscLodgment1, pscLodgment2, pscLodgment3,
@@ -57,7 +59,6 @@ public class HotelGuestActivity extends AppCompatActivity {
     private Button pscLocation, pscCall, pscReservation, pscViewAll, pscCompletedReview;
     private EditText pscWriteReview;
     private RatingBar pscRatingBar;
-    private DatabaseReference dbRf;
 
     private ArrayList<CeoReview> list = new ArrayList<>();
 
@@ -68,7 +69,6 @@ public class HotelGuestActivity extends AppCompatActivity {
 
     private String name;
     private String RoomName;
-    private String HotelName;
     private String contents;
     private static String check_In;
     private static String check_Out;
@@ -194,6 +194,7 @@ public class HotelGuestActivity extends AppCompatActivity {
                 if(like){
                     deleteSteamedDB();
                     FragSteamed.deleteList(storeInfo.getStoreName());
+
                     pscLikeList.setImageResource(R.drawable.img_unlike);
                     like = false;
                 }else{
@@ -241,6 +242,8 @@ public class HotelGuestActivity extends AppCompatActivity {
             Intent intent = new Intent(this, RoomDetailsActivity.class);
             RoomName = "스탠다드";
             intent.putExtra("storeName", storeInfo.getStoreName());
+
+            intent.putExtra("phone", storeInfo.getPhone());
 
             intent.putExtra("name", RoomName);
 
@@ -321,6 +324,7 @@ public class HotelGuestActivity extends AppCompatActivity {
                     pscRatingBar.setRating(0);
                     pscRatingBarScore.setText("별점 : ");
                     pscWriteReview.setText("");
+                    Toast.makeText(HotelGuestActivity.this, "후기가 등록되었습니다.", Toast.LENGTH_SHORT).show();
                 }
             }else{
                 showLoginDialog();
@@ -330,6 +334,7 @@ public class HotelGuestActivity extends AppCompatActivity {
 
         pscViewAll.setOnClickListener(v -> {
             Intent intent = new Intent(this, CeoReviewActivity.class);
+            sortReview();
             intent.putExtra("list", list);
             intent.putExtra("grade", storeInfo.getGrade());
             intent.putExtra("review", storeInfo.getReview());
@@ -337,6 +342,14 @@ public class HotelGuestActivity extends AppCompatActivity {
         });
     }
 
+    private void sortReview() {
+        Collections.sort(list, new Comparator<CeoReview>() {
+            @Override
+            public int compare(CeoReview a, CeoReview b) {
+                return b.getDate().compareTo(a.getDate());
+            }
+        });
+    }
 
 
     private void insertReviewDB() {
@@ -354,6 +367,7 @@ public class HotelGuestActivity extends AppCompatActivity {
 
         CeoReview ceoReview = new CeoReview(id ,grade, date.substring(0, 14), contents);
 
+        list.add(ceoReview);
         map = ceoReview.toMap();
 
         date = date.substring(8, 17);
@@ -430,7 +444,6 @@ public class HotelGuestActivity extends AppCompatActivity {
     private void findViewByIdFunc() {
         pscBack = findViewById(R.id.pscBack);
         pscLikeList = findViewById(R.id.pscLikeList);
-        psctSearch = findViewById(R.id.psctSearch);
         pscViewPager = findViewById(R.id.pscViewPager);
         pscStar = findViewById(R.id.pscStar);
         pscImg1 = findViewById(R.id.pscImg1);

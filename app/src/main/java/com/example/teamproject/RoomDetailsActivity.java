@@ -39,6 +39,7 @@ public class RoomDetailsActivity extends AppCompatActivity {
     private ImageView pscViewPager;
 
     private String storeName;
+    private String phone;
     private String name;
     private String img;
     private String hotel;
@@ -62,6 +63,8 @@ public class RoomDetailsActivity extends AppCompatActivity {
         eventHandlerFunc();
 
         storeName = getIntent().getStringExtra("storeName");
+
+        phone = getIntent().getStringExtra("phone");
 
         img = getIntent().getStringExtra("img");
 
@@ -92,7 +95,7 @@ public class RoomDetailsActivity extends AppCompatActivity {
         });
 
         pscCall.setOnClickListener(view -> {
-            Uri uri = Uri.parse("tel:");
+            Uri uri = Uri.parse("tel:"+phone);
             Intent intent = new Intent(Intent.ACTION_DIAL, uri);
             startActivity(intent);
         });
