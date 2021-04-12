@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".SearchMapActivity">
+    tools:context=".activity.SearchMapActivity">
 
     <fragment
         android:id="@+id/map_google1"

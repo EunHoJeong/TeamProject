@@ -7,7 +7,7 @@
     android:background="@color/white"
     android:backgroundTint="@color/white"
     android:padding="7dp"
-    tools:context=".MotelActivity">
+    tools:context=".activity.MotelActivity">
 
     <LinearLayout
         android:layout_width="match_parent"

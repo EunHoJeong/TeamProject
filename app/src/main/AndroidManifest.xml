@@ -13,33 +13,33 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TeamProject">
-        <activity android:name=".MainActivity"></activity>
-        <activity android:name=".CeoReviewActivity" />
-        <activity android:name=".RegisterActivity" />
-        <activity android:name=".ReviewActivity" />
+        <activity android:name=".activity.MainActivity"></activity>
+        <activity android:name=".activity.CeoReviewActivity" />
+        <activity android:name=".activity.RegisterActivity" />
+        <activity android:name=".activity.ReviewActivity" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyDyHeQy_lJBW0KKxy51QHxx2hF39PCORbk" />
 
-        <activity android:name=".SearchMapActivity" />
-        <activity android:name=".ReservationActivity" />
-        <activity android:name=".SignUpActivity" />
-        <activity android:name=".HotelListActivity" />
-        <activity android:name=".HotelGuestActivity" />
-        <activity android:name=".RoomDetailsActivity" />
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".LodingActivity">
+        <activity android:name=".activity.SearchMapActivity" />
+        <activity android:name=".activity.ReservationActivity" />
+        <activity android:name=".activity.SignUpActivity" />
+        <activity android:name=".activity.HotelListActivity" />
+        <activity android:name=".activity.HotelGuestActivity" />
+        <activity android:name=".activity.RoomDetailsActivity" />
+        <activity android:name=".activity.LoginActivity" />
+        <activity android:name=".activity.LodingActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MotelActivity" />
-        <activity android:name=".MapActivity" />
-        <activity android:name=".CheckinOutActivity" />
-        <activity android:name=".SplashActivity" />
+        <activity android:name=".activity.MotelActivity" />
+        <activity android:name=".activity.MapActivity" />
+        <activity android:name=".activity.CheckinOutActivity" />
+        <activity android:name=".activity.SplashActivity" />
     </application>
 
 </manifest>
